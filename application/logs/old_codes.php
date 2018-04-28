@@ -1,6 +1,6 @@
 <?php    
     //Tömb végéről leszed annyi elemet, hogy csak $limit darab elem maradjon benne.
-	private function array_pop_to_limit($array, $limit)
+	function array_pop_to_limit($array, $limit)
 	{
 		if(count($array) > $limit)
 		{
@@ -14,7 +14,7 @@
 	//Privát láthatóságú függvény a gyakran használt adatbázis lekérdezésekhez
 	//a $filter a keresendő szövegrészt jelenti
 	//csak a title alapján keres
-	private function base_short_query($filter)
+	function base_short_query($filter)
 	{
 		$this->db->select('articles.*, subcategory.name AS subcat_name, '
 						. 'subcategory.slug AS subcat_slug, users.name AS user_name');
@@ -39,7 +39,7 @@
 	
 	//Privát láthatóságú függvény a gyakran használt adatbázis lekérdezésekhez
 	//a $filter a keresendő szövegrészt jelenti
-	private function base_query($filter)
+	function base_query($filter)
 	{
 		$this->db->select('articles.*, subcategory.name AS subcat_name, '
 						. 'subcategory.slug AS subcat_slug, users.name AS user_name');
@@ -75,7 +75,7 @@
 	
 	//Keresés egy szövegrész alapján (illetve lapozóadatokkal)
 	//Azért ez még erősen átgondolandó. TODO.
-	public function get_searched_data($filter, $limit, $from)
+	function get_searched_data($filter, $limit, $from)
 	{
 		$this->base_short_query($filter);
 		$query1 = $this->db->get();
@@ -117,7 +117,7 @@
 	}
 	
 	//keresendő adatok száma //TODO: ezt ugye nem adjuk futtatjuk le minden lapon újra?
-	public function get_searched_data_count($filter)
+	function get_searched_data_count($filter)
 	{
 		$this->base_query($filter);
 		return $this->db->count_all_results();
@@ -125,7 +125,7 @@
 	
 	//Keresés gyorsan, röviden (hehe), legördülő menübe
 	//Azért ez még erősen átgondolandó. TODO.
-	public function get_searched_data_short($filter, $limit)
+	function get_searched_data_short($filter, $limit)
 	{
 		$this->base_short_query($filter);
 		$this->db->limit($limit);
