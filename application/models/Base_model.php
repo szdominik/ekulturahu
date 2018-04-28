@@ -213,10 +213,9 @@ class Base_model extends CI_Model {
 			$cikk = $this->db->get('articles');
 
 			foreach($cikk->result_array() as $a)
-			{
+			{ 
 				if(strpos($a['body'], '/cikkek_kepei/user_feltoltesek/') !== FALSE) {
-					$newBody = str_replace('/cikkek_kepei/user_feltoltesek/', 
-						'/uploads/articles/', $a['body']);
+					$newBody = str_replace('/cikkek_kepei/user_feltoltesek/', base_url('/uploads/articles') . '/', $a['body']);
 
 					//echo $a['id'] . " - " . $a['title'] . "\n";
 					$data = array('body' => $newBody);
