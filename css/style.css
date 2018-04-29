@@ -41,12 +41,13 @@ a:hover, a:focus {
 
 .search-container > form {
   margin-bottom: 0;
-  width: 420px;
+  margin-left: 36px;
   border-radius: 20px;
   display: flex;
 }
 
 .search-container input {
+  width: 420px;
   border-radius: 20px;
 }
 
@@ -261,6 +262,15 @@ p {
   .search-container {
     position: relative;
     top: 90px;
+  }
+
+  .search-container form {
+    margin-left: 20px;
+    width: 100%;
+  }
+
+  .search-container input {
+    width: 100%;
   }
 
   .body-content {
