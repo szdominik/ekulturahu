@@ -15,35 +15,20 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapseMenu">
 			</button>
 			<a class="navbar-brand" href="<?php echo site_url(); ?>">ekultura.hu</a>
     </div>
 
-    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="collapseMenu">
 			<ul class="nav navbar-nav">
 				<?php foreach ($subcategories as $sc): ?>
 					<li><a href="<?php echo site_url($sc['slug']); ?>"><?php echo $sc['name']; ?></a></li>
 				<?php endforeach; ?>
 			</ul>
-	  
-			<?php $attributes = array('class' => 'navbar-form navbar-right', 'role' => 'search');
-					echo form_open('search', $attributes); ?>
-				<div class="form-group">
-					<?php $data = array(
-											'name'        => 'search',
-											'maxlength'   => '200',
-								'class'		=> 'form-control',
-								'id'			=> 'search-field',
-								'placeholder' => 'keresés'
-										);
-					echo form_input($data); ?>
-				</div>
-				<button type="submit" class="btn btn-default">Keresés</button>
-			</form>
 	  
 			<ul class="nav navbar-nav navbar-right">
 				<?php if($this->session->userdata('logged_in') === TRUE): ?> 
@@ -72,5 +57,20 @@
     </div>
   </div> <!--container-fluid -->
 </nav>
+
+<div class="search-container container-fluid">
+  <?php echo form_open('search', array('role' => 'search'));
+    echo form_input(array(
+      'name'        => 'search',
+      'maxlength'   => '200',
+      'class'		    => 'form-control',
+      'id'			    => 'search-field',
+      'placeholder' => 'Mit keresel?'
+    )); ?>
+    <span class="search-icon">
+      <img src="<?php echo base_url('assets/icon.png');?>" alt="search icon" />
+    </span>
+  </form>
+</div>
 
 <div class="container-fluid">

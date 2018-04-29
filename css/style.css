@@ -1,9 +1,8 @@
 html {
 	--brown: #e3dcd4;
   --brown-2: #ba9072;
-  --brown-3: #e3dcd4;
+  --brown-3: #836d46;
   --brown-4: #966645;
-  --brown-5: #836d46;
 }
 
 body {
@@ -12,7 +11,7 @@ body {
 }
 
 a {
-  color: var(--brown-5);
+  color: var(--brown-3);
 }
 
 a:hover, a:focus {
@@ -29,6 +28,35 @@ a:hover, a:focus {
 .btn-default:focus {
   background-color: var(--brown-4);
   border-color: var(--brown-4);
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--brown);
+  height: 75px;
+}
+
+.search-container > form {
+  margin-bottom: 0;
+  width: 420px;
+  border-radius: 20px;
+  display: flex;
+}
+
+.search-container input {
+  border-radius: 20px;
+}
+
+.search-icon {
+  position: relative;
+  top: 9px;
+  left: -36px;
+}
+
+.form-control:focus {
+  border-color: var(--brown-2);
 }
 
 footer.navbar {
@@ -100,7 +128,7 @@ p {
 	max-width: 250px;
 }
 
-.header {
+.static-header {
 	padding-bottom: 20px; 
 }
 
