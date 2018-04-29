@@ -124,6 +124,7 @@ a:hover, a:focus {
   width: 340px;
   text-transform: uppercase;
   background-color: white;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -138,8 +139,8 @@ a:hover, a:focus {
 }
 
 .header .navbar-links p {
-  padding-left: 75px;
-  height: 50px;
+  padding-left: 60px;
+  height: 45px;
   display: flex;
   align-items: center;
 }
