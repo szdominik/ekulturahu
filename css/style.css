@@ -20,6 +20,17 @@ a:hover, a:focus {
   cursor: pointer;
 }
 
+.btn-default {
+  background-color: var(--brown-2);
+  border-color: var(--brown-2);
+}
+
+.btn-default:hover,
+.btn-default:focus {
+  background-color: var(--brown-4);
+  border-color: var(--brown-4);
+}
+
 footer.navbar {
 	margin-bottom: 0;
 	background-color: var(--brown-2);
