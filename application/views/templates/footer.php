@@ -1,5 +1,6 @@
-﻿
-<footer class="navbar navbar-default navbar-fixed-bottom">
+﻿</div> <!-- container-fluid -->
+
+<footer class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
@@ -90,8 +91,6 @@
 		</div>
 	</div>
 </div>
-
-</div> <!-- container-fluid -->
 
 <script>
 	$('#search-field').autocomplete({

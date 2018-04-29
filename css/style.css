@@ -1,7 +1,10 @@
 body {
 	background-color: #f8f4f3;
-	padding-top: 30px; 
-	padding-bottom: 70px;
+	padding-top: 30px;
+}
+
+footer .navbar {
+	margin-bottom: 0;
 }
 
 p {
@@ -16,7 +19,6 @@ p {
 .img-article-main {
 	margin-right: 20px;
 	width: 250px;
-	align: left;
 }
 
 .img-article-center {
