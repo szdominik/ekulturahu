@@ -1,13 +1,14 @@
 html {
-	--brown: #e3dcd4;
+  --brown: #e3dcd4;
+  --brown-1: #f8f4f3;
   --brown-2: #ba9072;
   --brown-3: #836d46;
   --brown-4: #966645;
+  --brown-5: #c0bab2;
 }
 
 body {
-	background-color: #f8f4f3;
-	padding-top: 30px;
+	background-color: var(--brown-1);
 }
 
 a {
@@ -57,6 +58,90 @@ a:hover, a:focus {
 
 .form-control:focus {
   border-color: var(--brown-2);
+}
+
+.content-hidden {
+  background-color: black;
+  opacity: 0.529;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 90;
+}
+
+.header {
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--brown-5);
+  height: 120px;
+  background-color: var(--brown-1);
+  z-index: 98;
+}
+
+.header .header-icons img {
+  margin-right: 15px;
+}
+
+.header a > img {
+  width: 200px;
+}
+
+.header .header-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  margin: 0 55px;
+}
+
+.header .header-main .menu-buttons {
+  cursor: pointer;
+}
+
+.header .menu-buttons > button > img {
+  width: 27px;
+}
+
+.header .hamburger-btn {
+  border: none;
+  background: transparent;
+}
+
+.header .header-main #menu-text {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: var(--brown-3);
+  font-weight: bold;
+  position: relative;
+  top: 2px;
+}
+
+.header .navbar-links {
+  display: none;
+  position: absolute;
+  right: 0;
+  z-index: 100;
+  width: 340px;
+  text-transform: uppercase;
+  background-color: white;
+  font-weight: bold;
+}
+
+.header .navbar-links a:hover {
+  text-decoration: none;
+  background-color: var(--brown);
+}
+
+.header .navbar-links.show-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.header .navbar-links p {
+  padding-left: 75px;
+  height: 50px;
+  display: flex;
+  align-items: center;
 }
 
 footer.navbar {
@@ -153,8 +238,41 @@ p {
 }
 
 @media only screen and (max-width: 768px) {
+  .content-hidden {
+    top: 90px;
+  }
+
+  .header {
+    height: 90px;
+    position: fixed;
+    width: 100%;
+  }
+
+  .header .header-main {
+    margin: 0 25px;
+  }
+
+  .header .header-icons,
+  .header .header-main #menu-text {
+    display: none;
+  }
+
+  .search-container {
+    position: relative;
+    top: 90px;
+  }
+
+  .body-content {
+    position: relative;
+    top: 90px;
+  }
+
+  footer {
+    top: 90px;
+  }
+
   footer.navbar .navbar-header {
-      display: unset;
+    display: unset;
   }
   
   footer .navbar-nav {

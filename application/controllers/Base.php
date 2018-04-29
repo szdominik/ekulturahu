@@ -60,6 +60,7 @@ class Base extends CI_Controller {
 		}
 		else
 		{
+			ob_clean();
 			//$this->statistics_insert();
 			$header = $this->get_headerdata();
 			$footer = $this->get_footerdata();

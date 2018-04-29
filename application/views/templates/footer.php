@@ -92,6 +92,23 @@
 			.append('<a href="' + item.link + '">' + item.title + '</a>')
 			.appendTo(ul);
 	};
+
+  $('.menu-buttons').on('click', () => {
+    const isClose = $('#menu-text').html() === 'Bezár';
+    $('#menu-text').html(isClose ? 'Menü' : 'Bezár');
+    const imgSelector = $('.menu-buttons button img');
+    imgSelector.attr('src', isClose
+      ? imgSelector.attr('src').replace('hamburger-x', 'hamburger')
+      : imgSelector.attr('src').replace('hamburger', 'hamburger-x')
+    );
+    if (isClose) {
+      $('.header .navbar-links').removeClass('show-menu');
+      $('#content-mask').removeClass('content-hidden');
+    } else {
+      $('.header .navbar-links').addClass('show-menu');
+      $('#content-mask').addClass('content-hidden');
+    }
+  });
 	
 </script>
 </body>

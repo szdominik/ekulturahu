@@ -15,48 +15,34 @@
 </head>
 <body>
 
-<nav class="navbar navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapseMenu">
-			</button>
-			<a class="navbar-brand" href="<?php echo site_url(); ?>">ekultura.hu</a>
+<nav class="header">
+  <div class="header-main">
+    <div class="header-icons">
+      <img src="<?php echo base_url('assets/icons/facebook.png');?>" alt="facebook">
+      <img src="<?php echo base_url('assets/icons/twitter.png');?>" alt="twitter">
+      <img src="<?php echo base_url('assets/icons/googleplus.png');?>" alt="google+">
+      <img src="<?php echo base_url('assets/icons/youtube.png');?>" alt="youtube">
+      <img src="<?php echo base_url('assets/icons/feed.png');?>" alt="rss feed">
     </div>
+    <a href="<?php echo site_url(); ?>">
+      <img src="<?php echo base_url('assets/icons/ekultura.png');?>" alt="ekultura.hu">
+    </a>
+    <div class="menu-buttons">
+      <button type="button" class="hamburger-btn">
+        <img src="<?php echo base_url('assets/icons/hamburger.png');?>" alt="hamburger icon">
+      </button>
+      <span id="menu-text">Menü</span>
+    </div>
+  </div>
 
-    <div class="collapse navbar-collapse" id="collapseMenu">
-			<ul class="nav navbar-nav">
-				<?php foreach ($subcategories as $sc): ?>
-					<li><a href="<?php echo site_url($sc['slug']); ?>"><?php echo $sc['name']; ?></a></li>
-				<?php endforeach; ?>
-			</ul>
-	  
-			<ul class="nav navbar-nav navbar-right">
-				<?php if($this->session->userdata('logged_in') === TRUE): ?> 
-					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Adminisztráció <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<?php if($this->session->userdata('level') >= 3): ?>
-								<li><a href="<?php echo site_url(array('admin', 'article_new')); ?>">Új cikk felvitele</a></li>
-								<li><a href="<?php echo site_url(array('admin', 'article_list')); ?>">Cikkek szerkesztése</a></li>
-								<li class="divider"></li>
-								<?php if($this->session->userdata('level') >= 4): ?>
-									<li><a href="<?php echo site_url(array('admin', 'meta_list')); ?>">Címkék kezelése</a></li>
-									<li><a href="<?php echo site_url(array('admin', 'static_list')); ?>">Statikus cikkek kezelése</a></li>
-									<?php if($this->session->userdata('level') == 5): ?>
-										<li><a href="<?php echo site_url(array('admin', 'user_list')); ?>">Felhasználók kezelése</a></li>
-										<li><a href="<?php echo site_url(array('admin', 'category_list')); ?>">Kategóriák kezelése</a></li>
-									<?php endif; ?>
-								<?php endif; ?>
-							<?php endif; ?>
-							<li><a href="<?php echo site_url(array('admin', 'comment_list')); ?>">Hozzászólások kezelése</a></li>
-						</ul>
-					</li>
-					<li><a href="<?php echo site_url(array('users', 'logout')); ?>" role="button">Kilépés</a></li>
-				<?php endif; ?>
-			</ul>
-    </div>
-  </div> <!--container-fluid -->
+  <div class="navbar-links">
+    <?php foreach ($subcategories as $sc): ?>
+      <a href="<?php echo site_url($sc['slug']); ?>"><p><?php echo $sc['name']; ?></p></a>
+    <?php endforeach; ?>
+  </div>
 </nav>
+
+<div id="content-mask"></div>
 
 <div class="search-container container-fluid">
   <?php echo form_open('search', array('role' => 'search'));
@@ -68,9 +54,9 @@
       'placeholder' => 'Mit keresel?'
     )); ?>
     <span class="search-icon">
-      <img src="<?php echo base_url('assets/icon.png');?>" alt="search icon" />
+      <img src="<?php echo base_url('assets/icons/search.png');?>" alt="search icon" />
     </span>
   </form>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid body-content">
