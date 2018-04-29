@@ -1,40 +1,26 @@
 ﻿</div> <!-- container-fluid -->
 
-<footer class="navbar navbar-default">
+<footer class="navbar">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
-			</button>
-		    <div class="navbar-text">2017 &copy; ekultura.hu
-				<?php if($this->session->userdata('logged_in') === TRUE): ?>
-					 - Bejelentkezve: <?php if($this->session->userdata('name') != ''): 
-											echo $this->session->userdata('name');
-										else: 
-											echo $this->session->userdata('username');
-										endif; ?>
-				<?php endif; ?>
-			</div>
+		    <div class="navbar-text">2017 &copy; ekultura.hu</div>
 	    </div>
 	
-		<div class="collapse navbar-collapse" id="navbar-collapse-2">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="<?php echo site_url('calendar'); ?>">Napi évfordulók</a></li>
-				<?php foreach ($statics as $st): ?>
-					<li><a href="<?php echo site_url($st['path']); ?>">
-						<?php echo $st['title']; ?>
-					</a></li>
-				<?php endforeach; ?>
-				<?php if($this->session->userdata('logged_in') === TRUE): ?>
-					<li><a href="<?php echo site_url(array('users', 'user_settings')); ?>">Beállítások</a></li>
-				<?php else: ?>
-					<li><a data-toggle="modal" data-target="#loginModal" role="button">Belépés</a></li>
-				<?php endif; ?>
-			</ul>
-		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="<?php echo site_url('calendar'); ?>">Napi évfordulók</a></li>
+			<?php foreach ($statics as $st): ?>
+				<li><a href="<?php echo site_url($st['path']); ?>">
+					<?php echo $st['title']; ?>
+				</a></li>
+			<?php endforeach; ?>
+			<?php if($this->session->userdata('logged_in') === TRUE): ?>
+				<li><a href="<?php echo site_url(array('users', 'user_settings')); ?>">Beállítások</a></li>
+			<?php else: ?>
+				<li><a data-toggle="modal" data-target="#loginModal" role="button">Belépés</a></li>
+			<?php endif; ?>
+		</ul>
 	</div>
 </footer>
-
-
 
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
