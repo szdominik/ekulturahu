@@ -90,6 +90,7 @@ class Base extends CI_Controller {
 			$article['user_link'] = $this->format_username($article);
 			$article['short_body'] = $this->generate_short_body($article['body']);
 		}
+		$articles_array = $this->add_metacategory_to_articles($articles_array);
 		return $articles_array;
 	}
 
@@ -105,6 +106,7 @@ class Base extends CI_Controller {
 
 	//A cikk slug és pub_time mezője alapján link generálása
 	//pl. 'feher_isten' (string) + 2015-06-02 21:04:30 (date) -> '2015/06/02/feher_isten' (string)
+	// Ha ezt módosítod, van a Base_modelben is egy ilyen!
 	protected function generate_link($article)
 	{
 		$link = site_url() . substr($article['pub_time'], 0, 4) . 
@@ -129,10 +131,30 @@ class Base extends CI_Controller {
 		return $user_link; 
 	}
 
-  // Törli a HTML tageket a szövegből, és a 200 utáni első szóközig adja vissza a szöveget.
+  	// Törli a HTML tageket a szövegből, és a 200 utáni első szóközig adja vissza a szöveget.
 	private function generate_short_body($body)
 	{
 		$short_body = strip_tags($body);
 		return substr($short_body, 0, strpos($short_body, ' ', 200)) . '...';
+	}
+
+	// A paraméterként megkapott cikkekhez hozzáadja a meta-kategóriájuk tömbjét
+	private function add_metacategory_to_articles($articles)
+	{
+		$ids = array_column($articles, 'id');
+		$metas = $this->base_model->get_categories_metatype_for_articles($ids);
+		foreach ($metas as $meta) {
+			$num = array_search($meta['article_id'], $ids);
+			$ac = $articles[$num];
+
+			if(!array_key_exists('meta_category', $ac)) {
+				$ac['meta_category'] = array($meta['meta_name']);
+			} else {
+				$ac['meta_category'][] = $meta['meta_name'];
+			}
+
+			$articles[$num] = $ac;
+		}
+		return $articles;
 	}
 }
