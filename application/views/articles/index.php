@@ -20,7 +20,7 @@
 	<?php elseif (isset($author)): ?>
 		Cikkszerző: <?php echo $author; ?>
 	<?php else: ?>
-		<a href="<?php echo site_url($subcategory['slug']); ?>"><?php echo $subcategory['name']; ?></a>
+		<?php echo $subcategory['name']; ?>
 	<?php endif; ?>
 </h1>
 
