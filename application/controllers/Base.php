@@ -141,21 +141,19 @@ class Base extends CI_Controller {
 	// A paraméterként megkapott cikkekhez hozzáadja a meta-kategóriájuk tömbjét
 	private function add_metacategory_to_articles($articles)
 	{
-		$ids = array_column($articles, 'id');
-		$metas = $this->base_model->get_categories_metatype_for_articles($ids);
-		foreach ($metas as $meta) {
-			$num = array_search($meta['article_id'], $ids);
-			$ac = $articles[$num];
-
-			if(!array_key_exists('meta_category', $ac)) {
-				$ac['meta_category'] = array(
-					array('name' => $meta['meta_name'], 'slug' => $meta['meta_slug'])
-				);
-			} else {
-				$ac['meta_category'][] = array('name' => $meta['meta_name'], 'slug' => $meta['meta_slug']);
+		$metas = $this->base_model->get_categories_metatype_for_articles(array_column($articles, 'id'));
+		foreach ($articles as &$ac) {
+			$filtered = array();
+			foreach($metas as $meta) {
+				if($meta['article_id'] === $ac['id']) {
+					$filtered[] = $meta;
+				}
 			}
 
-			$articles[$num] = $ac;
+			$ac['meta_category'] = array();
+			foreach($filtered as $fil) {
+				$ac['meta_category'][] = array('name' => $fil['meta_name'], 'slug' => $fil['meta_slug']);
+			}
 		}
 		return $articles;
 	}
