@@ -192,12 +192,15 @@ a:hover, a:focus {
 }
 
 .article-img {
-  width: 270px;
-  height: 335px;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .article .img-container {
   position: relative;
+  width: 270px;
+  height: 335px;
+  overflow: hidden;
 }
 
 .article .category-label {
