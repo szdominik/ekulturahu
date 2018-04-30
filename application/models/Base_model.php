@@ -136,13 +136,16 @@ class Base_model extends CI_Model {
 
 	//A cikkekhez kiválogatja a hozzájuk tartozó meta-kategóriát
 	public function get_categories_metatype_for_articles($article_ids) {
-		$this->db->select('meta_value_article.article_id AS article_id, metavalue.name AS meta_name, metavalue.slug AS meta_slug');
-		$this->db->from('metavalue');
-		$this->db->join('meta_value_article', 'metavalue.id = meta_value_article.metavalue_id', 'left');
-		$this->db->where('metavalue.type', 8);
-		$this->db->where_in('meta_value_article.article_id', $article_ids);
-		$query = $this->db->get();
-		return $query->result_array();
+		if (count($article_ids) !== 0) {
+			$this->db->select('meta_value_article.article_id AS article_id, metavalue.name AS meta_name, metavalue.slug AS meta_slug');
+			$this->db->from('metavalue');
+			$this->db->join('meta_value_article', 'metavalue.id = meta_value_article.metavalue_id', 'left');
+			$this->db->where('metavalue.type', 8);
+			$this->db->where_in('meta_value_article.article_id', $article_ids);
+			$query = $this->db->get();
+			return $query->result_array();
+		}
+		return array();
 	}
 
 	// Ha ezt módosítod, van a Base controllerben is egy.
