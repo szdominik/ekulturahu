@@ -148,9 +148,11 @@ class Base extends CI_Controller {
 			$ac = $articles[$num];
 
 			if(!array_key_exists('meta_category', $ac)) {
-				$ac['meta_category'] = array($meta['meta_name']);
+				$ac['meta_category'] = array(
+					array('name' => $meta['meta_name'], 'slug' => $meta['meta_slug'])
+				);
 			} else {
-				$ac['meta_category'][] = $meta['meta_name'];
+				$ac['meta_category'][] = array('name' => $meta['meta_name'], 'slug' => $meta['meta_slug']);
 			}
 
 			$articles[$num] = $ac;

@@ -11,6 +11,11 @@ body {
 	background-color: var(--brown-1);
 }
 
+p {
+	margin: 0px;
+	padding: 0px;
+}
+
 a {
   color: var(--brown-3);
 }
@@ -146,6 +151,53 @@ a:hover, a:focus {
   align-items: center;
 }
 
+.article-list {
+  margin: 0 auto;
+  max-width: 1200px;
+  display: block;
+}
+
+.article + .article {
+  margin-left: 30px;
+}
+
+.article {
+  position: relative;
+  display: inline-block;
+  width: 270px;
+  height: 655px;
+  vertical-align: top;
+  margin-bottom: 30px;
+  background-color: white;
+}
+
+.article-text-section {
+  height: 300px;
+  padding: 25px 20px;
+}
+
+.article-text-section > h2 {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.article-text-section > h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.article-category {
+  position: absolute;
+  left: 20px;
+  top: 600px;
+}
+
+.article-img {
+  width: 270px;
+  height: 335px;
+}
+
 footer.navbar {
 	margin-bottom: 0;
 	background-color: var(--brown-2);
@@ -172,11 +224,6 @@ footer .navbar-nav > li > a {
 footer .navbar-nav > li > a:hover,
 footer .navbar-nav > li > a:focus {
   background-color: var(--brown-4);
-}
-
-p {
-	margin: 0px;
-	padding: 0px;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -209,10 +256,6 @@ p {
 
 .img-event {
 	max-width: 400px;
-}
-
-.img-mainpage {
-	max-width: 250px;
 }
 
 .static-header {

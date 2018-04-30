@@ -8,7 +8,7 @@
 		<div class="col-md-10">
 		    <h1><?php echo $ac_item['title'] ?></h1>
 			<h4><?php echo $ac_item['pub_time'] . ' / Írta: ' . $ac_item['user_link']; ?></h4>
-		    <div class="article">
+		    <div>
 				<?php if($ac_item['image_path'] != NULL):
 					if($ac_item['image_horizontal'] == 1): ?>
 						<img src="<?php echo base_url(array('uploads', $ac_item['image_path'])); ?>" class="img-responsive img-article-center" alt="Főkép">
