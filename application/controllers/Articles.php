@@ -8,7 +8,7 @@ class Articles extends Base {
 	{
 		parent::__construct();
 		$this->load->model('article_model');
-		$GLOBALS['limit'] = 10;
+		$GLOBALS['limit'] = 16;
 	}
 
 	//Keresés.
