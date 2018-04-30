@@ -196,6 +196,29 @@ a:hover, a:focus {
   height: 335px;
 }
 
+.article .img-container {
+  position: relative;
+}
+
+.article .category-label {
+  background-color: var(--brown-2);
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 0;
+  border-radius: 20px;
+  padding: 5px 15px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+.article .category-label:hover {
+  text-decoration: underline;
+}
+
 footer.navbar {
 	margin-bottom: 0;
 	background-color: var(--brown-2);

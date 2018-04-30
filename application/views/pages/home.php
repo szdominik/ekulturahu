@@ -4,9 +4,12 @@
       $ac = $articles[$i];
       if($ac['login'] == 0 || $this->session->userdata('logged_in') === TRUE): ?>
         <div class="article">
-          <a href="<?php echo $ac['link']; ?>">
-              <img src="<?php echo base_url(array('uploads', $ac['image_path'])); ?>" class="img-responsive article-img" alt="<?php echo $ac['title']; ?>">
-            </a>
+          <div class="img-container">
+            <a href="<?php echo $ac['link']; ?>">
+                <img src="<?php echo base_url(array('uploads', $ac['image_path'])); ?>" class="article-img" alt="<?php echo $ac['title']; ?>">
+              </a>
+            <a class="category-label" href="<?php echo site_url($ac['subcat_slug']);?>"><?php echo $ac['subcat_name'];?></a>
+          </div>
           <div class="article-text-section">
             <h4>Írta: <?php echo $ac['user_link'] . ', ' . $ac['pub_time']; ?></h4>
             <h2><?php echo $ac['title']; ?></h2>
