@@ -153,12 +153,9 @@ a:hover, a:focus {
 
 .article-list {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1300px;
   display: block;
-}
-
-.article + .article {
-  margin-left: 30px;
+  text-align: center;
 }
 
 .article {
@@ -167,11 +164,12 @@ a:hover, a:focus {
   width: 270px;
   height: 655px;
   vertical-align: top;
-  margin-bottom: 30px;
   background-color: white;
+  margin: 0 15px 30px 15px;
 }
 
 .article-text-section {
+  text-align: left;
   height: 300px;
   padding: 25px 20px;
 }
