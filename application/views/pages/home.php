@@ -1,7 +1,5 @@
 ﻿<div class="article-list">
-  <?php for($j = 0; $j < count($articles); $j += 4):
-    for($i = $j; $i < $j + 4; ++$i) :
-      $ac = $articles[$i];
+  <?php foreach($articles as $ac):
       if($ac['login'] == 0 || $this->session->userdata('logged_in') === TRUE): ?>
         <div class="article">
           <div class="img-container">
@@ -23,6 +21,5 @@
           </div>
         </div>
       <?php endif;
-    endfor;
-  endfor; ?>
+    endforeach; ?>
 </div>
