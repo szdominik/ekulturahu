@@ -110,7 +110,7 @@ class Admin extends Base {
 			$data['limit'] = $limit;
 		}
 
-		//Ezek alapján a cikke lekérése.
+		//Ezek alapján a cikk lekérése.
 		$data['articles'] = $this->admin_model->get_articles_for_editlist($data['title'], $data['category'], $data['subcategory'], $data['published_cat'], $data['user'], $data['limit'], $from);
 		$data['articles'] = $this->customize_articles($data['articles']);
 		$data['cnt'] = $this->admin_model->get_articles_for_editlist_count($data['title'], $data['category'], $data['subcategory'], $data['published_cat'], $data['user'], $data['limit'], $from);

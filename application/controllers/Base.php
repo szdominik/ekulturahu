@@ -87,7 +87,8 @@ class Base extends CI_Controller {
 		foreach($articles_array as &$article) {
 			$article['link'] = $this->generate_link($article);
 			$article['pub_time'] = $this->modify_date($article['pub_time']);
-			$article['user_link'] = $this->add_username($article);
+			$article['user_link'] = $this->format_username($article);
+			$article['short_body'] = $this->generate_short_body($article['body']);
 		}
 		return $articles_array;
 	}
@@ -97,7 +98,8 @@ class Base extends CI_Controller {
 	{
 		$article['link'] = $this->generate_link($article);
 		$article['pub_time'] = $this->modify_date($article['pub_time']);
-		$article['user_link'] = $this->add_username($article);
+		$article['user_link'] = $this->format_username($article);
+		$article['short_body'] = $this->generate_short_body($article['body']);
 		return $article;
 	}
 
@@ -118,12 +120,19 @@ class Base extends CI_Controller {
 				substr($date, 8, 2) . '. ' . substr($date, 11, 5);
 	}
 
-	private function add_username($article)
+	private function format_username($article)
 	{
 		if($article['user_name'] != NULL)
 			$user_link = anchor(array('author', urlencode($article['user_name'])), $article['user_name']);
 		else
 			$user_link = 'ekultura.hu';
 		return $user_link; 
+	}
+
+  // Törli a HTML tageket a szövegből, és a 200 utáni első szóközig adja vissza a szöveget.
+	private function generate_short_body($body)
+	{
+		$short_body = strip_tags($body);
+		return substr($short_body, 0, strpos($short_body, ' ', 200)) . '...';
 	}
 }
