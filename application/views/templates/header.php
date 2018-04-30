@@ -39,6 +39,31 @@
     <?php foreach ($subcategories as $sc): ?>
       <a href="<?php echo site_url($sc['slug']); ?>"><p><?php echo $sc['name']; ?></p></a>
     <?php endforeach; ?>
+
+    <ul class="nav navbar-nav navbar-right">
+      <?php if($this->session->userdata('logged_in') === TRUE): ?> 
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Adminisztráció <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <?php if($this->session->userdata('level') >= 3): ?>
+              <li><a href="<?php echo site_url(array('admin', 'article_new')); ?>">Új cikk felvitele</a></li>
+              <li><a href="<?php echo site_url(array('admin', 'article_list')); ?>">Cikkek szerkesztése</a></li>
+              <li class="divider"></li>
+              <?php if($this->session->userdata('level') >= 4): ?>
+                <li><a href="<?php echo site_url(array('admin', 'meta_list')); ?>">Címkék kezelése</a></li>
+                <li><a href="<?php echo site_url(array('admin', 'static_list')); ?>">Statikus cikkek kezelése</a></li>
+                <?php if($this->session->userdata('level') == 5): ?>
+                  <li><a href="<?php echo site_url(array('admin', 'user_list')); ?>">Felhasználók kezelése</a></li>
+                  <li><a href="<?php echo site_url(array('admin', 'category_list')); ?>">Kategóriák kezelése</a></li>
+                <?php endif; ?>
+              <?php endif; ?>
+            <?php endif; ?>
+            <li><a href="<?php echo site_url(array('admin', 'comment_list')); ?>">Hozzászólások kezelése</a></li>
+            <li><a href="<?php echo site_url(array('users', 'logout')); ?>" role="button">Kilépés</a></li>
+          </ul>
+        </li>
+      <?php endif; ?>
+    </ul>
   </div>
 </nav>
 
