@@ -301,7 +301,7 @@ h1 {
   width: 200px;
   vertical-align: top;
   margin-left: 55px;
-  margin-right: 100px;
+  margin-right: 10%;
   font-size: 16px;
   line-height: 1.3;
 }
@@ -309,6 +309,7 @@ h1 {
 .article .article-content {
   max-width: 800px;
   vertical-align: top;
+  margin-right: 5%;
   margin-bottom: 50px;
 }
 
