@@ -1,25 +1,20 @@
-﻿</div> <!-- container-fluid -->
+﻿</div> <!-- body-content -->
 
 <footer class="navbar">
-	<div class="container-fluid">
-		<div class="navbar-header">
-		    <div class="navbar-text">2017 &copy; ekultura.hu</div>
-	    </div>
-	
-		<ul class="nav navbar-nav">
-			<li><a href="<?php echo site_url('calendar'); ?>">Napi évfordulók</a></li>
-			<?php foreach ($statics as $st): ?>
-				<li><a href="<?php echo site_url($st['path']); ?>">
-					<?php echo $st['title']; ?>
-				</a></li>
-			<?php endforeach; ?>
-			<?php if($this->session->userdata('logged_in') === TRUE): ?>
-				<li><a href="<?php echo site_url(array('users', 'user_settings')); ?>">Beállítások</a></li>
-			<?php else: ?>
-				<li><a data-toggle="modal" data-target="#loginModal" role="button">Belépés</a></li>
-			<?php endif; ?>
-		</ul>
-	</div>
+  <ul class="nav navbar-nav">
+    <div class="navbar-text">2017 &copy; ekultura.hu</div>
+    <li><a href="<?php echo site_url('calendar'); ?>">Napi évfordulók</a></li>
+    <?php foreach ($statics as $st): ?>
+      <li><a href="<?php echo site_url($st['path']); ?>">
+        <?php echo $st['title']; ?>
+      </a></li>
+    <?php endforeach; ?>
+    <?php if($this->session->userdata('logged_in') === TRUE): ?>
+      <li><a href="<?php echo site_url(array('users', 'user_settings')); ?>">Beállítások</a></li>
+    <?php else: ?>
+      <li><a data-toggle="modal" data-target="#loginModal" role="button">Belépés</a></li>
+    <?php endif; ?>
+  </ul>
 </footer>
 
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="" role="dialog" aria-hidden="true">

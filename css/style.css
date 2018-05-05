@@ -429,9 +429,8 @@ footer .navbar-nav {
   justify-content: center;
 }
 
-footer.navbar .navbar-header {
+footer.navbar .navbar-text {
   display: none;
-  color: white;
 }
 
 footer .navbar-nav > li > a {
@@ -559,8 +558,9 @@ footer .navbar-nav > li > a:focus {
     top: 90px;
   }
 
-  footer.navbar .navbar-header {
+  footer.navbar .navbar-text {
     display: unset;
+    color: white;
   }
   
   footer .navbar-nav {
@@ -568,6 +568,7 @@ footer .navbar-nav > li > a:focus {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 0;
   }
 
   footer .navbar-nav > li > a {
