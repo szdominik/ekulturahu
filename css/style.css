@@ -515,6 +515,7 @@ footer .navbar-nav > li > a:focus {
 
   .article {
     margin-top: 50px;
+    flex-direction: column-reverse;
   }
 
   .article .article-content {
@@ -523,7 +524,7 @@ footer .navbar-nav > li > a:focus {
   }
 
   .article .meta-content {
-    display: none;
+    margin: 0 7% 50px;
   }
 
   .article .article-body {
