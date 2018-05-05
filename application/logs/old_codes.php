@@ -229,8 +229,3 @@ if(FALSE && $this->session->userdata('logged_in') === TRUE && $ac_item['comment'
 		<button type="submit" value="comment_send" name="save" class="btn btn-default">Mentés</button>
 	</form>
 <?php endif; ?>
-
-<?php if(($this->session->userdata('logged_in') === TRUE) && 
-	($this->session->userdata('level') > 3 || $this->session->userdata('id') == $ac_item['user_id'])): ?>
-	<a href="<?php echo site_url(array('admin', 'article_edit', $ac_item['id'])); ?>" class="btn btn-primary">Szerkesztés</a>
-<?php endif; ?>

@@ -20,9 +20,10 @@ class Article_model extends Base_Model {
 	//Egy cikk adatainak visszaadása
 	public function get_article($slug = '')
 	{
-		$this->db->select('articles.*, subcategory.name AS subcat_name, '
-						. 'subcategory.slug AS subcat_slug, users.name AS user_name');
+		$this->db->select('articles.*, subcategory.name AS subcat_name, subcategory.slug AS subcat_slug, '
+						. 'category.name AS cat_name, category.slug AS cat_slug, users.name AS user_name');
 		$this->db->from('articles');
+		$this->db->join('category', 'category.id = articles.category_id', 'left');
 		$this->db->join('subcategory', 'subcategory.id = articles.subcategory_id', 'left');
 		$this->db->join('users', 'users.id = articles.user_id', 'left');
 		$this->db->where('articles.slug', $slug);

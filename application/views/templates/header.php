@@ -69,7 +69,7 @@
 
 <div id="content-mask"></div>
 
-<div class="search-container container-fluid">
+<div class="search-container">
   <?php echo form_open('search', array('role' => 'search'));
     echo form_input(array(
       'name'        => 'search',
@@ -84,4 +84,4 @@
   </form>
 </div>
 
-<div class="container-fluid body-content">
+<div class="body-content">
