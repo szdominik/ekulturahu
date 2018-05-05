@@ -1,6 +1,4 @@
-<div class="static-header">
+<div class="static-article">
     <h1><?php echo $page['title']; ?></h1>
-</div>
-<div>
 	<?php echo $page['body']; ?>
 </div>

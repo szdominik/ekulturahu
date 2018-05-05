@@ -407,6 +407,10 @@ h1 {
   text-align: left;
 }
 
+.static-article {
+  margin: 0 10% 20px 5%;
+}
+
 footer.navbar {
 	margin-bottom: 0;
 	background-color: var(--brown-2);
@@ -444,10 +448,6 @@ footer .navbar-nav > li > a:focus {
 
 .img-event {
 	max-width: 400px;
-}
-
-.static-header {
-	padding-bottom: 20px; 
 }
 
 .ui-autocomplete {
