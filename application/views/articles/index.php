@@ -42,7 +42,7 @@
           <div class="article-category">
             <?php for($k = 0; $k < count($ac['meta_category']); ++$k) :
               $mc = $ac['meta_category'][$k]; ?>
-              <a href="<?php echo site_url(array('meta', 'kategoria', $mc['slug']));?>" target="_blank"><?php echo $mc['name'];?></a><?php if($k + 1 !== count($ac['meta_category'])) { echo ', '; } ?>
+              <a href="<?php echo site_url(array('meta', 'kategoria', $mc['slug']));?>"><?php echo $mc['name'];?></a><?php if($k + 1 !== count($ac['meta_category'])) { echo ', '; } ?>
             <?php endfor; ?>
           </div>
         </div>
