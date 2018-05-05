@@ -239,11 +239,13 @@ h1 {
 }
 
 .article-list-pager {
-  text-align: center;
   margin: 30px auto 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.article-list-pager > .pager-link {
+.article-list-pager .pager-link {
   margin: 0 5px;
   font-weight: 500;
 }
@@ -505,6 +507,15 @@ footer .navbar-nav > li > a:focus {
   .body-content {
     position: relative;
     top: 90px;
+  }
+
+  .article-list-pager {
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .btn-pager {
+    margin: 20px;
   }
 
   footer {

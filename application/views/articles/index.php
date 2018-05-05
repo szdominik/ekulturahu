@@ -71,7 +71,8 @@
         $elem .=  '" class="btn-pager';
       }
 			echo $elem . '">Előző</a></button>';
-      
+			
+			echo '<div>';
       if($start > 1) {
         echo '<span class="pager-link disabled">...</span>';
       }
@@ -86,7 +87,8 @@
       if($db > $end) {
         echo '<span class="pager-link disabled">...</span>';
       }
-			
+			echo '</div>';
+
 			if($from+$limit < $cnt) //az összes elemszámot még nem érjük el
 				echo '<a class="btn-pager" href="' . $link . '/' . ($from + $limit) . '">';
 			else // az összes elemszám fölé ne menjünk
