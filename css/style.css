@@ -5,10 +5,11 @@ html {
   --brown-3: #836d46;
   --brown-4: #966645;
   --brown-5: #c0bab2;
+  background-color: var(--brown-1);
 }
 
 body {
-	background-color: var(--brown-1);
+  background-color: var(--brown-1);
 }
 
 p {
