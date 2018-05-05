@@ -315,7 +315,11 @@ h1 {
 .article .article-content img {
   margin-right: 30px !important;
   margin-bottom: 20px !important;
-	width: 250px;
+	width: 270px;
+}
+
+.article .article-content .img-article {
+  float: left;
 }
 
 .article .article-content .category-label {
@@ -509,9 +513,41 @@ footer .navbar-nav > li > a:focus {
     top: 90px;
   }
 
+  .article {
+    margin-top: 50px;
+  }
+
+  .article .article-content {
+    max-width: unset;
+    margin: 0 7% 50px 7%;
+  }
+
+  .article .meta-content {
+    display: none;
+  }
+
+  .article .article-body {
+    margin: 0;
+  }
+
+  .article .article-content .img-article {
+    float: none;
+    display: block;
+    margin: 20px auto!important;
+  }
+
   .article-list-pager {
     flex-direction: column;
     margin: 0;
+  }
+
+  .other-articles {
+    padding: 50px 7%;
+  }
+
+  .other-articles-box {
+    margin: 0;
+    margin-bottom: 30px;
   }
 
   .btn-pager {
