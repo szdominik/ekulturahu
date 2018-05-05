@@ -1,7 +1,7 @@
 ﻿<div class="article-list">
   <?php foreach($articles as $ac):
       if($ac['login'] == 0 || $this->session->userdata('logged_in') === TRUE): ?>
-        <div class="article">
+        <div class="article-box">
           <div class="img-container">
             <a href="<?php echo $ac['link']; ?>">
                 <img src="<?php echo base_url(array('uploads', $ac['image_path'])); ?>" class="article-img" alt="<?php echo $ac['title']; ?>">

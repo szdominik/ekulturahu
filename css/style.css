@@ -167,7 +167,7 @@ h1 {
   text-align: center;
 }
 
-.article {
+.article-box {
   position: relative;
   display: inline-block;
   width: 270px;
@@ -206,14 +206,14 @@ h1 {
   min-height: 100%;
 }
 
-.article .img-container {
+.article-box .img-container {
   position: relative;
   width: 270px;
   height: 335px;
   overflow: hidden;
 }
 
-.article .category-label {
+.article-box .category-label {
   background-color: var(--brown-2);
   text-align: center;
   color: white;
@@ -228,7 +228,7 @@ h1 {
   left: 8px;
 }
 
-.article .category-label:hover {
+.article-box .category-label:hover {
   text-decoration: underline;
 }
 

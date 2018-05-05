@@ -135,8 +135,8 @@ class Articles extends Base {
 	//Egy cikk megjelenítése.
 	public function view($slug, $from = 0, $comment_success = -1)
 	{
-		$data['ac_item'] = $this->article_model->get_article($slug);
-		if (empty($data['ac_item'])) //nincsenek cikkek: 404
+		$data['article'] = $this->article_model->get_article($slug);
+		if (empty($data['article'])) //nincsenek cikkek: 404
 		{
 			$this->output->set_status_header('404');
 			//$this->show();
@@ -144,12 +144,12 @@ class Articles extends Base {
 		}
 		else 
 		{
-			$data['ac_item'] = $this->customize_one_article($data['ac_item']);
+			$data['article'] = $this->customize_one_article($data['article']);
 			if($comment_success != -1)
 				$data['success'] = $comment_success;
-			$data['comments'] = $this->article_model->get_comments($data['ac_item']['id']);
-			$data['metas'] = $this->article_model->get_metas_by_article($data['ac_item']['id']);
-			$hdata['title'] = $data['ac_item']['title'];
+			$data['comments'] = $this->article_model->get_comments($data['article']['id']);
+			$data['metas'] = $this->article_model->get_metas_by_article($data['article']['id']);
+			$hdata['title'] = $data['article']['title'];
 			$this->show('articles/view', $hdata, $data);
 		}
 	}
