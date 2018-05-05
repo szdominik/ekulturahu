@@ -313,8 +313,8 @@ h1 {
 }
 
 .article .article-content img {
-  margin-right: 30px;
-  margin-bottom: 20px;
+  margin-right: 30px !important;
+  margin-bottom: 20px !important;
 	width: 250px;
 }
 
