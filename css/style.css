@@ -178,12 +178,13 @@ h1 {
 
 .header > .header-main > a > img {
   position: relative;
-  left: -49px;
+  left: -46px;
   width: 200px;
 }
 
 .header .header-main .menu-buttons {
   cursor: pointer;
+  width: 87px;
 }
 
 .header .menu-buttons > button > img {
@@ -564,6 +565,14 @@ footer .navbar-nav > li > a:focus {
   .header .header-icons,
   .header .header-main #menu-text {
     display: none;
+  }
+
+  .header .header-main .menu-buttons {
+    width: unset;
+  }
+
+  .header .menu-buttons > button > img {
+    width: 29px;
   }
 
   .nav {
