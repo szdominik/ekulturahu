@@ -131,12 +131,22 @@ h1 {
   z-index: 90;
 }
 
+.content-fixed {
+  position: relative;
+  top: 120px;
+}
+
 .header {
   margin-bottom: 0;
   border-bottom: 1px solid var(--brown-5);
   height: 120px;
   background-color: var(--brown-1);
   z-index: 98;
+}
+
+.header-fixed {
+  position: fixed;
+  width: 100%;
 }
 
 .header .header-icons img {

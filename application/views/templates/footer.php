@@ -104,9 +104,15 @@
     if (isClose) {
       $('.header .navbar-links').removeClass('show-menu');
       $('#content-mask').removeClass('content-hidden');
+			$('.header').removeClass('header-fixed');
+			$('.search-container').removeClass('content-fixed');
+			$('.body-content').removeClass('content-fixed');
     } else {
       $('.header .navbar-links').addClass('show-menu');
       $('#content-mask').addClass('content-hidden');
+			$('.header').addClass('header-fixed');
+			$('.search-container').addClass('content-fixed');
+			$('.body-content').addClass('content-fixed');
     }
   });
 </script>
