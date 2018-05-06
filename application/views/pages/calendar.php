@@ -1,4 +1,5 @@
-﻿<blockquote>
+﻿<div class="container-fluid">
+<blockquote>
 	<p><?php echo $quote->quote; ?></p>
 	<small><?php echo $quote->author; ?></small>
 </blockquote>
@@ -39,4 +40,5 @@
 			</ul>
 		</div>
 	</div>
+</div>
 </div>
