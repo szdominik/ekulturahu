@@ -501,7 +501,7 @@ h1 {
 }
 
 .static-article {
-  margin: 20px 10% 20px 5%; /* 20px eltolodas &#65279; miatt */
+  margin: 20px 10% 50px 5%; /* 20px eltolodas &#65279; miatt */
 }
 
 footer.navbar {
@@ -666,60 +666,70 @@ footer .navbar-nav > li > a:focus {
 }
 
 .category-label.ajanlok,
+.ui-autocomplete > li.ajanlok.ui-state-focus,
 .header .navbar-links p.ajanlok:hover {
   color: white;
   background-color: #fe674c;
 }
 
 .category-label.hirek,
+.ui-autocomplete > li.hirek.ui-state-focus,
 .header .navbar-links p.hirek:hover {
   color: white;
   background-color: #24416b;
 }
 
 .category-label.interju,
+.ui-autocomplete > li.interju.ui-state-focus,
 .header .navbar-links p.interju:hover {
   color: white;
   background-color: #b8e6a5;
 }
 
 .category-label.beszamolo,
+.ui-autocomplete > li.beszamolo.ui-state-focus,
 .header .navbar-links p.beszamolo:hover {
   color: white;
   background-color: #ad97e0;
 }
 
 .category-label.eletrajz,
+.ui-autocomplete > li.eletrajz.ui-state-focus,
 .header .navbar-links p.eletrajz:hover {
   color: white;
   background-color: #eccf8b;
 }
 
 .category-label.reszlet,
+.ui-autocomplete > li.reszlet.ui-state-focus,
 .header .navbar-links p.reszlet:hover {
   color: white;
   background-color: #7fa6dd;
 }
 
 .category-label.egyeb,
+.ui-autocomplete > li.egyeb.ui-state-focus,
 .header .navbar-links p.egyeb:hover {
   color: white;
   background-color: #6887fb;
 }
 
 .category-label.olvasnivalo,
+.ui-autocomplete > li.olvasnivalo.ui-state-focus,
 .header .navbar-links p.olvasnivalo:hover {
   color: white;
   background-color: #4dcca1;
 }
 
 .category-label.latnivalo,
+.ui-autocomplete > li.latnivalo.ui-state-focus,
 .header .navbar-links p.latnivalo:hover {
   color: white;
   background-color: #6c23c7;
 }
 
 .category-label.hallgatnivalo,
+.ui-autocomplete > li.hallgatnivalo.ui-state-focus,
 .header .navbar-links p.hallgatnivalo:hover {
   color: white;
   background-color: #dc9e75;

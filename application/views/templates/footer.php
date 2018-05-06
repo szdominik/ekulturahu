@@ -88,8 +88,8 @@
 			})
 		},
 	}).autocomplete('instance')._renderItem = function(ul, item) {
-		return $('<li>')
-			.append('<a href="' + item.link + '">' + item.title + '</a>')
+		return $(`<li class="${item.subcat_slug}">`)
+			.append(`<a href="${item.link}">${item.title}</a>`)
 			.appendTo(ul);
 	};
 
