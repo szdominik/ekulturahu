@@ -18,11 +18,21 @@
 <nav class="header">
   <div class="header-main">
     <div class="header-icons">
-      <img src="<?php echo base_url('assets/icons/facebook.png');?>" alt="facebook">
-      <img src="<?php echo base_url('assets/icons/twitter.png');?>" alt="twitter">
-      <img src="<?php echo base_url('assets/icons/googleplus.png');?>" alt="google+">
-      <img src="<?php echo base_url('assets/icons/youtube.png');?>" alt="youtube">
-      <img src="<?php echo base_url('assets/icons/feed.png');?>" alt="rss feed">
+      <a href="https://www.facebook.com/ekultura.hu/" target="_blank">
+        <img src="<?php echo base_url('assets/icons/facebook.png');?>" alt="facebook">
+      </a>
+      <a href="https://twitter.com/ekultura_hu" target="_blank">
+        <img src="<?php echo base_url('assets/icons/twitter.png');?>" alt="twitter">
+      </a>
+      <a href="https://plus.google.com/101205891015756708008/" target="_blank">
+        <img src="<?php echo base_url('assets/icons/googleplus.png');?>" alt="google+">
+      </a>
+      <a href="http://www.youtube.com/user/ekultura" target="_blank">
+        <img src="<?php echo base_url('assets/icons/youtube.png');?>" alt="youtube">
+      </a>
+      <a href="http://ekultura.hu/rss" target="_blank">
+        <img src="<?php echo base_url('assets/icons/feed.png');?>" alt="rss feed">
+      </a>
     </div>
     <a href="<?php echo site_url(); ?>">
       <img src="<?php echo base_url('assets/icons/ekultura.png');?>" alt="ekultura.hu">

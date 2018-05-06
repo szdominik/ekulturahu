@@ -115,8 +115,8 @@ h1 {
   margin-right: 15px;
 }
 
-.header a > img {
-  width: 200px;
+.header .header-icons a:hover {
+  text-decoration: none;
 }
 
 .header .header-main {
@@ -126,6 +126,10 @@ h1 {
   align-items: center;
   height: 100%;
   margin: 0 55px;
+}
+
+.header > .header-main > a > img {
+  width: 200px;
 }
 
 .header .header-main .menu-buttons {
