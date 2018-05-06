@@ -51,9 +51,11 @@ class Article_model extends Base_Model {
 	//Amennyiben adott a $meta_id, akkor szűrjük csak azokra a cikkekre, amelyekhez van társítva ilyen metaadat
 	private function query_start($meta_id = '')
 	{
-		$this->db->select('articles.*, subcategory.name AS subcat_name, '
-					. 'subcategory.slug AS subcat_slug, subcategory.id AS subcat_id, users.name AS user_name');
+		$this->db->select('articles.*, users.name AS user_name, '
+					. 'subcategory.name AS subcat_name, subcategory.slug AS subcat_slug, subcategory.id AS subcat_id, '
+					. 'category.name AS cat_name, category.slug AS cat_slug');
 		$this->db->from('articles');
+		$this->db->join('category', 'category.id = articles.category_id', 'left');
 		$this->db->join('subcategory', 'subcategory.id = articles.subcategory_id', 'left');
 		$this->db->join('users', 'users.id = articles.user_id', 'left');
 		if($meta_id != '')
@@ -71,8 +73,35 @@ class Article_model extends Base_Model {
 		$this->db->order_by('pub_time', 'DESC');
 		$this->db->limit($limit, $from);
 	}
-	 
+
 	//Kategória alapján cikkek lekérése
+	public function get_articles_by_category($from, $limit, $cat)
+	{
+		$this->query_start();
+		if ($cat != 'osszes') {
+			$this->db->where('category.slug', $cat);
+		}
+		$this->query_end($from, $limit);
+		$query = $this->db->get();
+		if ($query->num_rows() === 0)
+		{
+			return array();
+		}
+		return $query->result_array();
+	}
+	
+	//Kategóriák alapján a cikkek számának lekérése
+	public function get_articles_count_by_category($cat)
+	{
+		$this->query_start();
+		if ($cat != 'osszes') {
+			$this->db->where('category.slug', $cat);
+		}		
+		//Nincs query-end
+		return $this->db->count_all_results();
+	}
+	 
+	//(Al)kategória alapján cikkek lekérése
 	public function get_articles_by_subcategory($from, $limit, $subcat)
 	{
 		$this->query_start();
@@ -86,7 +115,7 @@ class Article_model extends Base_Model {
 		return $query->result_array();
 	}
 	
-	//Kategóriák alapján a cikkek számának lekérése
+	//(Al)kategória alapján a cikkek számának lekérése
 	public function get_articles_count_by_subcategory($subcat)
 	{
 		$this->query_start();

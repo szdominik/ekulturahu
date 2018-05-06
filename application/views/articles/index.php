@@ -8,8 +8,11 @@
 	elseif (isset($author)) {  //ekkor cikkszerzőhöz tartozó cikkeket jelenítünk meg
 		$link = site_url(array('author', urlencode($author)));
 	}
-	else { //(isset($subcategory)) alkategória van beállítva
+	elseif (isset($subcategory)) { // alkategória van beállítva
 		$link = site_url($subcategory['slug']);
+	}
+	else { 
+		$link = site_url($category['slug']);
 	}
 ?>
 <h1>
@@ -19,8 +22,10 @@
 		Címke: <?php echo $meta['name']; ?>
 	<?php elseif (isset($author)): ?>
 		Cikkszerző: <?php echo $author; ?>
-	<?php else: ?>
+	<?php elseif (isset($subcategory)): ?>
 		<?php echo $subcategory['name']; ?>
+	<?php else: ?>
+		<?php echo $category['name']; ?>
 	<?php endif; ?>
 </h1>
 
