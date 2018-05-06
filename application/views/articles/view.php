@@ -63,7 +63,7 @@
       <?php
         if($article['image_path'] != NULL) {
           if($article['image_horizontal'] == 1) {
-            echo '<img src="' . base_url(array('uploads', $article['image_path'])) . '" class="img-article-center" alt="Főkép">';
+            echo '<img src="' . base_url(array('uploads', $article['image_path'])) . '" class="img-article-horizontal" alt="Főkép">';
           } else {
             echo '<img src="' . base_url(array('uploads', $article['image_path'])) . '" class="img-article" alt="Főkép">';
           }

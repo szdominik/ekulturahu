@@ -15,8 +15,8 @@ body {
 }
 
 p {
-	margin: 0px;
-	padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 a {
@@ -404,7 +404,15 @@ h1 {
 .article .article-content img {
   margin-right: 30px !important;
   margin-bottom: 20px !important;
-	width: 270px;
+  width: 270px;
+}
+
+.article .article-content .img-article-horizontal {
+  max-width: 100%;
+  width: unset;
+  display: block;
+  margin-left: auto!important;
+  margin-right: auto!important;
 }
 
 .article .article-content .img-article {
@@ -509,8 +517,8 @@ h1 {
 footer.navbar {
   margin-bottom: 0;
   margin-top: -21px; /* 20px eltolodas &#65279; miatt */
-	background-color: var(--brown-2);
-	border: none;
+  background-color: var(--brown-2);
+  border: none;
   text-transform: uppercase;
   text-align: center;
 }
@@ -534,15 +542,8 @@ footer .navbar-nav > li > a:focus {
   background-color: var(--brown-4);
 }
 
-.img-article-center {
-	max-width: 750px;
-	display: block;
-  margin-left: auto;
-  margin-right: auto
-}
-
 .img-event {
-	max-width: 400px;
+  max-width: 400px;
 }
 
 @media only screen and (max-width: 768px) {
