@@ -75,6 +75,15 @@
     <?php foreach ($subcategories as $sc): ?>
       <a href="<?php echo site_url($sc['slug']); ?>"><p><?php echo $sc['name']; ?></p></a>
     <?php endforeach; ?>
+    <span class="divider"></span>
+    <div class="other-menu">
+      <?php foreach ($categories as $cat): ?>
+      <a href="<?php echo site_url($cat['slug']); ?>"><p><?php echo $cat['name']; ?></p></a>
+      <?php endforeach; ?>
+      <p class="divider"></p>
+      <a href="<?php echo site_url('impresszum'); ?>"><p>Impresszum</p></a>
+      <a href="<?php echo site_url('about'); ?>"><p>Rólunk</p></a>
+    </div>
   </div>
 </nav>
 

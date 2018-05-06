@@ -12,7 +12,7 @@ class Base extends CI_Controller {
 	//A navigációs sávba szükséges adatok.
 	private function get_headerdata()
 	{
-		//$header['categories'] = $this->base_model->get_categories();
+		$header['categories'] = $this->base_model->get_categories();
 		$header['subcategories'] = $this->base_model->get_subcategories();
 		//$header['conns'] = $this->base_model->get_connections_by_categories();
 		return $header;

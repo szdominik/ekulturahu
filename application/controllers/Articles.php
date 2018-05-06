@@ -107,7 +107,7 @@ class Articles extends Base {
 		$this->show('articles/index', $hdata, $data);
 	}
        
-	//Egy kategória cikkeinek megjelenítése
+	//Egy kategória cikkeinek megjelenítése vagy statikus cikkmegjelenítés
 	public function category_list($slug, $from = 0)
 	{
 		$data['from'] = intval($from);

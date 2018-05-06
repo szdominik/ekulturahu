@@ -204,11 +204,6 @@ h1 {
   font-weight: bold;
 }
 
-.header .navbar-links a:hover {
-  text-decoration: none;
-  background-color: var(--brown);
-}
-
 .header .navbar-links.show-menu {
   display: flex;
   flex-direction: column;
@@ -219,6 +214,34 @@ h1 {
   height: 45px;
   display: flex;
   align-items: center;
+}
+
+.header .navbar-links .other-menu {
+  margin-bottom: 10px;
+}
+
+.header .navbar-links .other-menu p {
+  font-size: 14px;
+  height: 30px;
+}
+
+.header .navbar-links a:hover {
+  text-decoration: none;
+}
+
+.header .navbar-links p:hover {
+  background-color: var(--brown);
+}
+
+.header .navbar-links .divider {
+  height: 1px;
+  margin: 9.5px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+.header .navbar-links .other-menu p.divider {
+  height: 1px;
 }
 
 .dropdown-menu > li > a {
