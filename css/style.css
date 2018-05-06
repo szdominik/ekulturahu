@@ -177,6 +177,8 @@ h1 {
 }
 
 .header > .header-main > a > img {
+  position: relative;
+  left: -49px;
   width: 200px;
 }
 
@@ -551,6 +553,12 @@ footer .navbar-nav > li > a:focus {
 
   .header .header-main {
     margin: 0 25px;
+  }
+
+  .header > .header-main > a > img {
+    position: inherit;
+    left: unset;
+    width: 200px;
   }
 
   .header .header-icons,
