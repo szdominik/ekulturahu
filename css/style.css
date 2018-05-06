@@ -395,7 +395,7 @@ h1 {
 }
 
 .article .article-content {
-  max-width: 800px;
+  max-width: 850px;
   vertical-align: top;
   margin-right: 5%;
   margin-bottom: 50px;
@@ -420,6 +420,8 @@ h1 {
 .article .article-body {
   margin-top: 35px;
   text-align: justify !important;
+  font-family: 'Droid Serif', "Source Sans Pro", Calibri, Candara, Arial, sans-serif!important;
+  font-size: 14px;
 }
 
 .article .btn-action {
