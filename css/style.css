@@ -634,3 +634,63 @@ footer .navbar-nav > li > a:focus {
     padding-bottom: 5px;
   }
 }
+
+.category-label.ajanlok,
+.header .navbar-links p.ajanlok:hover {
+  color: white;
+  background-color: #fe674c;
+}
+
+.category-label.hirek,
+.header .navbar-links p.hirek:hover {
+  color: white;
+  background-color: #24416b;
+}
+
+.category-label.interju,
+.header .navbar-links p.interju:hover {
+  color: white;
+  background-color: #b8e6a5;
+}
+
+.category-label.beszamolo,
+.header .navbar-links p.beszamolo:hover {
+  color: white;
+  background-color: #ad97e0;
+}
+
+.category-label.eletrajz,
+.header .navbar-links p.eletrajz:hover {
+  color: white;
+  background-color: #eccf8b;
+}
+
+.category-label.reszlet,
+.header .navbar-links p.reszlet:hover {
+  color: white;
+  background-color: #7fa6dd;
+}
+
+.category-label.egyeb,
+.header .navbar-links p.egyeb:hover {
+  color: white;
+  background-color: #6887fb;
+}
+
+.category-label.olvasnivalo,
+.header .navbar-links p.olvasnivalo:hover {
+  color: white;
+  background-color: #4dcca1;
+}
+
+.category-label.latnivalo,
+.header .navbar-links p.latnivalo:hover {
+  color: white;
+  background-color: #6c23c7;
+}
+
+.category-label.hallgatnivalo,
+.header .navbar-links p.hallgatnivalo:hover {
+  color: white;
+  background-color: #dc9e75;
+}

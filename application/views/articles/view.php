@@ -54,8 +54,8 @@
   </div>
   <div class="article-content">
       <?php
-        echo '<a class="category-label" href="' . site_url($article['cat_slug']) . '">' . $article['cat_name'] . '</a>';
-        echo '<a class="category-label" href="' . site_url($article['subcat_slug']) . '">' . $article['subcat_name'] . '</a>';
+        echo '<a class="category-label '. $article['cat_slug'] .'" href="' . site_url($article['cat_slug']) . '">' . $article['cat_name'] . '</a>';
+        echo '<a class="category-label '. $article['subcat_slug'] .'" href="' . site_url($article['subcat_slug']) . '">' . $article['subcat_name'] . '</a>';
         echo '<h1>' . $article['title'] . '</h1>';
         echo '<h3>írta: ' . $article['user_link'] . ' | ' . $article['pub_time'] . '</h3>';
       ?>
