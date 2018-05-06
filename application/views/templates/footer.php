@@ -107,12 +107,14 @@
 			$('.header').removeClass('header-fixed');
 			$('.search-container').removeClass('content-fixed');
 			$('.body-content').removeClass('content-fixed');
+			$('footer.navbar').removeClass('content-fixed');
     } else {
       $('.header .navbar-links').addClass('show-menu');
       $('#content-mask').addClass('content-hidden');
 			$('.header').addClass('header-fixed');
 			$('.search-container').addClass('content-fixed');
 			$('.body-content').addClass('content-fixed');
+			$('footer.navbar').addClass('content-fixed');
     }
   });
 </script>
