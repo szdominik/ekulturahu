@@ -86,3 +86,8 @@
 </div>
 
 <div class="body-content">
+<?php
+  if (strpos(current_url(), 'admin/') != FALSE) {
+    echo '<div class="container-fluid">';
+  }
+?>

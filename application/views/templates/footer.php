@@ -1,4 +1,9 @@
 ﻿</div> <!-- body-content -->
+<?php
+  if (strpos(current_url(), 'admin/') != FALSE) {
+    echo '</div>'; // container-fluid
+  }
+?>
 
 <footer class="navbar">
   <ul class="nav navbar-nav">
