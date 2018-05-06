@@ -179,6 +179,14 @@ h1 {
   align-items: center;
 }
 
+.dropdown-menu > li > a {
+  color: var(--brown-3);
+}
+
+.dropdown-menu > li > a:hover {
+  color: var(--brown-3);
+}
+
 .article-list {
   margin: 0 auto;
   max-width: 1300px;
@@ -492,6 +500,10 @@ footer .navbar-nav > li > a:focus {
   .header .header-icons,
   .header .header-main #menu-text {
     display: none;
+  }
+
+  .nav {
+    padding-left: 25px;
   }
 
   .search-container {

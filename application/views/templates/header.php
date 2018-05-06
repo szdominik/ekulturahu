@@ -36,11 +36,7 @@
   </div>
 
   <div class="navbar-links">
-    <?php foreach ($subcategories as $sc): ?>
-      <a href="<?php echo site_url($sc['slug']); ?>"><p><?php echo $sc['name']; ?></p></a>
-    <?php endforeach; ?>
-
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav">
       <?php if($this->session->userdata('logged_in') === TRUE): ?> 
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Adminisztráció <span class="caret"></span></a>
@@ -59,11 +55,16 @@
               <?php endif; ?>
             <?php endif; ?>
             <li><a href="<?php echo site_url(array('admin', 'comment_list')); ?>">Hozzászólások kezelése</a></li>
+            <li class="divider"></li>
             <li><a href="<?php echo site_url(array('users', 'logout')); ?>" role="button">Kilépés</a></li>
           </ul>
         </li>
       <?php endif; ?>
     </ul>
+
+    <?php foreach ($subcategories as $sc): ?>
+      <a href="<?php echo site_url($sc['slug']); ?>"><p><?php echo $sc['name']; ?></p></a>
+    <?php endforeach; ?>
   </div>
 </nav>
 
