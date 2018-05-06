@@ -109,7 +109,6 @@
       $('#content-mask').addClass('content-hidden');
     }
   });
-	
 </script>
 </body>
 </html>
