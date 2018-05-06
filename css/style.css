@@ -185,6 +185,7 @@ h1 {
 .header .header-main .menu-buttons {
   cursor: pointer;
   width: 87px;
+  outline: none;
 }
 
 .header .menu-buttons > button > img {
@@ -194,6 +195,7 @@ h1 {
 .header .hamburger-btn {
   border: none;
   background: transparent;
+  outline: none;
 }
 
 .header .header-main #menu-text {
