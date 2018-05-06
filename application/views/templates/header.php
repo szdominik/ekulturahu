@@ -19,19 +19,19 @@
   <div class="header-main">
     <div class="header-icons">
       <a href="https://www.facebook.com/ekultura.hu/" target="_blank">
-        <img src="<?php echo base_url('assets/icons/facebook.png');?>" alt="facebook">
+        <img src="<?php echo base_url('assets/icons/facebook.svg');?>" alt="facebook">
       </a>
       <a href="https://twitter.com/ekultura_hu" target="_blank">
-        <img src="<?php echo base_url('assets/icons/twitter.png');?>" alt="twitter">
+        <img src="<?php echo base_url('assets/icons/twitter.svg');?>" alt="twitter">
       </a>
       <a href="https://plus.google.com/101205891015756708008/" target="_blank">
-        <img src="<?php echo base_url('assets/icons/googleplus.png');?>" alt="google+">
+        <img src="<?php echo base_url('assets/icons/googleplus.svg');?>" alt="google+">
       </a>
       <a href="http://www.youtube.com/user/ekultura" target="_blank">
-        <img src="<?php echo base_url('assets/icons/youtube.png');?>" alt="youtube">
+        <img src="<?php echo base_url('assets/icons/youtube.svg');?>" alt="youtube">
       </a>
       <a href="http://ekultura.hu/rss" target="_blank">
-        <img src="<?php echo base_url('assets/icons/feed.png');?>" alt="rss feed">
+        <img src="<?php echo base_url('assets/icons/feed.svg');?>" alt="rss feed">
       </a>
     </div>
     <a href="<?php echo site_url(); ?>">
@@ -39,7 +39,7 @@
     </a>
     <div class="menu-buttons">
       <button type="button" class="hamburger-btn">
-        <img src="<?php echo base_url('assets/icons/hamburger.png');?>" alt="hamburger icon">
+        <img src="<?php echo base_url('assets/icons/hamburger.svg');?>" alt="hamburger icon">
       </button>
       <span id="menu-text">Menü</span>
     </div>
@@ -99,7 +99,7 @@
       'placeholder' => 'Mit keresel?'
     )); ?>
     <span class="search-icon">
-      <img src="<?php echo base_url('assets/icons/search.png');?>" alt="search icon" />
+      <img src="<?php echo base_url('assets/icons/search.svg');?>" alt="search icon" />
     </span>
   </form>
 </div>
