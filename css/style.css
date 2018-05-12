@@ -261,6 +261,7 @@ button.rotate {
 
 .header .navbar-links a:hover {
   text-decoration: none;
+  background-color: var(--brown);
 }
 
 .header .navbar-links p:hover {
