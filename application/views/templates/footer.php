@@ -79,19 +79,19 @@
 </div>
 
 <script>
-	$('#search-field').autocomplete({
-		delay: 1000,
-		minLength: 3,
-		source: function(req, res) {
-			$.getJSON( '<?php echo site_url(array('articles', 'get_articles_by_search_short')); ?>' + '/' + $('#search-field').val(), function(data) {
-				res(data);
-			})
-		},
-	}).autocomplete('instance')._renderItem = function(ul, item) {
-		return $(`<li class="${item.subcat_slug}">`)
-			.append(`<a href="${item.link}">${item.title}</a>`)
-			.appendTo(ul);
-	};
+  $('#search-field').autocomplete({
+    delay: 1000,
+    minLength: 3,
+    source: (req, res) => {
+      $.getJSON(`<?php echo site_url(array('articles', 'get_articles_by_search_short')); ?>/${$('#search-field').val()}`, data => {
+        res(data);
+      })
+    },
+  }).autocomplete('instance')._renderItem = function(ul, item) {
+    return $(`<li class="${item.subcat_slug}">`)
+      .append(`<a href="${item.link}">${item.title}</a>`)
+      .appendTo(ul);
+  };
 
   $('.menu-buttons').on('click', () => {
     const isClose = $('#menu-text').html() === 'Bezár';
@@ -105,16 +105,19 @@
       $('.header .navbar-links').removeClass('show-menu');
       $('#content-mask').removeClass('content-hidden');
 			$('.header').removeClass('header-fixed');
-			$('.search-container').removeClass('content-fixed');
-			$('.body-content').removeClass('content-fixed');
-			$('footer.navbar').removeClass('content-fixed');
+			['.search-container', '.body-content', 'footer.navbar'].forEach(selector => {
+				$(selector).removeClass('content-fixed');
+			});
     } else {
       $('.header .navbar-links').addClass('show-menu');
       $('#content-mask').addClass('content-hidden');
 			$('.header').addClass('header-fixed');
-			$('.search-container').addClass('content-fixed');
-			$('.body-content').addClass('content-fixed');
-			$('footer.navbar').addClass('content-fixed');
+			['.search-container', '.body-content', 'footer.navbar'].forEach(selector => {
+				$(selector).addClass('content-fixed');
+			});
+			$('#content-mask').one('click', () => {
+				$('.menu-buttons').click();
+			});
     }
   });
 </script>
