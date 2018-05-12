@@ -669,7 +669,7 @@ class Admin extends Base {
 	*/
 	
 	//Felhasználók listája.
-	public function user_list($level = 0, $from = 0, $succ = FALSE)
+	public function user_list($name_filt = '0', $level = 0, $from = 0, $succ = FALSE)
 	{
 		$this->load->library('form_validation');
 		
@@ -704,14 +704,20 @@ class Admin extends Base {
 		{
 			$data['level_filt'] = $level;
 		}
+		if($name_filt == '0')
+			$data['name_filt'] = $this->input->post('name_filt');
+		else
+		{
+			$data['name_filt'] = urldecode($name_filt);
+		}
 		
 		$this->form_validation->set_rules('level', 'level', 'trim|callback_must_choose[csoport]');
 		if ($this->form_validation->run() === TRUE) //sikeres form validation: valamit akarunk csinálni és jól csináljuk
 		{
 			if($this->input->post('save') === 'filter') //szűrni akarunk
 			{
-				$data['users'] = $this->admin_model->get_users($data['limit'], $from, $data['level_filt']);
-				$data['cnt'] = $this->admin_model->get_users_count($data['level_filt']);
+				$data['users'] = $this->admin_model->get_users($data['limit'], $from, $data['level_filt'], $data['name_filt']);
+				$data['cnt'] = $this->admin_model->get_users_count($data['level_filt'], $data['name_filt']);
 			}
 			else //nem szűrés, tehát felhasználói szint frissítés
 			{
@@ -722,10 +728,10 @@ class Admin extends Base {
 		}
 		else //sikertelen from validation (vagy először járunk itt)
 		{
-			if($level != 0) //szűrni akarunk
+			if($level != 0 || $name_filt != '0') //szűrni akarunk
 			{
-				$data['users'] = $this->admin_model->get_users($data['limit'], $from, $data['level_filt']);
-				$data['cnt'] = $this->admin_model->get_users_count($data['level_filt']);
+				$data['users'] = $this->admin_model->get_users($data['limit'], $from, $data['level_filt'], $data['name_filt']);
+				$data['cnt'] = $this->admin_model->get_users_count($data['level_filt'], $data['name_filt']);
 			}
 			else
 			{

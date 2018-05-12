@@ -600,12 +600,16 @@ class Admin_model extends Base_Model {
 	}
 	
 	//felhasználók lekérése (lapozással, szűréssel szintre)
-	public function get_users($limit = 50, $from = 0, $level = 0)
+	public function get_users($limit = 50, $from = 0, $level = 0, $name_filt = '0')
 	{
 		$this->db->select('users.*, levels.name AS level_name')->from('users')->join('levels', 'levels.id = users.level');
 		if($level != 0)
 		{
 			$this->db->where('users.level', $level);
+		}
+		if($name_filt != '0')
+		{
+			$this->db->like('users.name', $name_filt);
 		}
 		$this->db->order_by('users.level', 'DESC');
 		$this->db->limit($limit, $from);
@@ -614,12 +618,16 @@ class Admin_model extends Base_Model {
 	}
 	
 	//felhasználók számosságának lekérése
-	public function get_users_count($level = 0)
+	public function get_users_count($level = 0, $name_filt = '')
 	{
 		$this->db->select('*')->from('users');
 		if($level != 0)
 		{
 			$this->db->where('level', $level);
+		}
+		if($name_filt != '0')
+		{
+			$this->db->like('users.name', $name_filt);
 		}
 		return $this->db->count_all_results();
 	}

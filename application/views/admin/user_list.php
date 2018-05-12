@@ -19,8 +19,17 @@
 	<div class = "form-group">
 		<?php
 			echo form_dropdown('level_filt', $level, $level_filt, 'class="form-control"');
-			if($level_filt == ''):
+			if($level_filt == '') {
 				$level_filt = 'ures';
+			}
+			if($name_filt == NULL) {
+				$name_filt = '0';
+			}
+		?>
+		<?php if($name_filt == '0'):
+				echo form_input('name_filt', '', 'class="form-control" placeholder="Szűrés névre"');
+			else:
+				echo form_input('name_filt', $name_filt, 'class="form-control" placeholder="Szűrés névre"');
 			endif;
 		?>
 		<button type="submit" value="filter" name="save" class="btn btn-default">Szűrés</button>
@@ -39,9 +48,9 @@
 		<?php endif; ?>
 				<a href="<?php $prev = $from - $limit; 
 							if ($prev < 0):  //negatív tartományba ne lapozzunk
-								echo site_url(array('admin', 'user_list', $level_filt, '0')); 
+								echo site_url(array('admin', 'user_list', $name_filt, $level_filt, '0')); 
 							else: 
-								echo site_url(array('admin', 'user_list', $level_filt, $prev)); 
+								echo site_url(array('admin', 'user_list', $name_filt, $level_filt, $prev)); 
 							endif; ?>">
 					<span aria-hidden="true">&larr;</span> Előző oldal
 				</a>
@@ -49,10 +58,10 @@
 		
 		<?php if($from+$limit < $cnt): ?> <!--csak akkor lapozhatunk tovább, ha nem megyünk túl az összes lehetőségen -->
 			<li class="next">
-				<a href="<?php echo site_url(array('admin', 'user_list', $level_filt, $from + $limit)); ?>">
+				<a href="<?php echo site_url(array('admin', 'user_list', $name_filt, $level_filt, $from + $limit)); ?>">
 		<?php else: ?>
 			<li class="next disabled">
-				<a href="<?php echo site_url(array('admin', 'user_list', $level_filt, $from)); ?>">
+				<a href="<?php echo site_url(array('admin', 'user_list', $name_filt, $level_filt, $from)); ?>">
 		<?php endif; ?>
 					Következő oldal <span aria-hidden="true">&rarr;</span>
 				</a>
@@ -87,6 +96,36 @@
 	</table>
 </div>
 <?php endif; ?>
+
+<nav>
+	<ul class="pager">
+		<?php if($from != 0): ?> <!--csak akkor aktív, ha nem 0-nál állunk (visszafele nem mehetünk) -->
+			<li class="previous">
+		<?php else: ?>
+			<li class="previous disabled">
+		<?php endif; ?>
+				<a href="<?php $prev = $from - $limit; 
+							if ($prev < 0):  //negatív tartományba ne lapozzunk
+								echo site_url(array('admin', 'user_list', $name_filt, $level_filt, '0')); 
+							else: 
+								echo site_url(array('admin', 'user_list', $name_filt, $level_filt, $prev)); 
+							endif; ?>">
+					<span aria-hidden="true">&larr;</span> Előző oldal
+				</a>
+			</li>
+		
+		<?php if($from+$limit < $cnt): ?> <!--csak akkor lapozhatunk tovább, ha nem megyünk túl az összes lehetőségen -->
+			<li class="next">
+				<a href="<?php echo site_url(array('admin', 'user_list', $name_filt, $level_filt, $from + $limit)); ?>">
+		<?php else: ?>
+			<li class="next disabled">
+				<a href="<?php echo site_url(array('admin', 'user_list', $name_filt, $level_filt, $from)); ?>">
+		<?php endif; ?>
+					Következő oldal <span aria-hidden="true">&rarr;</span>
+				</a>
+			</li>
+	</ul>
+</nav>
 
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
