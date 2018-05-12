@@ -8,7 +8,7 @@ class Articles extends Base {
 	{
 		parent::__construct();
 		$this->load->model('article_model');
-		$GLOBALS['limit'] = 10;
+		$GLOBALS['limit'] = 16;
 	}
 
 	//Keresés.
@@ -107,36 +107,55 @@ class Articles extends Base {
 		$this->show('articles/index', $hdata, $data);
 	}
        
-	//Egy kategória cikkeinek megjelenítése
+	//Egy kategória cikkeinek megjelenítése vagy statikus cikkmegjelenítés
 	public function category_list($slug, $from = 0)
 	{
-		$data['subcategory'] = $this->article_model->get_subcategoryname_by_slug($slug);
-		if (count($data['subcategory']) != 0)
+		$data['from'] = intval($from);
+		$data['limit'] = $GLOBALS['limit'];
+
+		$data['category'] = $this->article_model->get_categoryname_by_slug($slug);
+		if (count($data['category']) != 0)
 		{
-			$data['from'] = intval($from);
-			$data['limit'] = $GLOBALS['limit'];
-			$data['articles'] = $this->customize_articles($this->article_model->get_articles_by_subcategory($data['from'], $data['limit'], $slug));
+			
+			$data['articles'] = $this->customize_articles($this->article_model->get_articles_by_category($data['from'], $data['limit'], $slug));
 
 			if (empty($data['articles'])) //nincsenek cikkek: 404
 			{
 				$this->output->set_status_header('404');
 			}
 					
-			$data['cnt'] = $this->article_model->get_articles_count_by_subcategory($slug);
-			$hdata['title'] = $data['subcategory']['name'];
+			$data['cnt'] = $this->article_model->get_articles_count_by_category($slug);
+			$hdata['title'] = $data['category']['name'];
 			$this->show('articles/index', $hdata, $data);
 		}
 		else
 		{
-			$this->static_view($slug);
+			$data['subcategory'] = $this->article_model->get_subcategoryname_by_slug($slug);
+			if (count($data['subcategory']) != 0)
+			{
+				$data['articles'] = $this->customize_articles($this->article_model->get_articles_by_subcategory($data['from'], $data['limit'], $slug));
+
+				if (empty($data['articles'])) //nincsenek cikkek: 404
+				{
+					$this->output->set_status_header('404');
+				}
+						
+				$data['cnt'] = $this->article_model->get_articles_count_by_subcategory($slug);
+				$hdata['title'] = $data['subcategory']['name'];
+				$this->show('articles/index', $hdata, $data);
+			}
+			else
+			{
+				$this->static_view($slug);
+			}
 		}
 	}
 	
 	//Egy cikk megjelenítése.
 	public function view($slug, $from = 0, $comment_success = -1)
 	{
-		$data['ac_item'] = $this->article_model->get_article($slug);
-		if (empty($data['ac_item'])) //nincsenek cikkek: 404
+		$data['article'] = $this->article_model->get_article($slug);
+		if (empty($data['article'])) //nincsenek cikkek: 404
 		{
 			$this->output->set_status_header('404');
 			//$this->show();
@@ -144,12 +163,12 @@ class Articles extends Base {
 		}
 		else 
 		{
-			$data['ac_item'] = $this->customize_one_article($data['ac_item']);
+			$data['article'] = $this->customize_one_article($data['article']);
 			if($comment_success != -1)
 				$data['success'] = $comment_success;
-			$data['comments'] = $this->article_model->get_comments($data['ac_item']['id']);
-			$data['metas'] = $this->article_model->get_metas_by_article($data['ac_item']['id']);
-			$hdata['title'] = $data['ac_item']['title'];
+			$data['comments'] = $this->article_model->get_comments($data['article']['id']);
+			$data['metas'] = $this->article_model->get_metas_by_article($data['article']['id']);
+			$hdata['title'] = $data['article']['title'];
 			$this->show('articles/view', $hdata, $data);
 		}
 	}

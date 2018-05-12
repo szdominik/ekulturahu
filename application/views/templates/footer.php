@@ -1,39 +1,26 @@
-﻿
-<footer class="navbar navbar-default navbar-fixed-bottom">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
-			</button>
-		    <div class="navbar-text">2017 &copy; ekultura.hu
-				<?php if($this->session->userdata('logged_in') === TRUE): ?>
-					 - Bejelentkezve: <?php if($this->session->userdata('name') != ''): 
-											echo $this->session->userdata('name');
-										else: 
-											echo $this->session->userdata('username');
-										endif; ?>
-				<?php endif; ?>
-			</div>
-	    </div>
-	
-		<div class="collapse navbar-collapse" id="navbar-collapse-2">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="<?php echo site_url('calendar'); ?>">Napi évfordulók</a></li>
-				<?php foreach ($statics as $st): ?>
-					<li><a href="<?php echo site_url($st['path']); ?>">
-						<?php echo $st['title']; ?>
-					</a></li>
-				<?php endforeach; ?>
-				<?php if($this->session->userdata('logged_in') === TRUE): ?>
-					<li><a href="<?php echo site_url(array('users', 'user_settings')); ?>">Beállítások</a></li>
-				<?php else: ?>
-					<li><a data-toggle="modal" data-target="#loginModal" role="button">Belépés</a></li>
-				<?php endif; ?>
-			</ul>
-		</div>
-	</div>
+﻿</div> <!-- body-content -->
+<?php
+  if (strpos(current_url(), 'admin/') != FALSE) {
+    echo '</div>'; // container-fluid
+  }
+?>
+
+<footer class="navbar">
+  <ul class="nav navbar-nav">
+    <div class="navbar-text">2017 &copy; ekultura.hu</div>
+    <li><a href="<?php echo site_url('calendar'); ?>">Napi évfordulók</a></li>
+    <?php foreach ($statics as $st): ?>
+      <li><a href="<?php echo site_url($st['path']); ?>">
+        <?php echo $st['title']; ?>
+      </a></li>
+    <?php endforeach; ?>
+    <?php if($this->session->userdata('logged_in') === TRUE): ?>
+      <li><a href="<?php echo site_url(array('users', 'user_settings')); ?>">Beállítások</a></li>
+    <?php else: ?>
+      <li><a data-toggle="modal" data-target="#loginModal" role="button">Belépés</a></li>
+    <?php endif; ?>
+  </ul>
 </footer>
-
-
 
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
@@ -91,23 +78,48 @@
 	</div>
 </div>
 
-</div> <!-- container-fluid -->
-
 <script>
-	$('#search-field').autocomplete({
-		delay: 1000,
-		minLength: 3,
-		source: function(req, res) {
-			$.getJSON( '<?php echo site_url(array('articles', 'get_articles_by_search_short')); ?>' + '/' + $('#search-field').val(), function(data) {
-				res(data);
-			})
-		},
-	}).autocomplete('instance')._renderItem = function(ul, item) {
-		return $('<li>')
-			.append('<a href="' + item.link + '">' + item.title + '</a>')
-			.appendTo(ul);
-	};
-	
+  $('#search-field').autocomplete({
+    delay: 1000,
+    minLength: 3,
+    source: (req, res) => {
+      $.getJSON(`<?php echo site_url(array('articles', 'get_articles_by_search_short')); ?>/${$('#search-field').val()}`, data => {
+        res(data);
+      })
+    },
+  }).autocomplete('instance')._renderItem = function(ul, item) {
+    return $(`<li class="${item.subcat_slug}">`)
+      .append(`<a href="${item.link}">${item.title}</a>`)
+      .appendTo(ul);
+  };
+
+  $('.menu-buttons').on('click', () => {
+    const isClose = $('#menu-text').html() === 'Bezár';
+    $('#menu-text').html(isClose ? 'Menü' : 'Bezár');
+    const imgSelector = $('.menu-buttons button img');
+    imgSelector.attr('src', isClose
+      ? imgSelector.attr('src').replace('hamburger-x', 'hamburger')
+      : imgSelector.attr('src').replace('hamburger', 'hamburger-x')
+    );
+    if (isClose) {
+      $('.header .navbar-links').removeClass('show-menu');
+      $('#content-mask').removeClass('content-hidden');
+			$('.header').removeClass('header-fixed');
+			['.search-container', '.body-content', 'footer.navbar'].forEach(selector => {
+				$(selector).removeClass('content-fixed');
+			});
+    } else {
+      $('.header .navbar-links').addClass('show-menu');
+      $('#content-mask').addClass('content-hidden');
+			$('.header').addClass('header-fixed');
+			['.search-container', '.body-content', 'footer.navbar'].forEach(selector => {
+				$(selector).addClass('content-fixed');
+			});
+			$('#content-mask').one('click', () => {
+				$('.menu-buttons').click();
+			});
+    }
+  });
 </script>
 </body>
 </html>

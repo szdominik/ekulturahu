@@ -158,3 +158,74 @@
 			return $query1->result_array();
 		}
 	}
+
+
+	<?php if(! empty($comments)): //kommentek megjelenítése
+		foreach($comments as $c): ?>
+			<div class="row">
+				<div class="col-md-5">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<?php echo $c['date'] . ' &ndash; írta: ';
+								if($c['user_name'] != NULL): 
+									echo $c['user_name'];
+								elseif($c['users_username'] != NULL):
+									echo $c['users_username'];
+								else:
+									echo 'törölt felhasználó';
+								endif;
+								if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('id') === $c['user_id'])
+									echo ' (' . anchor("admin/comment_list", "szerkesztés / törlés") . ')';
+							?>
+						</div>
+						<div class="panel-body">
+							<?php echo $c['body']; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+<?php endforeach; endif; ?>
+
+<?php 
+if(FALSE && $this->session->userdata('logged_in') === TRUE && $ac_item['comment'] != 0): //bejelentkezett felhasználó írhat kommentet
+	echo form_open(current_url());
+?>
+
+		<?php if (isset($success) && $success == FALSE): ?>
+			<div class="row">
+				<div class="col-md-5">
+					<div class="alert alert-dismissible alert-danger" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						Sikertelen hozzászólás!
+						<?php echo validation_errors();	?>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>
+		
+		<div class="row">
+			<div class="col-md-5">
+				<div class="form-group">
+					<p class="form-control-static">
+						Hozzászólás (
+						<?php if($this->session->userdata('name') != ''):
+							echo $this->session->userdata('name');
+						else: 
+							echo $this->session->userdata('username');
+						endif; ?>
+						)
+					</p>
+					<?php $data = array(
+								  'name'        => 'comment',
+								  'value'       => '',
+								  'maxlength'   => '5000',
+								  'rows'		=> '3',
+								  'class'		=> 'form-control',
+								);
+						echo form_textarea($data);?>
+				</div>
+			</div>
+		</div>
+		<button type="submit" value="comment_send" name="save" class="btn btn-default">Mentés</button>
+	</form>
+<?php endif; ?>

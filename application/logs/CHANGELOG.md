@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Változások 2018.04.29-30.
+
+- új design: header, footer, főoldal és listaoldal sitebuild & refactor
+
+## Változások 2018.04.28.
+- költözés GitHubra és Macre
+
 ## Változások 2017.09.11.
 
 - események kivétele a menüből

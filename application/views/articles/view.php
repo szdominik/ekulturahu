@@ -1,190 +1,168 @@
-﻿<?php if($ac_item['login'] == 0 || $this->session->userdata('logged_in') === TRUE): ?>
-<ol class="breadcrumb">
-	<li><a href="<?php echo site_url(); ?>">Főoldal</a></li>
-	<li><a href="<?php echo site_url($ac_item['subcat_slug']); ?>"><?php echo $ac_item['subcat_name']; ?></a></li>
-</ol>
+﻿<?php if(!$article['login'] || $this->session->userdata('logged_in')): ?>
 
-	<div class="row">
-		<div class="col-md-10">
-		    <h1><?php echo $ac_item['title'] ?></h1>
-			<h4><?php echo $ac_item['pub_time'] . ' / Írta: ' . $ac_item['user_link']; ?></h4>
-		    <div class="article">
-				<?php if($ac_item['image_path'] != NULL):
-					if($ac_item['image_horizontal'] == 1): ?>
-						<img src="<?php echo base_url(array('uploads', $ac_item['image_path'])); ?>" class="img-responsive img-article-center" alt="Főkép">
-					<?php else: ?>
-						<img src="<?php echo base_url(array('uploads', $ac_item['image_path'])); ?>" class="img-responsive img-article-main" align="left" alt="Főkép">
-					<?php endif;
-				endif; ?>
-				<?php echo $ac_item['body'] ?>
-		    </div>
-		</div>
-		<div class="col-md-2">
-			<div class="btn-group-vertical">
-				<?php if(($this->session->userdata('logged_in') === TRUE) && 
-					($this->session->userdata('level') > 3 || $this->session->userdata('id') == $ac_item['user_id'])): ?>
-					<a href="<?php echo site_url(array('admin', 'article_edit', $ac_item['id'])); ?>" class="btn btn-primary">Szerkesztés</a>
-				<?php endif; ?>
-				<?php if($ac_item['kedv_vasar'] != '' && $ac_item['kedv_vasar'] != '0'): ?>
-					<a href="<?php echo $ac_item['kedv_vasar']; ?>" class="btn btn-info">Kedvezményes vásárlás</a>
-				<?php endif; ?>
-			</div>
-			<?php if(count($metas) !== 0 || $ac_item['eredeti_cim'] != '' || $ac_item['ar'] != '' ||
-			$ac_item['terjedelem'] != '' || $ac_item['forgatokonyviro'] != '' ||
-			$ac_item['operator'] != '' || $ac_item['producer'] != ''): ?>
-				<h2>Adatok</h2><!-- metaadatok megjelenítése -->
-				<?php for($i = 0; $i < count($metas); ++$i) { ?>
-					<h4><?php echo $metas[$i]['type_name']; ?>:</h4>
-					<p>
-						<a href="<?php echo site_url(array('meta', $metas[$i]['type_slug'], $metas[$i]['slug'])); ?>"><?php echo $metas[$i]['meta_name']; ?></a><?php for(;$i+1 < count($metas) && $metas[$i]['type_name'] == $metas[$i+1]['type_name']; ++$i) { ?><?php echo ', ' ?><a href="<?php echo site_url(array('meta', $metas[$i+1]['type_slug'], $metas[$i+1]['slug'])); ?>"><?php echo $metas[$i+1]['meta_name']; ?></a><?php } ?>
-					</p>
-				<?php } ?>
-				<?php if ($ac_item['eredeti_cim'] != ''): ?>
-					<h4>Eredeti cím:</h4>
-					<p><?php echo $ac_item['eredeti_cim']; ?></p>
-				<?php endif; ?>
-				<?php if ($ac_item['ar'] != ''): ?>
-					<h4>Ár:</h4>
-					<p><?php echo $ac_item['ar']; ?></p>
-				<?php endif; ?>
-				<?php if ($ac_item['terjedelem'] != ''): ?>
-					<?php if ($ac_item['category_id'] === '1'): ?><h4>Oldalszám:</h4>
-					<?php elseif ($ac_item['category_id'] === '3' || $ac_item['category_id'] === '2'): ?><h4>Hossz:</h4>
-					<?php else: ?><h4>Terjedelem:</h4>
-					<?php endif; ?>
-					<p><?php echo $ac_item['terjedelem']; ?></p>
-				<?php endif;  ?>
-				<?php if ($ac_item['forgatokonyviro'] != ''): ?>
-					<h4>Forgatókönyvíró:</h4>
-					<p><?php echo $ac_item['forgatokonyviro']; ?></p>
-				<?php endif; ?>
-				<?php if ($ac_item['operator'] != ''): ?>
-					<h4>Operatőr:</h4>
-					<p><?php echo $ac_item['operator']; ?></p>
-				<?php endif; ?>
-				<?php if ($ac_item['producer'] != ''): ?>
-					<h4>Producer:</h4>
-					<p><?php echo $ac_item['producer']; ?></p>
-				<?php endif; ?>
-			<?php endif; ?>
-		</div>
-	</div>
-	
-	<br><br>
-	
-	<?php if(! empty($comments)): //kommentek megjelenítése
-			foreach($comments as $c): ?>
-				<div class="row">
-					<div class="col-md-5">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<?php echo $c['date'] . ' &ndash; írta: ';
-									if($c['user_name'] != NULL): 
-										echo $c['user_name'];
-									elseif($c['users_username'] != NULL):
-										echo $c['users_username'];
-									else:
-										echo 'törölt felhasználó';
-									endif;
-									if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('id') === $c['user_id'])
-										echo ' (' . anchor("admin/comment_list", "szerkesztés / törlés") . ')';
-								?>
-							</div>
-							<div class="panel-body">
-								<?php echo $c['body']; ?>
-							</div>
-						</div>
-					</div>
-				</div>
-	<?php endforeach; endif; ?>
+<div class="article">
+  <div class="meta-content">
+    <?php
+    if ($article['kedv_vasar'] != '' && $article['kedv_vasar'] != '0') {
+      echo '<a href="' . $article['kedv_vasar'] . '" class="btn-action">Kedvezményes vásárlás</a>';
+    }
+    if ($this->session->userdata('logged_in') && 
+      ($this->session->userdata('level') > 3 || $this->session->userdata('id') == $article['user_id'])) {
+      echo '<a href="' . site_url(array('admin', 'article_edit', $article['id'])) . '" class="btn-action">Szerkesztés</a>';
+    }
+    if (count($metas) !== 0 || !empty($article['eredeti_cim']) || !empty($article['ar']) || !empty($article['terjedelem']) ||
+        !empty($article['forgatokonyviro']) || !empty($article['operator']) || !empty($article['producer'])):
+      echo '<h2>Adatok</h2>';
+      for ($i = 0; $i < count($metas); ++$i) {
+        echo '<h4>' . $metas[$i]['type_name'] . ':</h4>';
+        echo '<a href="' . site_url(array('meta', $metas[$i]['type_slug'], $metas[$i]['slug'])) . '">';
+          echo $metas[$i]['meta_name'];
+        echo '</a>';
+        for (;$i+1 < count($metas) && $metas[$i]['type_name'] == $metas[$i+1]['type_name']; ++$i) {
+          echo ', ';
+          echo '<a href="' . site_url(array('meta', $metas[$i+1]['type_slug'], $metas[$i+1]['slug'])) . '">';
+            echo $metas[$i+1]['meta_name'];
+          echo '</a>';
+        }
+      }
+      if ($article['eredeti_cim'] != '') {
+        echo '<h4>Eredeti cím:</h4>' . $article['eredeti_cim'];
+      }
+      if ($article['ar'] != '') {
+        echo '<h4>Ár:</h4>' . $article['ar'];
+      }
+      if ($article['terjedelem'] != '') {
+        if ($article['category_id'] === '1') {
+          echo '<h4>Oldalszám:</h4>';
+        } elseif ($article['category_id'] === '3' || $article['category_id'] === '2') {
+          echo '<h4>Hossz:</h4>';
+        } else {
+          echo '<h4>Terjedelem:</h4>';
+        }
+        echo $article['terjedelem'];
+      }
+      if ($article['forgatokonyviro'] != '') {
+        echo '<h4>Forgatókönyvíró:</h4>' . $article['forgatokonyviro'];
+      }
+      if ($article['operator'] != '') {
+        echo '<h4>Operatőr:</h4>' . $article['operator'];
+      }
+      if ($article['producer'] != '') {
+        echo '<h4>Producer:</h4>' . $article['producer'];
+      }
+    endif; ?>
+  </div>
+  <div class="article-content">
+      <?php
+        echo '<a class="category-label '. $article['cat_slug'] .'" href="' . site_url($article['cat_slug']) . '">' . $article['cat_name'] . '</a>';
+        echo '<a class="category-label '. $article['subcat_slug'] .'" href="' . site_url($article['subcat_slug']) . '">' . $article['subcat_name'] . '</a>';
+        echo '<h1>' . $article['title'] . '</h1>';
+        echo '<h3>írta: ' . $article['user_link'] . ' | ' . $article['pub_time'] . '</h3>';
+      ?>
+      <div class="article-body">
+      <?php
+        if($article['image_path'] != NULL) {
+          if($article['image_horizontal'] == 1) {
+            echo '<img src="' . base_url(array('uploads', $article['image_path'])) . '" class="img-article-horizontal" alt="Főkép">';
+          } else {
+            echo '<img src="' . base_url(array('uploads', $article['image_path'])) . '" class="img-article" alt="Főkép">';
+          }
+        }
+        echo $article['body'];
+      ?>
+      </div>
+  </div>
+</div>
 
-<?php 
-	if(FALSE && $this->session->userdata('logged_in') === TRUE && $ac_item['comment'] != 0): //bejelentkezett felhasználó írhat kommentet
-		echo form_open(current_url());
-?>
-
-			<?php if (isset($success) && $success == FALSE): ?>
-				<div class="row">
-					<div class="col-md-5">
-						<div class="alert alert-dismissible alert-danger" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							Sikertelen hozzászólás!
-							<?php echo validation_errors();	?>
-						</div>
-					</div>
-				</div>
-			<?php endif; ?>
-			
-			<div class="row">
-				<div class="col-md-5">
-					<div class="form-group">
-						<p class="form-control-static">
-							Hozzászólás (
-							<?php if($this->session->userdata('name') != ''):
-								echo $this->session->userdata('name');
-							else: 
-								echo $this->session->userdata('username');
-							endif; ?>
-							)
-						</p>
-					    <?php $data = array(
-									  'name'        => 'comment',
-									  'value'       => '',
-									  'maxlength'   => '5000',
-									  'rows'		=> '3',
-									  'class'		=> 'form-control',
-									);
-							echo form_textarea($data);?>
-					</div>
-				</div>
-			</div>
-			<button type="submit" value="comment_send" name="save" class="btn btn-default">Mentés</button>
-		</form>
-	<?php endif; ?>
-<?php endif; ?>
-
-<div id="other_articles">
+<div id="other-articles">
 </div>
 
 <script>
-	function meta_load(meta_id, meta_name)
-	{
-		$.get( '<?php echo site_url(array('articles', 'get_other_articles_by_meta_id')); ?>' + '/' + meta_id, function(data) {
-			var s = $('#other_articles').html()
-			var count = 0;
-			s += '<h4>' + meta_name + `</h4>
-				<div class="row">
-					<div class="col-md-10">
-						<table class="table table-condensed">`
-							for(var i = 0; i < data.length; ++i)
-							{
-								if(data[i].id != <?php echo $ac_item['id']; ?> && data[i].subcat_id != 1 && data[i].subcat_id != 4)
-								{
-									s += `<tr>
-											<td>
-												<a href="` + data[i].link + '">' + data[i].title + `</a>
-											</td>
-										</tr>`
-									++count;
-								}
-							}
-							if(count === 0)
-							{
-								s += 'Nincs találat kapcsolódó tartalomra!';
-							}
-						s += '</table>' +
-					'</div>' +
-				'</div>';
-			$('#other_articles').html(s);
-		}, "json");
-	}
-	
-	<?php if(count($metas) !== 0): ?>
-		$('#other_articles').html('<h3>Kapcsolódó tartalmak</h3>');
-		<?php foreach($metas as $m):
-			if($m['type_id'] == 1 || $m['type_id'] == 2): ?>
-				meta_load(<?php echo $m['meta_id']; ?>, '<?php echo $m['meta_name']; ?>');
-			<?php endif;
-		endforeach;
-	endif; ?>
+  let metas = {};
+  const other_article_box = article => `
+    <div class="other-articles-box">
+      <div class="img-container" align="left">
+        <img src="<?php echo base_url('uploads');?>/${article.image_path}">
+      </div>
+      <a href="${article.link}">${article.title}</a>
+    </div>
+  `;
+  const arrow_back_text = '<span class="hidden-in-mobile">Előző</span>';
+  const arrow_next_text = '<span class="hidden-in-mobile">Következő</span>';
+  
+  const meta_load = (meta_id, meta_name, type_id, meta_link) => {
+    $.get(`<?php echo site_url(array('articles', 'get_other_articles_by_meta_id')); ?>/${meta_id}`, data => {
+      data = data.filter(ac => ac.id != <?php echo $article['id']; ?> && ac.subcat_id != 1 && ac.subcat_id != 4);
+      metas[meta_id] = data;
+      data = data.slice(0, 4);
+      let s = $('#other-articles').html();
+
+      s += `<h3 id="${meta_id}-pager">`;
+      if (metas[meta_id].length > 4) {
+        s += `<div class="btn-disabled"><button class="rotate next-icon m-r-5" />${arrow_back_text}</div>`;
+      }
+
+      s += '<span>';
+      const name_link = `<a href='${meta_link}'>${meta_name}</a>`;
+      s += type_id === 1 ? `${name_link} további művei` : `${name_link} sorozat`;
+      s += '</span>';
+
+      if (metas[meta_id].length > 4) {
+        s += `<div onclick="meta_pager(${meta_id}, 'right', 4)">${arrow_next_text}<button class="m-l-5 next-icon" /></div>`;
+      }
+      s += '</h3>';
+
+      s += `<div class="other-articles-list" id="${meta_id}">`;
+      if(data.length === 0) {
+        s += 'Nincs találat kapcsolódó tartalomra!';
+      } else {
+        data.forEach(article => {
+          s += other_article_box(article);
+        });
+      }
+      s += '</div>';
+
+      $('#other-articles').html(s);
+      $('#other-articles').addClass('other-articles');
+    }, "json");
+  };
+
+  const meta_pager = (meta_id, direction, start) => {
+    const from = Math.max(direction === 'left' ? start - 4 : start, 0);
+    const to = Math.min(direction === 'left' ? start : start + 4, metas[meta_id].length);
+    const data = metas[meta_id].slice(from, to);
+    let s = '';
+    data.forEach(article => {
+      s += other_article_box(article);
+    });
+    $(`#${meta_id}`).html(s);
+    
+    let heading = '';
+    if (from !== 0) {
+      heading += `<div onclick="meta_pager(${meta_id}, 'left', ${from})" >`;
+    } else {
+      heading += '<div class="btn-disabled">';
+    }
+    heading += `<button class="rotate next-icon m-r-5" />${arrow_back_text}</div>`;
+
+    heading += $(`#${meta_id}-pager span`)[1].outerHTML;
+    
+    if (metas[meta_id].length > to) {
+      heading += `<div onclick="meta_pager(${meta_id}, 'right', ${to})">`;
+    } else {
+      heading += `<div class="btn-disabled">`;
+    }
+    heading += `${arrow_next_text}<button class="m-l-5 next-icon" /></div>`;
+    $(`#${meta_id}-pager`).html(heading);
+  };
+
+  <?php if(count($metas) !== 0): ?>
+    $('#other-articles').html('<h2>Kapcsolódó tartalmak</h2>');
+    <?php foreach($metas as $m):
+      if($m['type_id'] == 1 || $m['type_id'] == 2): ?>
+        meta_load(<?php echo $m['meta_id']; ?>, '<?php echo $m['meta_name']; ?>', <?php echo $m['type_id']; ?>, '<?php echo site_url(array('meta', $m['type_slug'], $m['slug'])); ?>');
+      <?php endif;
+    endforeach;
+  endif; ?>
 </script>
+<?php endif; ?>

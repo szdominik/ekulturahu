@@ -128,12 +128,27 @@ class Base_model extends CI_Model {
 		$this->db->where('articles.image_path != ', NULL);
 		$this->db->where('articles.pub_time <=', $this->datetimeNow());
 		$this->db->order_by('articles.pub_time', 'DESC');
-		$this->db->limit(20);
+		$this->db->limit(16);
 		
 		$query = $this->db->get();
 		return $query->result_array();
 	}
 
+	//A cikkekhez kiválogatja a hozzájuk tartozó meta-kategóriát
+	public function get_categories_metatype_for_articles($article_ids) {
+		if (count($article_ids) !== 0) {
+			$this->db->select('meta_value_article.article_id AS article_id, metavalue.name AS meta_name, metavalue.slug AS meta_slug');
+			$this->db->from('metavalue');
+			$this->db->join('meta_value_article', 'metavalue.id = meta_value_article.metavalue_id', 'left');
+			$this->db->where('metavalue.type', 8);
+			$this->db->where_in('meta_value_article.article_id', $article_ids);
+			$query = $this->db->get();
+			return $query->result_array();
+		}
+		return array();
+	}
+
+	// Ha ezt módosítod, van a Base controllerben is egy.
 	protected function generate_link($article)
 	{
 		$link = substr($article['pub_time'], 0, 4) . 

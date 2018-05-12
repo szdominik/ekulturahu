@@ -12,7 +12,7 @@ class Base extends CI_Controller {
 	//A navigációs sávba szükséges adatok.
 	private function get_headerdata()
 	{
-		//$header['categories'] = $this->base_model->get_categories();
+		$header['categories'] = $this->base_model->get_categories();
 		$header['subcategories'] = $this->base_model->get_subcategories();
 		//$header['conns'] = $this->base_model->get_connections_by_categories();
 		return $header;
@@ -60,6 +60,7 @@ class Base extends CI_Controller {
 		}
 		else
 		{
+			ob_clean();
 			//$this->statistics_insert();
 			$header = $this->get_headerdata();
 			$footer = $this->get_footerdata();
@@ -86,8 +87,10 @@ class Base extends CI_Controller {
 		foreach($articles_array as &$article) {
 			$article['link'] = $this->generate_link($article);
 			$article['pub_time'] = $this->modify_date($article['pub_time']);
-			$article['user_link'] = $this->add_username($article);
+			$article['user_link'] = $this->format_username($article);
+			$article['short_body'] = $this->generate_short_body($article['body']);
 		}
+		$articles_array = $this->add_metacategory_to_articles($articles_array);
 		return $articles_array;
 	}
 
@@ -96,12 +99,14 @@ class Base extends CI_Controller {
 	{
 		$article['link'] = $this->generate_link($article);
 		$article['pub_time'] = $this->modify_date($article['pub_time']);
-		$article['user_link'] = $this->add_username($article);
+		$article['user_link'] = $this->format_username($article);
+		$article['short_body'] = $this->generate_short_body($article['body']);
 		return $article;
 	}
 
 	//A cikk slug és pub_time mezője alapján link generálása
 	//pl. 'feher_isten' (string) + 2015-06-02 21:04:30 (date) -> '2015/06/02/feher_isten' (string)
+	// Ha ezt módosítod, van a Base_modelben is egy ilyen!
 	protected function generate_link($article)
 	{
 		$link = site_url() . substr($article['pub_time'], 0, 4) . 
@@ -117,12 +122,39 @@ class Base extends CI_Controller {
 				substr($date, 8, 2) . '. ' . substr($date, 11, 5);
 	}
 
-	private function add_username($article)
+	private function format_username($article)
 	{
 		if($article['user_name'] != NULL)
 			$user_link = anchor(array('author', urlencode($article['user_name'])), $article['user_name']);
 		else
 			$user_link = 'ekultura.hu';
 		return $user_link; 
+	}
+
+  	// Törli a HTML tageket a szövegből, és a 200 utáni első szóközig adja vissza a szöveget.
+	private function generate_short_body($body)
+	{
+		$short_body = strip_tags($body);
+		return substr($short_body, 0, strpos($short_body, ' ', 200)) . '...';
+	}
+
+	// A paraméterként megkapott cikkekhez hozzáadja a meta-kategóriájuk tömbjét
+	private function add_metacategory_to_articles($articles)
+	{
+		$metas = $this->base_model->get_categories_metatype_for_articles(array_column($articles, 'id'));
+		foreach ($articles as &$ac) {
+			$filtered = array();
+			foreach($metas as $meta) {
+				if($meta['article_id'] === $ac['id']) {
+					$filtered[] = $meta;
+				}
+			}
+
+			$ac['meta_category'] = array();
+			foreach($filtered as $fil) {
+				$ac['meta_category'][] = array('name' => $fil['meta_name'], 'slug' => $fil['meta_slug']);
+			}
+		}
+		return $articles;
 	}
 }
