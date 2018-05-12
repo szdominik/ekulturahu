@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## Változások 2018.05.12.
+
+- új design: a 'kapcsolódó cikkek' lapozása
+- default kép megjelenítése, ha az "igazi" nem elérhető
+- a user_list adminoldalon szűrési opció a felhasználók nevére
+
+## Változások 2018.05.05-06.
+
+- új design: article page & menu refaktorálás
+
 ## Változások 2018.04.29-30.
 
 - új design: header, footer, főoldal és listaoldal sitebuild & refactor
