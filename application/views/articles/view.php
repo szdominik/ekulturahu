@@ -87,6 +87,8 @@
       <a href="${article.link}">${article.title}</a>
     </div>
   `;
+  const arrow_back_text = '<span class="hidden-in-mobile">Előző</span>';
+  const arrow_next_text = '<span class="hidden-in-mobile">Következő</span>';
   
   const meta_load = (meta_id, meta_name, type_id, meta_link) => {
     $.get(`<?php echo site_url(array('articles', 'get_other_articles_by_meta_id')); ?>/${meta_id}`, data => {
@@ -97,9 +99,7 @@
 
       s += `<h3 id="${meta_id}-pager">`;
       if (metas[meta_id].length > 4) {
-        s += '<div class="btn-disabled">';
-        s += `<img src="<?php echo base_url('assets/icons/next.svg');?>" class="rotate m-r-5" />`;
-        s += 'Előző</div>';
+        s += `<div class="btn-disabled"><button class="rotate next-icon m-r-5" />${arrow_back_text}</div>`;
       }
 
       s += '<span>';
@@ -108,9 +108,7 @@
       s += '</span>';
 
       if (metas[meta_id].length > 4) {
-        s += `<div onclick="meta_pager(${meta_id}, 'right', 4)">Következő`;
-        s += '<img src="<?php echo base_url('assets/icons/next.svg');?>" class="m-l-5" />';
-        s += '</div>';
+        s += `<div onclick="meta_pager(${meta_id}, 'right', 4)">${arrow_next_text}<button class="m-l-5 next-icon" /></div>`;
       }
       s += '</h3>';
 
@@ -145,18 +143,16 @@
     } else {
       heading += '<div class="btn-disabled">';
     }
-    heading += '<img src="<?php echo base_url('assets/icons/next.svg');?>" class="rotate m-r-5" />';
-    heading += 'Előző</div>'
+    heading += `<button class="rotate next-icon m-r-5" />${arrow_back_text}</div>`;
 
-    heading += $(`#${meta_id}-pager span`)[0].outerHTML;
+    heading += $(`#${meta_id}-pager span`)[1].outerHTML;
     
     if (metas[meta_id].length > to) {
-      heading += `<div onclick="meta_pager(${meta_id}, 'right', ${to})">Következő`;
+      heading += `<div onclick="meta_pager(${meta_id}, 'right', ${to})">`;
     } else {
-      heading += `<div class="btn-disabled">Következő`;
+      heading += `<div class="btn-disabled">`;
     }
-    heading += '<img src="<?php echo base_url('assets/icons/next.svg');?>" class="m-l-5" />';
-    heading += '</div>';
+    heading += `${arrow_next_text}<button class="m-l-5 next-icon" /></div>`;
     $(`#${meta_id}-pager`).html(heading);
   };
 
