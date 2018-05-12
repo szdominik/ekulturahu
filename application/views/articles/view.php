@@ -1,4 +1,5 @@
-﻿<?php if(!$article['login'] || $this->session->userdata('logged_in')): ?>
+﻿<?php if(!$article['login'] || $this->session->userdata('logged_in')):
+$DEFAULT_IMAGE_PATH = base_url('assets/icons/default.jpg'); ?>
 
 <div class="article">
   <div class="meta-content">
@@ -63,9 +64,9 @@
       <?php
         if($article['image_path'] != NULL) {
           if($article['image_horizontal'] == 1) {
-            echo '<img src="' . base_url(array('uploads', $article['image_path'])) . '" class="img-article-horizontal" alt="Főkép">';
+            echo '<img src="' . base_url(array('uploads', $article['image_path'])) . '" onerror="this.src = `'. $DEFAULT_IMAGE_PATH .'`;" class="img-article-horizontal" alt="Főkép">';
           } else {
-            echo '<img src="' . base_url(array('uploads', $article['image_path'])) . '" class="img-article" alt="Főkép">';
+            echo '<img src="' . base_url(array('uploads', $article['image_path'])) . '" onerror="this.src = `'. $DEFAULT_IMAGE_PATH .'`;" class="img-article" alt="Főkép">';
           }
         }
         echo $article['body'];
@@ -82,7 +83,7 @@
   const other_article_box = article => `
     <div class="other-articles-box">
       <div class="img-container" align="left">
-        <img src="<?php echo base_url('uploads');?>/${article.image_path}">
+        <img src="<?php echo base_url('uploads');?>/${article.image_path}" onerror="this.src = '<?php echo $DEFAULT_IMAGE_PATH;?>';">
       </div>
       <a href="${article.link}">${article.title}</a>
     </div>
