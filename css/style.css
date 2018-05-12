@@ -14,6 +14,14 @@ body {
   background-color: var(--brown-1);
 }
 
+.m-r-5 {
+  margin-right: 5px;
+}
+
+.m-l-5 {
+  margin-left: 5px;
+}
+
 p {
   margin: 0px;
   padding: 0px;
@@ -34,6 +42,10 @@ h1 {
   font-weight: 500;
   margin-top: 40px; /* 20px eltolodas &#65279; miatt */
   margin-bottom: 55px;
+}
+
+img.rotate {
+  transform: rotate(180deg);
 }
 
 .btn-default {
@@ -467,8 +479,27 @@ h1 {
 
 .other-articles h3 {
   margin: 50px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
   font-weight: 500;
+}
+
+.other-articles h3 div {
+  display: flex;
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--brown-3);
+}
+
+.other-articles h3 span {
+  margin: 0 auto;
+}
+
+.other-articles h3 img {
+  width: 17px;
+  height: 100%;
 }
 
 .other-articles h3 a {

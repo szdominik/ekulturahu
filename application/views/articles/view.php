@@ -78,41 +78,95 @@
 </div>
 
 <script>
-	function meta_load(meta_id, meta_name, type_id, meta_link) {
-		$.get('<?php echo site_url(array('articles', 'get_other_articles_by_meta_id')); ?>' + '/' + meta_id, function(data) {
-			let s = $('#other-articles').html();
-			let count = 0;
+  let metas = {};
+  const other_article_box = article => `
+    <div class="other-articles-box">
+      <div class="img-container" align="left">
+        <img src="<?php echo base_url('uploads');?>/${article.image_path}">
+      </div>
+      <a href="${article.link}">${article.title}</a>
+    </div>
+  `;
+  
+  const meta_load = (meta_id, meta_name, type_id, meta_link) => {
+    $.get(`<?php echo site_url(array('articles', 'get_other_articles_by_meta_id')); ?>/${meta_id}`, data => {
+      data = data.filter(ac => ac.id != <?php echo $article['id']; ?> && ac.subcat_id != 1 && ac.subcat_id != 4);
+      metas[meta_id] = data;
+      data = data.slice(0, 4);
+      let s = $('#other-articles').html();
+
+      s += `<h3 id="${meta_id}-pager">`;
+      if (metas[meta_id].length > 4) {
+        s += '<div class="btn-disabled">';
+        s += `<img src="<?php echo base_url('assets/icons/next.svg');?>" class="rotate m-r-5" />`;
+        s += 'Előző</div>';
+      }
+
+      s += '<span>';
       const name_link = `<a href='${meta_link}'>${meta_name}</a>`;
-      const title = type_id === 1 ? `${name_link} további művei` : `${name_link} sorozat`;
-			s += `<h3>${title}</h3>`;
-			s += '<div class="other-articles-list">'
-        for (let i = 0; i < data.length; ++i) {
-          if (data[i].id != <?php echo $article['id']; ?> && data[i].subcat_id != 1 && data[i].subcat_id != 4) {
-            s += `<div class="other-articles-box">
-                <div class="img-container" align="left">
-                  <img src="<?php echo base_url('uploads');?>/${data[i].image_path}">
-                </div>
-                <a href="${data[i].link}">${data[i].title}</a>
-              </div>`
-            ++count;
-          }
-        }
-        if(count === 0) {
-          s += 'Nincs találat kapcsolódó tartalomra!';
-        }
-				s += '</div>';
-			$('#other-articles').html(s);
+      s += type_id === 1 ? `${name_link} további művei` : `${name_link} sorozat`;
+      s += '</span>';
+
+      if (metas[meta_id].length > 4) {
+        s += `<div onclick="meta_pager(${meta_id}, 'right', 4)">Következő`;
+        s += '<img src="<?php echo base_url('assets/icons/next.svg');?>" class="m-l-5" />';
+        s += '</div>';
+      }
+      s += '</h3>';
+
+      s += `<div class="other-articles-list" id="${meta_id}">`;
+      if(data.length === 0) {
+        s += 'Nincs találat kapcsolódó tartalomra!';
+      } else {
+        data.forEach(article => {
+          s += other_article_box(article);
+        });
+      }
+      s += '</div>';
+
+      $('#other-articles').html(s);
       $('#other-articles').addClass('other-articles');
-		}, "json");
-	}
-	
-	<?php if(count($metas) !== 0): ?>
-		$('#other-articles').html('<h2>Kapcsolódó tartalmak</h2>');
-		<?php foreach($metas as $m):
-			if($m['type_id'] == 1 || $m['type_id'] == 2): ?>
-				meta_load(<?php echo $m['meta_id']; ?>, '<?php echo $m['meta_name']; ?>', <?php echo $m['type_id']; ?>, '<?php echo site_url(array('meta', $m['type_slug'], $m['slug'])); ?>');
-			<?php endif;
-		endforeach;
-	endif; ?>
+    }, "json");
+  };
+
+  const meta_pager = (meta_id, direction, start) => {
+    const from = Math.max(direction === 'left' ? start - 4 : start, 0);
+    const to = Math.min(direction === 'left' ? start : start + 4, metas[meta_id].length);
+    const data = metas[meta_id].slice(from, to);
+    let s = '';
+    data.forEach(article => {
+      s += other_article_box(article);
+    });
+    $(`#${meta_id}`).html(s);
+    
+    let heading = '';
+    if (from !== 0) {
+      heading += `<div onclick="meta_pager(${meta_id}, 'left', ${from})" >`;
+    } else {
+      heading += '<div class="btn-disabled">';
+    }
+    heading += '<img src="<?php echo base_url('assets/icons/next.svg');?>" class="rotate m-r-5" />';
+    heading += 'Előző</div>'
+
+    heading += $(`#${meta_id}-pager span`)[0].outerHTML;
+    
+    if (metas[meta_id].length > to) {
+      heading += `<div onclick="meta_pager(${meta_id}, 'right', ${to})">Következő`;
+    } else {
+      heading += `<div class="btn-disabled">Következő`;
+    }
+    heading += '<img src="<?php echo base_url('assets/icons/next.svg');?>" class="m-l-5" />';
+    heading += '</div>';
+    $(`#${meta_id}-pager`).html(heading);
+  };
+
+  <?php if(count($metas) !== 0): ?>
+    $('#other-articles').html('<h2>Kapcsolódó tartalmak</h2>');
+    <?php foreach($metas as $m):
+      if($m['type_id'] == 1 || $m['type_id'] == 2): ?>
+        meta_load(<?php echo $m['meta_id']; ?>, '<?php echo $m['meta_name']; ?>', <?php echo $m['type_id']; ?>, '<?php echo site_url(array('meta', $m['type_slug'], $m['slug'])); ?>');
+      <?php endif;
+    endforeach;
+  endif; ?>
 </script>
 <?php endif; ?>
