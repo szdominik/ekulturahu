@@ -47,6 +47,13 @@ h1 {
   border-color: var(--brown-4);
 }
 
+.btn-disabled,
+.btn-disabled:hover {
+  cursor: not-allowed;
+  text-decoration: none;
+  opacity: 0.5;
+}
+
 .category-label {
   background-color: var(--brown-2);
   text-align: center;
@@ -346,12 +353,6 @@ h1 {
   border-radius: 20px;
   text-transform: uppercase;
   font-weight: bold;
-}
-
-.btn-pager.disabled {
-  cursor: not-allowed;
-  text-decoration: none;
-  opacity: 0.5;
 }
 
 .article {

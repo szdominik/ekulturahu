@@ -67,7 +67,7 @@
       
       $elem = '';
       if($from == 0) {
-        $elem = '<a class="btn-pager disabled';
+        $elem = '<a class="btn-pager btn-disabled';
       } else {
         if ($prev < 0) // 0 alá ne menjünk a lapozással
 				  $elem = '<a href="' . $link;
@@ -79,25 +79,25 @@
 			
 			echo '<div>';
       if($start > 1) {
-        echo '<span class="pager-link disabled">...</span>';
+        echo '<span class="pager-link">...</span>';
       }
 			for($i = $start; $i <= $end && $i <= $db; ++$i) {
 				if($i > 0) {
 					if($i === $now)
-						echo '<span class="pager-link disabled">' . $i . '</span>';
+						echo '<span class="pager-link">' . $i . '</span>';
 					else
 					  echo '<a class="pager-link" href="' . $link . '/' . (($i - 1) * $limit) . '">' . $i . '</a>';
 				}
       }
       if($db > $end) {
-        echo '<span class="pager-link disabled">...</span>';
+        echo '<span class="pager-link">...</span>';
       }
 			echo '</div>';
 
 			if($from+$limit < $cnt) //az összes elemszámot még nem érjük el
 				echo '<a class="btn-pager" href="' . $link . '/' . ($from + $limit) . '">';
 			else // az összes elemszám fölé ne menjünk
-				echo '<a class="btn-pager disabled href="' . $link . '/' . $from . '">';
+				echo '<a class="btn-pager btn-disabled href="' . $link . '/' . $from . '">';
 			echo 'Következő</a>';
 		?>
 	</div>
