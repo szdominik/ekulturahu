@@ -9,7 +9,7 @@
 	<meta name="keywords" content="ekultura, könyv, film, zene, koncert, színház, hallgatnivaló, olvasnivaló, látnivaló, beszámoló, interjú, ajánló, életrajz, hír">
 	<link type="text/css" href="<?php echo base_url('assets/bootstrap/css/bootstrap-cosmo.css');?>" rel="stylesheet">
   <link type="text/css" href="<?php echo base_url('css/style.css');?>" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Droid+Serif" />
+  <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro&amp;subset=latin-ext" rel="stylesheet">
 	<script type="text/javascript" src="<?php echo base_url('assets/jquery.js');?>"></script>
 	<script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
