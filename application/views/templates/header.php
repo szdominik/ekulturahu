@@ -7,6 +7,7 @@
 	<meta name="title" content="ekultura.hu">
 	<meta name="description" content="Online kulturális magazin - könyvek, filmek, zenék, színház.">
 	<meta name="keywords" content="ekultura, könyv, film, zene, koncert, színház, hallgatnivaló, olvasnivaló, látnivaló, beszámoló, interjú, ajánló, életrajz, hír">
+  <link rel="alternate" href="<?php echo site_url('rss');?>" title="ekultura.hu RSS feed" type="application/rss+xml" />
 	<link type="text/css" href="<?php echo base_url('assets/bootstrap/css/bootstrap-cosmo.css');?>" rel="stylesheet">
   <link type="text/css" href="<?php echo base_url('css/style.css');?>" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro&amp;subset=latin-ext" rel="stylesheet">
@@ -31,7 +32,7 @@
       <a href="http://www.youtube.com/user/ekultura" target="_blank">
         <img src="<?php echo base_url('assets/icons/youtube.svg');?>" alt="youtube">
       </a>
-      <a href="http://ekultura.hu/rss" target="_blank">
+      <a href="<?php echo site_url('rss');?>" target="_blank">
         <img src="<?php echo base_url('assets/icons/feed.svg');?>" alt="rss feed">
       </a>
     </div>

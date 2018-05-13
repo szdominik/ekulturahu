@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Változások 2018.05.13.
+
+- RSS feed generálás és megjelenítés
+
 ## Változások 2018.05.12.
 
 - új design: a 'kapcsolódó cikkek' lapozása

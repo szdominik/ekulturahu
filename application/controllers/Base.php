@@ -115,6 +115,13 @@ class Base extends CI_Controller {
 		return $link;
 	}
 
+  	// Törli a HTML tageket a szövegből, és a 200 utáni első szóközig adja vissza a szöveget.
+	protected function generate_short_body($body)
+	{
+		$short_body = strip_tags($body);
+		return substr($short_body, 0, strpos($short_body, ' ', 200)) . '...';
+	}
+
 	//A publikálási időt szebb formátumban adja vissza
 	private function modify_date($date) 
 	{
@@ -129,13 +136,6 @@ class Base extends CI_Controller {
 		else
 			$user_link = 'ekultura.hu';
 		return $user_link; 
-	}
-
-  	// Törli a HTML tageket a szövegből, és a 200 utáni első szóközig adja vissza a szöveget.
-	private function generate_short_body($body)
-	{
-		$short_body = strip_tags($body);
-		return substr($short_body, 0, strpos($short_body, ' ', 200)) . '...';
 	}
 
 	// A paraméterként megkapott cikkekhez hozzáadja a meta-kategóriájuk tömbjét
