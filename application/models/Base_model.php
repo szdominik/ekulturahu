@@ -244,14 +244,14 @@ class Base_model extends CI_Model {
 	}
 
 	public function div_replace() {
-    $this->db->select('id, title, body');
+    	$this->db->select('id, title, body');
 		$cikk = $this->db->get('articles');
 
 		foreach($cikk->result_array() as $a)
 		{
 			$newbody = str_replace(array('<div', 'div>'), array('<p', 'p>'), $a['body']);
 
-			if(strpos($a['body'], '<div') === TRUE) {
+			if(strpos($a['body'], '<div') !== FALSE) {
 				// echo $a['id'] . " - " . $a['title'] . "\n";
 				$data = array('body' => $newbody);
 				$this->db->where('id', $a['id']);
