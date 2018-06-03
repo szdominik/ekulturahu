@@ -178,6 +178,9 @@ class Articles extends Base {
 			$data['comments'] = $this->article_model->get_comments($data['article']['id']);
 			$data['metas'] = $this->article_model->get_metas_by_article($data['article']['id']);
 			$hdata['title'] = $data['article']['title'];
+			$hdata['type'] = 'article';
+			$hdata['short_body'] = $data['article']['short_body'];
+			$hdata['image_path'] = $data['article']['image_path'];
 			$this->show('articles/view', $hdata, $data);
 		}
 	}

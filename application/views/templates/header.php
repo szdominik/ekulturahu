@@ -1,19 +1,30 @@
 ﻿<!DOCTYPE html>
 <html lang='hu'>
 <head>
-	<title><?php echo $title ?> - ekultura.hu</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="title" content="ekultura.hu">
-	<meta name="description" content="Online kulturális magazin - könyvek, filmek, zenék, színház.">
-	<meta name="keywords" content="ekultura, könyv, film, zene, koncert, színház, hallgatnivaló, olvasnivaló, látnivaló, beszámoló, interjú, ajánló, életrajz, hír">
+  <title><?php echo $title ?> - ekultura.hu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="title" content="ekultura.hu">
+  <meta name="description" content="Online kulturális magazin - könyvek, filmek, zenék, színház.">
+  <meta name="keywords" content="ekultura, könyv, film, zene, koncert, színház, hallgatnivaló, olvasnivaló, látnivaló, beszámoló, interjú, ajánló, életrajz, hír">
+  <?php if (isset($type) && $type === 'article'): ?>
+    <meta property="og:title" content="<?php echo $title; ?> - ekultura.hu" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="<?php echo $short_body; ?>" />
+    <meta property="og:image" content="<?php echo base_url(array('uploads', $image_path)); ?>" />
+  <?php else: ?>
+    <meta property="og:title" content="Ekultura.hu" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="<?php echo base_url('assets/icons/default.jpg'); ?>" />
+  <?php endif; ?>
+  <meta property="og:url" content="<?php echo current_url(); ?>" />
   <link rel="alternate" href="<?php echo site_url('rss');?>" title="ekultura.hu RSS feed" type="application/rss+xml" />
-	<link type="text/css" href="<?php echo base_url('assets/bootstrap/css/bootstrap-cosmo.css');?>" rel="stylesheet">
+  <link type="text/css" href="<?php echo base_url('assets/bootstrap/css/bootstrap-cosmo.css');?>" rel="stylesheet">
   <link type="text/css" href="<?php echo base_url('css/style.css');?>" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro&amp;subset=latin-ext" rel="stylesheet">
-	<script type="text/javascript" src="<?php echo base_url('assets/jquery.js');?>"></script>
-	<script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/jquery.js');?>"></script>
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
 </head>
 <body>
 
