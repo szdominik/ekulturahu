@@ -47,7 +47,7 @@ class Articles extends Base {
 	public function get_articles_by_search_short($filter)
 	{
 		$filter = urldecode($filter);
-		$articles = $this->customize_articles($this->article_model->get_searched_data_short($filter, 5));
+		$articles = $this->customize_articles($this->article_model->get_searched_data_short($filter, 10));
 		ob_clean();
 		echo json_encode($articles);
 	}

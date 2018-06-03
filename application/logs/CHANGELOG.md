@@ -3,6 +3,8 @@
 ## Változások 2018.06.03.
 
 - div_delete helyettesítése div_replace-szel
+- fejlécben lévő keresés 10 találatot ad vissza
+- keresés előrébb rendezi azokat a találatokat, ahol a címben megtalálhatóak a keresett szavak
 
 ## Változások 2018.05.13.
 

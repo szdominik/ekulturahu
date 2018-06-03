@@ -320,9 +320,8 @@ class Article_model extends Base_Model {
 			return array();
 	}
 
-	private function array_fit_and_sort($array, $limit, $from)
+	private function array_fit_and_sort($filter, $array, $limit, $from)
 	{
-		
 		if(count($array) > $from)
 			for($i = 0; $i < $from; ++$i)
 				array_shift($array);
@@ -334,7 +333,23 @@ class Article_model extends Base_Model {
 		else
 			$new_array = $array;
 
-		uasort($new_array, function($a, $b) {
+		// -1 == a / 1 == b
+		uasort($new_array, function($a, $b) use($filter) {
+			$filters = explode(' ', trim(strtolower($filter)));
+			$a_contains = true;
+			$b_contains = true;
+			foreach($filters as $f) {
+				if (strpos(strtolower($a['title']), $f) === FALSE)
+					$a_contains = false;
+				if (strpos(strtolower($b['title']), $f) === FALSE)
+					$b_contains = false;
+			}
+
+			if ($a_contains && !$b_contains) {
+				return -1;
+			} elseif (!$a_contains && $b_contains) {
+				return 1;
+			}
 			return ($a['pub_time'] < $b['pub_time']) ? 1 : -1;
 		});
 		return $new_array;
@@ -347,13 +362,13 @@ class Article_model extends Base_Model {
 		
 		$this->search_query($filter, $results);
 		$results = array_merge($results, $this->db->get()->result_array());
-
+		
 		$meta_results = $this->search_metavalue($filter, $results);
 		$results = array_merge($results, $meta_results);
 
 		$cnt = count($results);
 
-		return $this->array_fit_and_sort($results, $limit, $from);
+		return $this->array_fit_and_sort($filter, $results, $limit, $from);
 	}
 
 	public function get_searched_data_short($filter, $limit)
