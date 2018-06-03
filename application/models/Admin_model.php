@@ -611,7 +611,7 @@ class Admin_model extends Base_Model {
 		{
 			$this->db->like('users.name', $name_filt);
 		}
-		$this->db->order_by('users.level', 'DESC');
+		$this->db->order_by('users.username');
 		$this->db->limit($limit, $from);
 		$query = $this->db->get();
 		return $query->result_array();
