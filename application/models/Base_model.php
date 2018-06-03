@@ -243,39 +243,20 @@ class Base_model extends CI_Model {
 		echo "kesz!";
 	}
 
-	public function div_delete() {
-		$this->db->select('id, title, body');
+	public function div_replace() {
+    $this->db->select('id, title, body');
 		$cikk = $this->db->get('articles');
 
 		foreach($cikk->result_array() as $a)
 		{
-			$volt = FALSE;
-			$newbody = $this->delete_divs($a['body'], '<div', $volt);
-			$newbody = $this->delete_divs($newbody, '</div', $volt);
+			$newbody = str_replace(array('<div', 'div>'), array('<p', 'p>'), $a['body']);
 
-			if($volt === TRUE) {
-				//echo $a['id'] . " - " . $a['title'] . "\n";
+			if(strpos($a['body'], '<div') === TRUE) {
+				// echo $a['id'] . " - " . $a['title'] . "\n";
 				$data = array('body' => $newbody);
 				$this->db->where('id', $a['id']);
 				$this->db->update('articles', $data);
 			}
 		}
-	}
-
-	private function delete_divs($body, $str, &$volt) {
-		$newbody = $body;
-		$pos = strpos($newbody, $str);
-		while($pos !== FALSE)
-		{
-			$volt = TRUE;
-
-			$endpos = $pos;
-			while($newbody[$endpos] != '>')
-				++$endpos;
-			++$endpos;
-			$newbody = str_replace(substr($newbody, $pos, $endpos - $pos), '', $newbody);
-			$pos = strpos($newbody, $str);
-		}
-		return $newbody;
 	}
 }

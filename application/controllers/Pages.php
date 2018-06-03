@@ -14,7 +14,7 @@ class Pages extends Base {
 	public function test()
 	{
 		//$this->pages_model->regi_linkek_szkript();
-		//$this->pages_model->div_delete();
+		//$this->pages_model->div_replace();
 		//$this->pages_model->cikkek_kepei_replace();
 	}
 	
