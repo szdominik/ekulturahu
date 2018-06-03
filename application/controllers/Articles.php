@@ -23,8 +23,9 @@ class Articles extends Base {
 		{
 			$data['search'] = urldecode($filter); //urldecode az ékezetes karakterek miatt
 			
-			$data['articles'] = $this->customize_articles($this->article_model->get_searched_data($data['search'], $data['limit'], $data['from'], $data['cnt']));
-			//$data['cnt'] = $this->article_model->get_searched_data_count($data['search']);
+			$data['articles'] = $this->customize_articles(
+				$this->article_model->get_searched_data($data['search'], $data['limit'], $data['from'], $data['cnt'])
+			);
 
 			$this->show('articles/index', $hdata, $data);
 		}
@@ -57,7 +58,9 @@ class Articles extends Base {
 		$data['from'] = intval($from);
 		$data['limit'] = $GLOBALS['limit'];
 		$data['author'] = urldecode($name);
-		$data['articles'] = $this->customize_articles($this->article_model->get_articles_by_author($data['author'], $data['from'], $data['limit']));
+		$data['articles'] = $this->customize_articles(
+			$this->article_model->get_articles_by_author($data['author'], $data['from'], $data['limit'])
+		);
 
 		if (empty($data['articles'])) //nincsenek cikkek: 404
 		{
@@ -96,7 +99,9 @@ class Articles extends Base {
 		{
 			$hdata['title'] = $data['meta']['name'];
 			
-			$data['articles'] = $this->customize_articles($this->article_model->get_articles_by_meta($data['meta']['id'], $data['limit'], $data['from']));
+			$data['articles'] = $this->customize_articles(
+				$this->article_model->get_articles_by_meta($data['meta']['id'], $data['limit'], $data['from'])
+			);
 			if (empty($data['articles'])) //ha üres, nincsenek cikkek itt: 404
 			{
 				$this->output->set_status_header('404');
@@ -117,7 +122,9 @@ class Articles extends Base {
 		if (count($data['category']) != 0)
 		{
 			
-			$data['articles'] = $this->customize_articles($this->article_model->get_articles_by_category($data['from'], $data['limit'], $slug));
+			$data['articles'] = $this->customize_articles(
+				$this->article_model->get_articles_by_category($data['from'], $data['limit'], $slug)
+			);
 
 			if (empty($data['articles'])) //nincsenek cikkek: 404
 			{
@@ -133,7 +140,9 @@ class Articles extends Base {
 			$data['subcategory'] = $this->article_model->get_subcategoryname_by_slug($slug);
 			if (count($data['subcategory']) != 0)
 			{
-				$data['articles'] = $this->customize_articles($this->article_model->get_articles_by_subcategory($data['from'], $data['limit'], $slug));
+				$data['articles'] = $this->customize_articles(
+					$this->article_model->get_articles_by_subcategory($data['from'], $data['limit'], $slug)
+				);
 
 				if (empty($data['articles'])) //nincsenek cikkek: 404
 				{
@@ -229,6 +238,7 @@ class Articles extends Base {
 		}
 	}
 
+	// RSS feed generálás
 	public function rss()
 	{
 		$data['articles'] = $this->article_model->get_articles_by_category(0, 20, 'osszes');

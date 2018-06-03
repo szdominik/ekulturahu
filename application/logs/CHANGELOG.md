@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Változások 2018.06.03.
+
+- div_delete helyettesítése div_replace-szel
+
 ## Változások 2018.05.13.
 
 - RSS feed generálás és megjelenítés
