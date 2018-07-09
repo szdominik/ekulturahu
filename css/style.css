@@ -419,9 +419,12 @@ button.rotate {
   margin-bottom: 50px;
 }
 
+.article .article-content img {
+  margin: 10px !important;
+}
+
 .article .article-content .article-body > img {
-  margin-right: 30px !important;
-  margin-bottom: 20px !important;
+  margin: 0 30px 0 20px !important;
   width: 270px;
 }
 
@@ -657,6 +660,10 @@ footer .navbar-nav > li > a:focus {
     margin: 0 7% 50px 7%;
   }
 
+  .article .article-content .article-body > img {
+    margin: 20px auto!important;
+  }
+
   .article .meta-content {
     margin: 0 7% 50px;
   }
@@ -668,7 +675,6 @@ footer .navbar-nav > li > a:focus {
   .article .article-content .img-article {
     float: none;
     display: block;
-    margin: 20px auto!important;
   }
 
   .article-list-pager {
