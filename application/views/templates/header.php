@@ -93,9 +93,11 @@
       <?php foreach ($categories as $cat): ?>
       <a href="<?php echo site_url($cat['slug']); ?>"><p class="<?php echo $cat['slug']; ?>"><?php echo $cat['name']; ?></p></a>
       <?php endforeach; ?>
-      <p class="divider"></p>
-      <a href="<?php echo site_url('impresszum'); ?>"><p>Impresszum</p></a>
-      <a href="<?php echo site_url('about'); ?>"><p>Rólunk</p></a>
+      <div class="hidden-in-mobile">
+        <p class="divider"></p>
+        <a href="<?php echo site_url('impresszum'); ?>"><p>Impresszum</p></a>
+        <a href="<?php echo site_url('about'); ?>"><p>Rólunk</p></a>
+      </div>
     </div>
   </div>
 </nav>
