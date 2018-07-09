@@ -420,11 +420,11 @@ button.rotate {
 }
 
 .article .article-content img {
-  margin: 10px !important;
+  margin: 10px;
 }
 
 .article .article-content .article-body > img {
-  margin: 0 30px 0 20px !important;
+  margin: 0 30px 20px 0 !important;
   width: 270px;
 }
 
