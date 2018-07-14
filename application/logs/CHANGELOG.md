@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## Változások 2017.07.14.
+
+- stílusbeli hibajavítások (kategória címkék a listák dobozaiban)
+- session library automatikus betöltésének megszüntetése, ehhez kapcsolódó refaktorálás
+- admin felület rendbeszedése (placeholderek, comment & login article property-k nem szerkeszthetővé tétele)
+- egyedi 404-es oldal készítése
+
+## Változások 2018.07.09.
+
+- költözés tesztszerverre, migráció, kép áttöltések és képrefaktorálások
+- stílusbeli hibajavítások (mobil header és menü, cikkekben lévő képek margója)
+
 ## Változások 2018.06.03.
 
 - div_delete helyettesítése div_replace-szel
