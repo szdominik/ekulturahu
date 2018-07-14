@@ -58,17 +58,11 @@
 						echo 'Publikálva';
 						echo '</label><br>';
 					endif;
+					echo form_hidden('comment', $article['comment']);
+					echo form_hidden('login', $article['login']);
 				?>
 				<label>
 					<?php echo form_checkbox('mainpage', '1', $article['mainpage']); ?> Főoldalra kerül
-			    </label>
-				<br>
-				<label>
-					<?php echo form_checkbox('comment', '1', $article['comment']); ?> Hozzászólható
-			    </label>
-				<br>
-				<label>
-					<?php echo form_checkbox('login', '1', $article['login']); ?> Csak bejelentkezett felhasználóknak látható
 			    </label>
 			</div>
 		</div>

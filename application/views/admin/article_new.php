@@ -65,17 +65,11 @@
 						echo 'Publikálva';
 						echo '</label><br>';
 					endif;
+					echo form_hidden('comment', '1');
+					echo form_hidden('login', '0');
 				?>
 				<label>
 					<?php echo form_checkbox('mainpage', '1', set_checkbox('mainpage','1', TRUE)); ?> Főoldalra kerül
-			    </label>
-				<br>
-				<label>
-					<?php echo form_checkbox('comment', '1', set_checkbox('comment','1', TRUE)); ?> Hozzászólható
-			    </label>
-				<br>
-				<label>
-					<?php echo form_checkbox('login', '1', set_checkbox('login','1', FALSE)); ?> Csak bejelentkezett felhasználóknak látható
 			    </label>
 			</div>
 		</div>
