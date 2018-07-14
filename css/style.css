@@ -321,8 +321,17 @@ button.rotate {
   margin: 0;
 }
 
+.article-text-section > p {
+  position: relative;
+  z-index: 10;
+  background-color: white;
+  padding-bottom: 5px;
+}
+
 .article-category {
   position: absolute;
+  z-index: 5;
+  max-width: 230px;
   left: 20px;
   top: 600px;
   text-align: left;
