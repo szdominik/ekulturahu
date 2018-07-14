@@ -167,7 +167,7 @@ class Articles extends Base {
 		if (empty($data['article'])) //nincsenek cikkek: 404
 		{
 			$this->output->set_status_header('404');
-			//$this->show();
+			ob_clean();
 			show_404($slug);
 		}
 		else 
@@ -231,7 +231,7 @@ class Articles extends Base {
 		if ($data['page'] === NULL) //ha nincs: főoldal (és 404)
 		{
 			$this->output->set_status_header('404');
-			//$this->show();
+			ob_clean();
 			show_404($page);
 		}
 		else
