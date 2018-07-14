@@ -1,6 +1,6 @@
 ﻿<div class="article-list">
   <?php foreach($articles as $ac):
-      if($ac['login'] == 0 || $this->session->userdata('logged_in') === TRUE): ?>
+      if($ac['login'] == 0 || $logged_in): ?>
         <div class="article-box">
           <div class="img-container">
             <a href="<?php echo $ac['link']; ?>">

@@ -7,6 +7,10 @@ class Base extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('base_model');
+		$this->load->helper('cookie');
+		if (get_cookie('ci_session') !== NULL) {
+			$this->load->library('session');
+		};
 	}
 	
 	//A navigációs sávba szükséges adatok.
@@ -23,6 +27,15 @@ class Base extends CI_Controller {
 	{
 		$footer['statics'] = $this->base_model->get_statics();
 		return $footer;
+	}
+
+	private function get_userdata()
+	{
+		$user = array('logged_in' => FALSE);
+		if ($this->load->is_loaded('session')) {
+			$user['logged_in'] = $this->session->userdata('logged_in');
+		}
+		return $user;
 	}
 	
 	//Statisztikai adat beszúrása.
@@ -64,12 +77,12 @@ class Base extends CI_Controller {
 			//$this->statistics_insert();
 			$header = $this->get_headerdata();
 			$footer = $this->get_footerdata();
-			$result = array_merge($hdata, $header); //a $hdata-ban adunk meg címet, ezt kombináljunk a kapott értékekkel
-			$this->load->view('templates/header', $result); //fejléc betöltése
-			$this->load->view($location, $data); //tartalom betöltése
+			$user = $this->get_userdata();
+			$this->load->view('templates/header', array_merge($hdata, $header, $user)); //fejléc betöltése
+			$this->load->view($location, array_merge($data, $user)); //tartalom betöltése
 			if(strpos($location, 'admin') !== FALSE)
 				$this->load->view('templates/scripts'); //adminfelület szkriptjeinek betöltése
-			$this->load->view('templates/footer', $footer); //lábléc betöltése
+			$this->load->view('templates/footer', array_merge($footer, $user)); //lábléc betöltése
 		}
 	}
 	

@@ -60,7 +60,7 @@
 
   <div class="navbar-links">
     <ul class="nav">
-      <?php if($this->session->userdata('logged_in') === TRUE): ?> 
+      <?php if($logged_in): ?> 
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Adminisztráció <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">

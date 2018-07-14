@@ -14,7 +14,7 @@
         <?php echo $st['title']; ?>
       </a></li>
     <?php endforeach; ?>
-    <?php if($this->session->userdata('logged_in') === TRUE): ?>
+    <?php if($logged_in): ?>
       <li><a href="<?php echo site_url(array('users', 'user_settings')); ?>">Beállítások</a></li>
     <?php else: ?>
       <li><a data-toggle="modal" data-target="#loginModal" role="button">Belépés</a></li>

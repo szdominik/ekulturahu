@@ -1,4 +1,4 @@
-﻿<?php if(!$article['login'] || $this->session->userdata('logged_in')):
+﻿<?php if(!$article['login'] || $logged_in):
 $DEFAULT_IMAGE_PATH = base_url('assets/icons/default.jpg'); ?>
 
 <div class="article">
@@ -7,7 +7,7 @@ $DEFAULT_IMAGE_PATH = base_url('assets/icons/default.jpg'); ?>
     if ($article['kedv_vasar'] != '' && $article['kedv_vasar'] != '0') {
       echo '<a href="' . $article['kedv_vasar'] . '" class="btn-action">Kedvezményes vásárlás</a>';
     }
-    if ($this->session->userdata('logged_in') && 
+    if ($logged_in && 
       ($this->session->userdata('level') > 3 || $this->session->userdata('id') == $article['user_id'])) {
       echo '<a href="' . site_url(array('admin', 'article_edit', $article['id'])) . '" class="btn-action">Szerkesztés</a>';
     }
