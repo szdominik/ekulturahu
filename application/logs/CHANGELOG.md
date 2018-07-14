@@ -8,6 +8,7 @@
 - egyedi 404-es oldal készítése
 - meta tagek átnézése, robots & ie=edge tag hozzáadása
 - 'Főoldal' szó kivétele főoldal esetében a title tagből
+- tinyMCE upgrade & nagyobb height
 
 ## Változások 2018.07.09.
 

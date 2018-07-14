@@ -8,6 +8,7 @@
 	$(document).ready(function () {
 		tinymce.init({
 			selector:'textarea',
+			height: 700,
 			language: 'hu_HU',
 			language_url : '<?php echo base_url('assets/tinymce/langs/hu_HU.js');?>',
 			relative_urls: false,
