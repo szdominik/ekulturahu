@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang='hu'>
 <head>
-  <title><?php echo $title ?> - ekultura.hu</title>
+  <title><?php echo $title !== 'home' ? $title . ' - ' : '' ?>ekultura.hu</title>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

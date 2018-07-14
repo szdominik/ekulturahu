@@ -7,6 +7,7 @@
 - admin felület rendbeszedése (placeholderek, comment & login article property-k nem szerkeszthetővé tétele)
 - egyedi 404-es oldal készítése
 - meta tagek átnézése, robots & ie=edge tag hozzáadása
+- 'Főoldal' szó kivétele főoldal esetében a title tagből
 
 ## Változások 2018.07.09.
 
