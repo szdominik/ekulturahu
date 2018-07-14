@@ -144,7 +144,7 @@
 			              'maxlength'   => '100',
 			              'size'        => $size,
 						  'class'		=> 'form-control',
-						  'placeholder' => 'Ár'
+						  'placeholder' => 'Ár (pl. 2990 Ft)'
 			            );
 				echo form_input($data); ?>
 		</div>
@@ -159,7 +159,7 @@
 			              'maxlength'   => '100',
 			              'size'        => $size,
 						  'class'		=> 'form-control',
-						  'placeholder' => 'Hossz vagy oldalszám'
+						  'placeholder' => 'Hossz (pl. 141 perc) vagy oldalszám (pl. 350)'
 			            );
 				echo form_input($data); ?>
 		</div>
