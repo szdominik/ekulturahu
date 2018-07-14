@@ -6,6 +6,7 @@
 - session library automatikus betöltésének megszüntetése, ehhez kapcsolódó refaktorálás
 - admin felület rendbeszedése (placeholderek, comment & login article property-k nem szerkeszthetővé tétele)
 - egyedi 404-es oldal készítése
+- meta tagek átnézése, robots & ie=edge tag hozzáadása
 
 ## Változások 2018.07.09.
 

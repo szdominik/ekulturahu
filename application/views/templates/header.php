@@ -2,11 +2,13 @@
 <html lang='hu'>
 <head>
   <title><?php echo $title ?> - ekultura.hu</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="title" content="ekultura.hu">
   <meta name="description" content="Online kulturális magazin - könyvek, filmek, zenék, színház.">
   <meta name="keywords" content="ekultura, könyv, film, zene, koncert, színház, hallgatnivaló, olvasnivaló, látnivaló, beszámoló, interjú, ajánló, életrajz, hír">
+  <meta name="robots" content="index, follow">
   <?php if (isset($type) && $type === 'article'): ?>
     <meta property="og:title" content="<?php echo $title; ?> - ekultura.hu" />
     <meta property="og:type" content="article" />
