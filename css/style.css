@@ -128,7 +128,8 @@ button.rotate {
   border: 1px solid var(--brown);
 }
 
-.ui-autocomplete > li {
+.ui-autocomplete a {
+  display: block;
   padding: 5px 20px;
 }
 

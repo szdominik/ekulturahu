@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## Változások 2017.07.22.
+
+- 'kapcsolódó tartalmak' térköz fixálás & stílus hozzáadása a címsorhoz alapból
+- a cikkekbeli képek legyenek reszponzívak
+- a menü rövidítése
+- a 'kiadás éve' típusú címke legyen fordítva (a legnagyobbtól a legkisebbig) rendezve
+- a cikkszöveg fogadjon el kézileg beillesztett iframe tageket
+- a keresési találatok teljes listája legyen kattintható, ne csak a szöveg
+
 ## Változások 2017.07.14.
 
 - stílusbeli hibajavítások (kategória címkék a listák dobozaiban)
