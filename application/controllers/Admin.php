@@ -237,7 +237,7 @@ class Admin extends Base {
 				$data['article']['producer'] = $this->input->post('producer');
 				$data['article']['body'] = $this->input->post('body');
 				$data['article']['image_horizontal'] = $this->input->post('image_horizontal');
-				$data['article']['image_path'] = $this->input->post('image_path');
+				$data['article']['image_path'] = $this->image_upload_filename();
 			}
 			
 			$data['success'] = $succ;
