@@ -24,6 +24,12 @@ class Admin_model extends Base_Model {
 		}
 		return $data;
 	}
+
+	private function refactor_pubtime($data)
+	{
+		return substr($data, 0, 4) . ':' . substr($data, 5, 2) . ':' .
+			substr($data, 8, 2) . ' ' . substr($data, 11, 5) . ':00';
+	}
 	
 	//Egy cikk beszúrása
 	public function article_insert($id_data)
@@ -34,7 +40,7 @@ class Admin_model extends Base_Model {
 			'category_id'		=> $this->input->post('category'),
 			'subcategory_id'	=> $this->input->post('subcategory'),
 			'published'			=> $this->zero_if_needed($this->input->post('published')),
-			'pub_time'			=> $this->input->post('pub_time'),
+			'pub_time'			=> $this->refactor_pubtime($this->input->post('pub_time')),
 			'mainpage'			=> $this->zero_if_needed($this->input->post('mainpage')),
 			'comment'			=> $this->zero_if_needed($this->input->post('comment')),
 			'login'				=> $this->zero_if_needed($this->input->post('login')),
@@ -64,7 +70,7 @@ class Admin_model extends Base_Model {
 				'category_id'		=> $this->input->post('category'),
 				'subcategory_id'	=> $this->input->post('subcategory'),
 				'published'			=> $this->zero_if_needed($this->input->post('published')),
-				'pub_time'			=> $this->input->post('pub_time'),
+				'pub_time'			=> $this->refactor_pubtime($this->input->post('pub_time')),
 				'mainpage'			=> $this->zero_if_needed($this->input->post('mainpage')),
 				'comment'			=> $this->zero_if_needed($this->input->post('comment')),
 				'login'				=> $this->zero_if_needed($this->input->post('login')),
