@@ -578,7 +578,11 @@ class Admin_model extends Base_Model {
 	public function get_metas_by_type($type)
 	{
 		$this->db->select('id, name')->from('metavalue')->where('type', $type);
-		$this->db->order_by('name');
+		if ($type == 4) { // kiadás éve
+			$this->db->order_by('name', 'desc');
+		} else {
+			$this->db->order_by('name');
+		}
 		$query = $query = $this->db->get();
 		return $query->result_array();
 	}
