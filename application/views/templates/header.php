@@ -61,8 +61,8 @@
   </div>
 
   <div class="navbar-links">
-    <ul class="nav">
-      <?php if($logged_in): ?> 
+    <?php if($logged_in): ?> 
+      <ul class="nav">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Adminisztráció <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -84,8 +84,8 @@
             <li><a href="<?php echo site_url(array('users', 'logout')); ?>" role="button">Kilépés</a></li>
           </ul>
         </li>
-      <?php endif; ?>
-    </ul>
+      </ul>
+    <?php endif; ?>
 
     <?php foreach ($subcategories as $sc): ?>
       <a href="<?php echo site_url($sc['slug']); ?>"><p class="<?php echo $sc['slug']; ?>"><?php echo $sc['name']; ?></p></a>
@@ -95,11 +95,6 @@
       <?php foreach ($categories as $cat): ?>
       <a href="<?php echo site_url($cat['slug']); ?>"><p class="<?php echo $cat['slug']; ?>"><?php echo $cat['name']; ?></p></a>
       <?php endforeach; ?>
-      <div class="hidden-in-mobile">
-        <p class="divider"></p>
-        <a href="<?php echo site_url('impresszum'); ?>"><p>Impresszum</p></a>
-        <a href="<?php echo site_url('about'); ?>"><p>Rólunk</p></a>
-      </div>
     </div>
   </div>
 </nav>
