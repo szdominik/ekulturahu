@@ -8,7 +8,9 @@
 - a 'kiadás éve' típusú címke legyen fordítva (a legnagyobbtól a legkisebbig) rendezve
 - a cikkszöveg fogadjon el kézileg beillesztett iframe tageket
 - a keresési találatok teljes listája legyen kattintható, ne csak a szöveg
-- dátum mező adatbázisba töltésének könnyítése & fixálása
+- bugfix: dátum mező adatbázisba töltésének javítása
+- bugfix: cikk módosítás esetén, űrlap hiba után nem tűnik el a kép
+- jelszó generálás átállás default php password_hash-re (bcrypt)
 
 ## Változások 2017.07.14.
 

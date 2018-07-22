@@ -28,7 +28,7 @@ class Users extends Base {
 
 		$this->form_validation->set_rules('name', 'megjelenítendő név', 'trim');
 		$this->form_validation->set_rules('username', 'felhasználónév', 'trim|required|is_unique[users.username]');
-		$this->form_validation->set_rules('password', 'jelszó', 'trim|required|min_length[5]|matches[passconf]|sha1');
+		$this->form_validation->set_rules('password', 'jelszó', 'trim|required|min_length[5]|matches[passconf]');
 		$this->form_validation->set_rules('passconf', 'jelszó megerősítése', 'trim|required');
 		$this->form_validation->set_rules('email', 'e-mail cím', 'trim|required|valid_email|is_unique[users.email]');
 		$this->form_validation->set_rules('accept', 'feltételek', 'callback_must_check');
@@ -59,26 +59,18 @@ class Users extends Base {
 		$this->form_validation->set_rules('password', 'jelszó', 'trim|required'); //min_length[5]
 
 		if ($this->form_validation->run() === TRUE)
-		{		
-			//van-e ilyen felhasználó, ha igen, léptessük be (a jelszó sha1-gyel vagy md5-tel kódolva)
-			$result = $this->user_model->login($this->input->post('username'),sha1($this->input->post('password')));
+		{
+			//van-e ilyen felhasználó, ha igen, léptessük be
+			$result = $this->user_model->login($this->input->post('username'), $this->input->post('password'));
 			
 			if($result === TRUE) //ha minden rendben, mehet vissza az utoljára látogatott oldalra
 			{
 				redirect($this->input->post('current_url'));
 			}
-			else //új próba md5-tel
+			else
 			{
-				$result = $this->user_model->login($this->input->post('username'),md5($this->input->post('password')));
-				if($result === TRUE)
-				{
-					redirect($this->input->post('current_url'));
-				}
-				else //baj van: nem jó a felhasználó
-				{
-					$data['wrong_user'] = FALSE;
-					$this->show('users/login', $hdata, $data);
-				}
+				$data['wrong_user'] = FALSE;
+				$this->show('users/login', $hdata, $data);
 			}
 		}
 		else
@@ -105,7 +97,7 @@ class Users extends Base {
 		
 		$this->form_validation->set_rules('name', 'megjelenítendő név', 'trim');
 		$this->form_validation->set_rules('username', 'felhasználónév', 'trim|callback_username_unique[username]');
-		$this->form_validation->set_rules('password', 'jelszó', 'trim|matches[passconf]|sha1'); //min_length[5]|
+		$this->form_validation->set_rules('password', 'jelszó', 'trim|matches[passconf]'); //min_length[5]|
 		$this->form_validation->set_rules('passconf', 'jelszó megerősítése', 'trim');
 		$this->form_validation->set_rules('email', 'e-mail cím', 'trim|valid_email|callback_email_unique[email]');
 

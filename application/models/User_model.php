@@ -22,7 +22,7 @@ class User_model extends Base_Model {
 		$data = array(
 			'name'		=> $this->input->post('name'),
 			'username'	=> $this->input->post('username'),
-			'password'	=> $this->input->post('password'),
+			'password'	=> password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 			'email'		=> $this->input->post('email'),
 			'level'		=> 1
 		);
@@ -33,26 +33,25 @@ class User_model extends Base_Model {
 	//Egy felhasználó belépése (felhasználónév / jelszó alapján)
 	public function login($username, $password)
 	{
-		$this->db->where("username", $username);
-		$this->db->where("password", $password);
-
-		$query = $this->db->get("users");
+		$this->db->where('username', $username);
+		$this->db->limit(1);
+		$query = $this->db->get('users');
 		
-		if($query->num_rows() > 0) //ha van ilyen adatokkal felhasználó: beléptetjük
+		if($query->num_rows() > 0) //ha van ilyen adatokkal felhasználó: vizsgáljuk a jelszót
 		{
-			foreach($query->result() as $rows)
-			{
+			$data = $query->row_array();
+			if (password_verify($password, $data['password']) || hash_equals($data['password'], md5($password))) {
 				$login = array(
-					'id'		=> $rows->id,
-					'name'		=> $rows->name,
-					'username'	=> $rows->username,
-					'level'		=> $rows->level,
-					'email'		=> $rows->email,
+					'id'		=> $data['id'],
+					'name'		=> $data['name'],
+					'username'	=> $data['username'],
+					'level'		=> $data['level'],
+					'email'		=> $data['email'],
 					'logged_in'	=> TRUE
 				);
+				$this->session->set_userdata($login); //munkamenetbe mentés
+				return TRUE;
 			}
-			$this->session->set_userdata($login); //munkamenetbe mentés
-			return TRUE;
 		}
 		return FALSE;
 	}
@@ -69,7 +68,7 @@ class User_model extends Base_Model {
 		$this->session->set_userdata($data); //ezt át is vezetjük a munkamenetbe
 		if ($this->input->post('password') != '')
 		{
-			$data['password'] = $this->input->post('password');
+			$data['password'] = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 		}
 
 		$this->db->where('id', $id);
