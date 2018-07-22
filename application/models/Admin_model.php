@@ -16,6 +16,14 @@ class Admin_model extends Base_Model {
 			return 0;
 		return $data;
 	}
+
+	private function refactor_body($data)
+	{
+		if (strpos($data, '&lt;iframe') !== FALSE) {
+			return str_replace(array('&lt;', '&gt;'), array('<', '>'), $data);
+		}
+		return $data;
+	}
 	
 	//Egy cikk beszúrása
 	public function article_insert($id_data)
@@ -38,7 +46,7 @@ class Admin_model extends Base_Model {
 			'forgatokonyviro'	=> $this->input->post('forgatokonyviro'),
 			'operator'			=> $this->input->post('operator'),
 			'producer'			=> $this->input->post('producer'),
-			'body'				=> $this->input->post('body'),
+			'body'				=> $this->refactor_body($this->input->post('body')),
 			'image_horizontal'	=> $this->zero_if_needed($this->input->post('image_horizontal')),
 			'image_path'		=> $id_data['image_path'],
 		);
@@ -68,7 +76,7 @@ class Admin_model extends Base_Model {
 				'forgatokonyviro'	=> $this->input->post('forgatokonyviro'),
 				'operator'			=> $this->input->post('operator'),
 				'producer'			=> $this->input->post('producer'),
-				'body'				=> $this->input->post('body'),
+				'body'				=> $this->refactor_body($this->input->post('body')),
 				'image_horizontal'	=> $this->zero_if_needed($this->input->post('image_horizontal')),
 				'image_path'		=> $id_data['image_path'],
 			);
