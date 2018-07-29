@@ -11,6 +11,7 @@
 - bugfix: dátum mező adatbázisba töltésének javítása
 - bugfix: cikk módosítás esetén, űrlap hiba után nem tűnik el a kép
 - jelszó generálás átállás default php password_hash-re (bcrypt)
+- 'Hozzászólások kezelése' menüpont kivétele a menüből
 
 ## Változások 2017.07.14.
 

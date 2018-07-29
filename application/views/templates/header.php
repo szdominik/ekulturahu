@@ -77,10 +77,9 @@
                   <li><a href="<?php echo site_url(array('admin', 'user_list')); ?>">Felhasználók kezelése</a></li>
                   <li><a href="<?php echo site_url(array('admin', 'category_list')); ?>">Kategóriák kezelése</a></li>
                 <?php endif; ?>
+              <li class="divider"></li>
               <?php endif; ?>
             <?php endif; ?>
-            <li><a href="<?php echo site_url(array('admin', 'comment_list')); ?>">Hozzászólások kezelése</a></li>
-            <li class="divider"></li>
             <li><a href="<?php echo site_url(array('users', 'logout')); ?>" role="button">Kilépés</a></li>
           </ul>
         </li>
