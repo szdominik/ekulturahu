@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Változások 2017.07.29.
+
+- 'Hozzászólások kezelése' menüpont kivétele a menüből
+- bugfix: RSS-ből a `&` jelek escapelése
+
 ## Változások 2017.07.22.
 
 - 'kapcsolódó tartalmak' térköz fixálás & stílus hozzáadása a címsorhoz alapból
@@ -11,7 +16,6 @@
 - bugfix: dátum mező adatbázisba töltésének javítása
 - bugfix: cikk módosítás esetén, űrlap hiba után nem tűnik el a kép
 - jelszó generálás átállás default php password_hash-re (bcrypt)
-- 'Hozzászólások kezelése' menüpont kivétele a menüből
 
 ## Változások 2017.07.14.
 
@@ -117,7 +121,7 @@
 
 - cikkek migrálásának előkészítése, SQL szkriptek írása
 - a kedvezményes vásárlás a '0'-t tartalmazó mező esetén sem jelenik meg
-- cikkek megjelenítő listájában a lead min(<br />, </p>) hosszúságú lett
+- cikkek megjelenítő listájában a lead min(`<br />`, `</p>`) hosszúságú lett
 - meták migrálásának előkészítése, SQL szkriptek írása
 - kategóriák kezeléséből kivételre került a cikkek-címkék számlálása
 
@@ -143,32 +147,32 @@
 
 ## Szakdolgozat leadás után
 
-teljes -> megjelenítendő név
-naptár helyes ékezet
-publikálás szerkesztők <
-fekvő kép
-cikk hozzászólás: név megjelenik
-cikkmegjelenítés meta alapján: különböző típusok működnek
-menüben alkategória szerinti keresés (update: a link miatt változott)
-keresés bővítés / legördülő lista
-keresésnél először a title egyezés
-kapcsolódó tartalmak
-CodeIgniter 2.x.x -> 3.0.6
-PRG pattern: login, logout, comment, search
-hozzászólásnál link törlésre/szerkesztésre
-login: redirect
-pontosabb, oldalanként működő pagination
-új link a cikkeknek (/2015/04/18/china-mieville-patkanykiraly)
-routing egyszerűsítés, felesleges linkrészek eltüntetése (meta, search)
-category eltüntetése (linkek, kiírások)
-statisztika - v0.9 (adatbázis mentés, slugok alapján)
-WYSIWYG editor (TinyMCE) testreszabása, szövegközbeni képfeltöltéssel
-feltöltött képek átnevezése (img_N), átméretezése
-head egyszerűsítése (és scripts template bevezetése)
-cikkszerzőre való keresés
+- teljes -> megjelenítendő név
+- naptár helyes ékezet
+- publikálás szerkesztők <
+- fekvő kép
+- cikk hozzászólás: név megjelenik
+- cikkmegjelenítés meta alapján: különböző típusok működnek
+- menüben alkategória szerinti keresés (update: a link miatt változott)
+- keresés bővítés / legördülő lista
+- keresésnél először a title egyezés
+- kapcsolódó tartalmak
+- CodeIgniter 2.x.x -> 3.0.6
+- PRG pattern: login, logout, comment, search
+- hozzászólásnál link törlésre/szerkesztésre
+- login: redirect
+- pontosabb, oldalanként működő pagination
+- új link a cikkeknek (/2015/04/18/china-mieville-patkanykiraly)
+- routing egyszerűsítés, felesleges linkrészek eltüntetése (meta, search)
+- category eltüntetése (linkek, kiírások)
+- statisztika - v0.9 (adatbázis mentés, slugok alapján)
+- WYSIWYG editor (TinyMCE) testreszabása, szövegközbeni képfeltöltéssel
+- feltöltött képek átnevezése (img_N), átméretezése
+- head egyszerűsítése (és scripts template bevezetése)
+- cikkszerzőre való keresés
 
 ### adatbázis módosítások
 
-articles: +images_horizontal
-statistics tábla
-minden utf8_hungarian_ci
+- articles: +images_horizontal
+- statistics tábla
+- minden utf8_hungarian_ci

@@ -246,8 +246,9 @@ class Articles extends Base {
 	{
 		$data['articles'] = $this->article_model->get_articles_by_category(0, 20, 'osszes');
 		foreach ($data['articles'] as &$ac) {
+			$ac['title'] = $this->escape_characters($ac['title']);
 			$ac['link'] = $this->generate_link($ac);
-			$ac['short_body'] = $this->generate_short_body($ac['body']);
+			$ac['short_body'] = $this->escape_characters($this->generate_short_body($ac['body']));
 			$ac['pub_time'] = date("D, d M Y H:i:s O", strtotime($ac['pub_time']));
 		}
 		ob_clean();
@@ -255,5 +256,11 @@ class Articles extends Base {
 		$this->output
 			->set_header("Content-Type: application/rss+xml; charset=UTF-8")
 			->set_output($view);
+	}
+
+	// Karakterek escapelése
+	private function escape_characters($body)
+	{
+		return str_replace(array('&'), array('&amp;'), $body);
 	}
 }
