@@ -57,10 +57,13 @@ class Base extends CI_Controller {
 	}
 	
 	//Főoldal megjelenítése.
-	public function home()
+	public function home($from = 0)
 	{
 		$hdata['title'] = 'home';
-		$data['articles'] = $this->customize_articles($this->base_model->get_articles_for_mainpage());
+		$data['limit'] = 16;
+		$data['from'] = $from;
+		$data['articles'] = $this->customize_articles($this->base_model->get_articles_for_mainpage($from, $data['limit']));
+		$data['cnt'] = $this->base_model->get_articles_count_for_mainpage();
 		$this->show('pages/home', $hdata, $data);
 	}
 

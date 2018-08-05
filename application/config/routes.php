@@ -49,8 +49,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-//$route['404_override'] = 'pages/home'; //ez vajon hogy működik?
-$route['default_controller'] = 'pages/home';
+//$route['404_override'] = 'base/home'; //ez vajon hogy működik?
+$route['default_controller'] = 'base/home';
 //$route['test'] = 'pages/test';
 $route['rss'] = 'articles/rss';
 $route['search/(.+)']['get'] = 'articles/search/$1';
@@ -65,6 +65,7 @@ $route['(:num)/(:num)/(:num)/(.+)']['get'] = 'articles/view/$4';
 $route['articles/get_(.+)/(.+)'] = 'articles/get_$1/$2';
 $route['articles/(.+)'] = 'articles/view/$1'; //joker-route
 $route['(.+)/(.+)/(.+)/(.+)/(.+)'] = 'articles/view/$5';
+$route['(:num)'] = 'base/home/$1';
 $route['(.+)'] = 'articles/category_list/$1';
 
 /* End of file routes.php */

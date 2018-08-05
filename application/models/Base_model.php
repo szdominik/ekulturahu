@@ -114,8 +114,8 @@ class Base_model extends CI_Model {
 		return $query->row_array();
 	}*/
 	
-	//Főoldalra kiteendő cikkek adatai
-	public function get_articles_for_mainpage()
+	// Főoldalra kiteendő cikkek adatai
+	public function get_articles_for_mainpage($from, $limit)
 	{
 		$this->db->select('articles.*, category.name AS cat_name, category.slug AS cat_slug, '
 					. 'subcategory.name AS subcat_name, subcategory.slug AS subcat_slug, users.name AS user_name');
@@ -125,13 +125,23 @@ class Base_model extends CI_Model {
 		$this->db->join('users', 'users.id = articles.user_id', 'left');
 		$this->db->where('articles.published', 1);
 		$this->db->where('articles.mainpage', 1);
-		$this->db->where('articles.image_path != ', NULL);
 		$this->db->where('articles.pub_time <=', $this->datetimeNow());
 		$this->db->order_by('articles.pub_time', 'DESC');
-		$this->db->limit(16);
+		$this->db->limit($limit, $from);
 		
 		$query = $this->db->get();
 		return $query->result_array();
+	}
+
+	// Főoldalra kiteendő cikkek számossága
+	public function get_articles_count_for_mainpage()
+	{
+		$this->db->from('articles');
+		$this->db->where('articles.published', 1);
+		$this->db->where('articles.mainpage', 1);
+		$this->db->where('articles.pub_time <=', $this->datetimeNow());
+		
+		return $this->db->count_all_results();
 	}
 
 	//A cikkekhez kiválogatja a hozzájuk tartozó meta-kategóriát
