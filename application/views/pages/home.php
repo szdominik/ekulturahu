@@ -27,7 +27,9 @@
 <nav>
 	<div class="article-list-pager">
     <?php
-      $link = site_url();
+      if(!isset($link)) {
+        $link = substr(site_url(), 0, -1);
+      }
 			$db = ceil($cnt / $limit);
 			$now = ceil($from / $limit) + 1;
 			$start = $now - 3;
@@ -39,9 +41,9 @@
         $elem = '<a class="btn-pager btn-disabled';
       } else {
         if ($prev < 0) // 0 alá ne menjünk a lapozással
-				  $elem = '<a href="' . site_url();
+				  $elem = '<a href="' . $link;
         else
-          $elem = '<a href="' . site_url($prev);
+          $elem = '<a href="' . $link . '/' . $prev;
         $elem .=  '" class="btn-pager';
       }
 			echo $elem . '">Előző</a></button>';
@@ -55,7 +57,7 @@
 					if($i === $now)
 						echo '<span class="pager-link">' . $i . '</span>';
 					else
-					  echo '<a class="pager-link" href="' . site_url(($i - 1) * $limit) . '">' . $i . '</a>';
+					  echo '<a class="pager-link" href="' . $link . '/' . (($i - 1) * $limit) . '">' . $i . '</a>';
 				}
       }
       if($db > $end) {
@@ -64,9 +66,9 @@
 			echo '</div>';
 
 			if($from+$limit < $cnt) //az összes elemszámot még nem érjük el
-				echo '<a class="btn-pager" href="' . site_url($from + $limit) . '">';
+				echo '<a class="btn-pager" href="' . $link . '/' . ($from + $limit) . '">';
 			else // az összes elemszám fölé ne menjünk
-				echo '<a class="btn-pager btn-disabled href="' . site_url($from) . '">';
+				echo '<a class="btn-pager btn-disabled href="' . $link . '/' . $from . '">';
 			echo 'Következő</a>';
 		?>
 	</div>

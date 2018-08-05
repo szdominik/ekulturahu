@@ -5,7 +5,7 @@
 - logó csere .svg-re
 - a cikklistákban a címek is linkek
 - cikk törlése gomb eltüntetése 4-es hozzáférési szint alatt
-- főoldali lapozás elkészítése
+- főoldali lapozás elkészítése (egyben a cikklista mostanatól tartalmazza a home.php-t)
 
 ## Változások 2017.07.29.
 
