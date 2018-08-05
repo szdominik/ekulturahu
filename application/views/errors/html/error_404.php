@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>404 Page Not Found</title>
+	<title>A keresett oldal nem található</title>
   <meta name="robots" content="noindex" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <style type="text/css">
@@ -21,8 +21,8 @@
     }
 
     img {
-      margin: 20px 0 20px 20px;
-      width: 200px;
+      margin: 4px 0 20px 20px;
+      width: 230px;
     }
 
     h1 {
@@ -37,7 +37,7 @@
 <body>
   <div class="header">
     <a href="<?php echo site_url(); ?>">
-      <img src="<?php echo base_url('assets/icons/ekultura.png');?>" alt="ekultura.hu">
+      <img src="<?php echo base_url('assets/icons/ekultura_logo.svg');?>" alt="ekultura.hu">
     </a>
   </div>
   <h1>A keresett oldal sajnos nem található.</h1>

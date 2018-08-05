@@ -49,8 +49,8 @@
         <img src="<?php echo base_url('assets/icons/feed.svg');?>" alt="rss feed">
       </a>
     </div>
-    <a href="<?php echo site_url(); ?>">
-      <img src="<?php echo base_url('assets/icons/ekultura.png');?>" alt="ekultura.hu">
+    <a href="<?php echo site_url(); ?>" class="main-logo">
+      <img src="<?php echo base_url('assets/icons/ekultura_logo.svg');?>" alt="ekultura.hu">
     </a>
     <div class="menu-buttons">
       <button type="button" class="hamburger-btn">

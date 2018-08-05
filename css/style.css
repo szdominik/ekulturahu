@@ -196,10 +196,10 @@ button.rotate {
   margin: 0 55px;
 }
 
-.header > .header-main > a > img {
+.header > .header-main > .main-logo {
   position: relative;
-  left: -46px;
-  width: 200px;
+  left: -40px;
+  width: 250px;
 }
 
 .header .header-main .menu-buttons {

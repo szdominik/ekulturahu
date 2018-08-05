@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Változások 2017.08.05.
+
+- logó csere .svg-re
+
 ## Változások 2017.07.29.
 
 - 'Hozzászólások kezelése' menüpont kivétele a menüből
