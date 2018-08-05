@@ -631,7 +631,7 @@ footer .navbar-nav > li > a:focus {
     margin: 0 25px;
   }
 
-  .header > .header-main > a > img {
+  .header > .header-main > .main-logo {
     position: inherit;
     left: unset;
     width: 190px;
