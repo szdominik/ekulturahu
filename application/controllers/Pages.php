@@ -13,9 +13,9 @@ class Pages extends Base {
 	//random függvény tesztelési célokból
 	public function test()
 	{
-		//$this->pages_model->regi_linkek_szkript();
-		//$this->pages_model->div_replace();
-		//$this->pages_model->cikkek_kepei_replace();
+		// $this->pages_model->regi_linkek_szkript();
+		// $this->pages_model->refactor_article_body();
+		// $this->pages_model->cikkek_kepei_replace();
 	}
 	
 	//Esménynaptár.

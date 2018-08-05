@@ -8,6 +8,7 @@
 - főoldali lapozás elkészítése (egyben a cikklista mostanatól tartalmazza a home.php-t)
 - footer bootstrapmentesítése (padding-bug fix)
 - cikklisták / lapozók / footer közötti hely pontosítása
+- sorkizárt szövegek eltörlése az adatbázisból szkript
 
 ## Változások 2017.07.29.
 

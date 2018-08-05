@@ -65,7 +65,7 @@ $DEFAULT_IMAGE_PATH = base_url('assets/icons/default.jpg'); ?>
         echo '<a class="category-label '. $article['cat_slug'] .'" href="' . site_url($article['cat_slug']) . '">' . $article['cat_name'] . '</a>';
         echo '<a class="category-label '. $article['subcat_slug'] .'" href="' . site_url($article['subcat_slug']) . '">' . $article['subcat_name'] . '</a>';
         echo '<h1>' . $article['title'] . '</h1>';
-        echo '<h3>írta: ' . $article['user_link'] . ' | ' . $article['pub_time'] . '</h3>';
+        echo '<h3>Írta: ' . $article['user_link'] . ' | ' . $article['pub_time'] . '</h3>';
       ?>
       <div class="article-body">
       <?php

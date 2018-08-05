@@ -253,20 +253,25 @@ class Base_model extends CI_Model {
 		echo "kesz!";
 	}
 
-	public function div_replace() {
-    	$this->db->select('id, title, body');
+	public function refactor_article_body() {
+		$this->db->select('id, title, body');
 		$cikk = $this->db->get('articles');
 
 		foreach($cikk->result_array() as $a)
 		{
-			$newbody = str_replace(array('<div', 'div>'), array('<p', 'p>'), $a['body']);
+			$newbody = str_replace(
+				array('<div', 'div>', ' class="western"', ' align="justify"', ' align="JUSTIFY"', ' style="text-align: justify;"', ' style="text-align: justify"'),
+				array('<p', 'p>', '', '', '', '', ''),
+				$a['body']
+			);
 
-			if(strpos($a['body'], '<div') !== FALSE) {
+			if($newbody !== $a['body']) {
 				// echo $a['id'] . " - " . $a['title'] . "\n";
 				$data = array('body' => $newbody);
 				$this->db->where('id', $a['id']);
 				$this->db->update('articles', $data);
 			}
 		}
+		echo 'kesz!';
 	}
 }
