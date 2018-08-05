@@ -5,9 +5,9 @@
   }
 ?>
 
-<footer class="navbar">
-  <ul class="nav navbar-nav">
-    <div class="navbar-text">2017 &copy; ekultura.hu</div>
+<footer>
+  <ul>
+    <div class="copyright-text"><span id="date"></span> &copy; ekultura.hu</div>
     <li><a href="<?php echo site_url('calendar'); ?>">Napi évfordulók</a></li>
     <?php foreach ($statics as $st): ?>
       <li><a href="<?php echo site_url($st['path']); ?>">
@@ -79,6 +79,7 @@
 </div>
 
 <script>
+	document.getElementById('date').innerHTML = new Date().getFullYear();
   $('#search-field').autocomplete({
     delay: 1000,
     minLength: 3,
