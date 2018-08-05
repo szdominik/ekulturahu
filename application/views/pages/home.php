@@ -10,7 +10,7 @@
           </div>
           <div class="article-text-section">
             <h4>Írta: <?php echo $ac['user_link'] . ', ' . $ac['pub_time']; ?></h4>
-            <h2><?php echo $ac['title']; ?></h2>
+            <h2><a href="<?php echo $ac['link']; ?>"><?php echo $ac['title']; ?></a></h2>
             <p><?php echo $ac['short_body']; ?></p>
           </div>
           <div class="article-category">

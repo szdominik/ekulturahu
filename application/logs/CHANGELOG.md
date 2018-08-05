@@ -3,6 +3,7 @@
 ## Változások 2017.08.05.
 
 - logó csere .svg-re
+- a cikklistákban a címek is linkek
 
 ## Változások 2017.07.29.
 
