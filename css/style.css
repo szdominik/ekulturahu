@@ -289,7 +289,7 @@ button.rotate {
 }
 
 .article-list {
-  margin: 30px auto 20px auto; /* 20px eltolodas &#65279; miatt */
+  margin: 30px auto 0 auto;
   max-width: 1300px;
   display: block;
   text-align: center;
@@ -380,6 +380,10 @@ button.rotate {
   border-radius: 20px;
   text-transform: uppercase;
   font-weight: bold;
+}
+
+.article-list-pager .btn-pager:first-of-type {
+  margin-top: 0;
 }
 
 .article {
