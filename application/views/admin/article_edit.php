@@ -267,9 +267,11 @@
 			<button type="submit" value="save" name="save" class="btn btn-default">
 				Mentés
 			</button>
-			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
-				Cikk törlése
-			</button>
+			<?php if($this->session->userdata('level') >= 4) {
+				echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">';
+				echo 'Cikk törlése';
+				echo '</button>';
+			} ?>
 			<a class="btn btn-primary" target="_blank" href="<?php echo $article['link']; ?>" role="button">
 				Előnézet
 			</a>

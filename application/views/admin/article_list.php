@@ -75,7 +75,7 @@
 				<th>Cikkíró</th>
 				<th>Publikálás dátuma</th>
 				<th>Szerkesztés</th>
-				<th>Törlés</th>
+				<?php if($this->session->userdata('level') >= 4) { echo '<th>Törlés</th>'; }?>
 			</tr>
 		</thead>
 		<tbody>
@@ -85,7 +85,11 @@
 					<td><?php echo $ac['user_link']; ?></td>
 					<td><?php echo $ac['pub_time']; ?></td>
 				    <td><a href="<?php echo site_url(array('admin', 'article_edit', $ac['id'])); ?>" class="btn btn-default">Szerkesztés</a></td>
-					<td><button type="button" class="deleteArticle btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-delhref="<?php echo site_url(array('admin', 'article_delete', $ac['id'])); ?>">Törlés</button></td>
+					<?php if($this->session->userdata('level') >= 4) {
+						echo '<td><button type="button" class="deleteArticle btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-delhref="'
+							. site_url(array('admin', 'article_delete', $ac['id']))
+							. '">Törlés</button></td>';
+					} ?>
 				</tr>
 			<?php endforeach ?>
 		</tbody>
