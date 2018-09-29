@@ -3,6 +3,9 @@
 ## Változások 2018.09.29.
 
 - a menü mobilon teljes képernyő szélességű
+- eltűnt a óra-perc a cikkadatok közül
+- a listanézetekben eltűnt az "Írta:" megjelölés
+- a listanézetek képei scale effektet kaptak
 
 ## Változások 2018.08.05.
 

@@ -345,6 +345,11 @@ button.rotate {
 .article-box .article-img {
   min-width: 100%;
   min-height: 100%;
+  transition: all linear 0.4s;
+}
+
+.article-box .article-img:hover {
+  transform: scale(1.05);
 }
 
 .article-box .img-container {

@@ -142,7 +142,7 @@ class Base extends CI_Controller {
 	private function modify_date($date) 
 	{
 		return substr($date, 0, 4) . '. ' . substr($date, 5, 2) . '. ' .
-				substr($date, 8, 2) . '. ' . substr($date, 11, 5);
+				substr($date, 8, 2) . '.';
 	}
 
 	private function format_username($article)

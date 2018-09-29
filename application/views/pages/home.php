@@ -9,7 +9,7 @@
             <a class="category-label <?php echo $ac['subcat_slug'];?>" href="<?php echo site_url($ac['subcat_slug']);?>"><?php echo $ac['subcat_name'];?></a>
           </div>
           <div class="article-text-section">
-            <h4>Írta: <?php echo $ac['user_link'] . ', ' . $ac['pub_time']; ?></h4>
+            <h4><?php echo $ac['user_link'] . ' | ' . $ac['pub_time']; ?></h4>
             <h2><a href="<?php echo $ac['link']; ?>"><?php echo $ac['title']; ?></a></h2>
             <p><?php echo $ac['short_body']; ?></p>
           </div>
