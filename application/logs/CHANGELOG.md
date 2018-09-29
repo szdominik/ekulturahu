@@ -8,6 +8,7 @@
 - a listanézetek képei scale effektet kaptak
 - a kapcsolódó tartalmaknál a kép is legyen link
 - menü ikon svg-k helyett animált html-elemek
+- Google Analytics hozzáadása a rendszerhez 
 
 ## Változások 2018.08.05.
 
