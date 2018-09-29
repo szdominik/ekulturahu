@@ -7,6 +7,7 @@
 - a listanézetekben eltűnt az "Írta:" megjelölés
 - a listanézetek képei scale effektet kaptak
 - a kapcsolódó tartalmaknál a kép is legyen link
+- menü ikon svg-k helyett animált html-elemek
 
 ## Változások 2018.08.05.
 

@@ -53,9 +53,12 @@
       <img src="<?php echo base_url('assets/icons/ekultura_logo.svg');?>" alt="ekultura.hu">
     </a>
     <div class="menu-buttons">
-      <button type="button" class="hamburger-btn">
-        <img src="<?php echo base_url('assets/icons/hamburger.svg');?>" alt="hamburger icon">
-      </button>
+      <div id="nav-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <span id="menu-text">Menü</span>
     </div>
   </div>

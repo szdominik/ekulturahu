@@ -94,33 +94,22 @@
       .appendTo(ul);
   };
 
-  $('.menu-buttons').on('click', () => {
-    const isClose = $('#menu-text').html() === 'Bezár';
-    $('#menu-text').html(isClose ? 'Menü' : 'Bezár');
-    const imgSelector = $('.menu-buttons button img');
-    imgSelector.attr('src', isClose
-      ? imgSelector.attr('src').replace('hamburger-x', 'hamburger')
-      : imgSelector.attr('src').replace('hamburger', 'hamburger-x')
-    );
-    if (isClose) {
-      $('.header .navbar-links').removeClass('show-menu');
-      $('#content-mask').removeClass('content-hidden');
-			$('.header').removeClass('header-fixed');
-			['.search-container', '.body-content', 'footer.navbar'].forEach(selector => {
-				$(selector).removeClass('content-fixed');
-			});
-    } else {
-      $('.header .navbar-links').addClass('show-menu');
-      $('#content-mask').addClass('content-hidden');
-			$('.header').addClass('header-fixed');
-			['.search-container', '.body-content', 'footer.navbar'].forEach(selector => {
-				$(selector).addClass('content-fixed');
-			});
+	$('.menu-buttons').click(() => {
+		$('#nav-icon').toggleClass('open');
+		const inCloseState = $('#menu-text').html() === 'Bezár';
+    $('#menu-text').html(inCloseState ? 'Menü' : 'Bezár');
+		$('.header .navbar-links').toggleClass('show-menu');
+		$('#content-mask').toggleClass('content-hidden');
+		$('.header').toggleClass('header-fixed');
+		['.search-container', '.body-content', 'footer.navbar'].forEach(selector => {
+			$(selector).toggleClass('content-fixed');
+		});
+		if (!inCloseState) {
 			$('#content-mask').one('click', () => {
 				$('.menu-buttons').click();
 			});
-    }
-  });
+		}
+	});
 </script>
 </body>
 </html>
