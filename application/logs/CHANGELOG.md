@@ -1,6 +1,10 @@
 # CHANGELOG
 
-## Változások 2017.08.05.
+## Változások 2018.09.29.
+
+- a menü mobilon teljes képernyő szélességű
+
+## Változások 2018.08.05.
 
 - logó csere .svg-re
 - a cikklistákban a címek is linkek
@@ -10,12 +14,12 @@
 - cikklisták / lapozók / footer közötti hely pontosítása
 - sorkizárt szövegek eltörlése az adatbázisból szkript
 
-## Változások 2017.07.29.
+## Változások 2018.07.29.
 
 - 'Hozzászólások kezelése' menüpont kivétele a menüből
 - bugfix: RSS-ből a `&` jelek escapelése
 
-## Változások 2017.07.22.
+## Változások 2018.07.22.
 
 - 'kapcsolódó tartalmak' térköz fixálás & stílus hozzáadása a címsorhoz alapból
 - a cikkekbeli képek legyenek reszponzívak
@@ -27,7 +31,7 @@
 - bugfix: cikk módosítás esetén, űrlap hiba után nem tűnik el a kép
 - jelszó generálás átállás default php password_hash-re (bcrypt)
 
-## Változások 2017.07.14.
+## Változások 2018.07.14.
 
 - stílusbeli hibajavítások (kategória címkék a listák dobozaiban)
 - session library automatikus betöltésének megszüntetése, ehhez kapcsolódó refaktorálás

@@ -662,6 +662,10 @@ footer ul > li > a:focus {
     padding-left: 25px;
   }
 
+  .header .navbar-links.show-menu {
+    width: 100%;
+  }
+
   .search-container {
     position: relative;
     top: 60px;
