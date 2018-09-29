@@ -89,10 +89,12 @@ $DEFAULT_IMAGE_PATH = base_url('assets/icons/default.jpg'); ?>
   let metas = {};
   const other_article_box = article => `
     <div class="other-articles-box">
-      <div class="img-container" align="left">
-        <img src="<?php echo base_url('uploads');?>/${article.image_path}" onerror="this.src = '<?php echo $DEFAULT_IMAGE_PATH;?>';">
-      </div>
-      <a href="${article.link}">${article.title}</a>
+      <a href="${article.link}">
+        <div class="img-container" align="left">
+          <img src="<?php echo base_url('uploads');?>/${article.image_path}" onerror="this.src = '<?php echo $DEFAULT_IMAGE_PATH;?>';">
+        </div>
+        ${article.title}
+      </a>
     </div>
   `;
   const arrow_back_text = '<span class="hidden-in-mobile">Előző</span>';

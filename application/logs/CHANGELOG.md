@@ -6,6 +6,7 @@
 - eltűnt a óra-perc a cikkadatok közül
 - a listanézetekben eltűnt az "Írta:" megjelölés
 - a listanézetek képei scale effektet kaptak
+- a kapcsolódó tartalmaknál a kép is legyen link
 
 ## Változások 2018.08.05.
 
