@@ -7,6 +7,7 @@
 - meta és meta:og tagek újragondolása, bővítése
 - 301-es redirectek bevezetése az elrontott, de megtalálható URL-ekhez
 - átírányítások a 3.0 URL-jei alapján - 410 Gone, ha már nem támogatjuk
+- error page-ek összevonása egy fájl alá
 
 ## Változások 2018.09.29.
 
