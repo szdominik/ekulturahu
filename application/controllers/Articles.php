@@ -205,7 +205,7 @@ class Articles extends Base {
 			$data['article'] = $this->customize_one_article($data['article']);
 			if($comment_success != -1)
 				$data['success'] = $comment_success;
-			$data['comments'] = $this->article_model->get_comments($data['article']['id']);
+			// $data['comments'] = $this->article_model->get_comments($data['article']['id']);
 			$data['metas'] = $this->article_model->get_metas_by_article($data['article']['id']);
 			$hdata['title'] = $data['article']['title'];
 			$hdata['type'] = 'article';
