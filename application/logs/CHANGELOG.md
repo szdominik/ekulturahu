@@ -5,6 +5,8 @@
 - legyenek a videók reszponzívak
 - újabb 'kapcsolódó tartalmak' térköz fixálás, nyilak átrendezése
 - meta és meta:og tagek újragondolása, bővítése
+- 301-es redirectek bevezetése az elrontott, de megtalálható URL-ekhez
+- átírányítások a 3.0 URL-jei alapján - 410 Gone, ha már nem támogatjuk
 
 ## Változások 2018.09.29.
 

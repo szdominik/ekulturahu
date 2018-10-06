@@ -27,7 +27,8 @@ class Articles extends Base {
 				$this->article_model->get_searched_data($data['search'], $data['limit'], $data['from'], $data['cnt'])
 			);
 
-			$this->show('articles/index', $hdata, $data);
+			$base_data['url'] = $this->generate_canonical_url(site_url(array('search', $filter)), $data['from']);
+			$this->show('articles/index', $hdata, $data, $base_data);
 		}
 		else
 		{
@@ -69,7 +70,8 @@ class Articles extends Base {
 				
 		$data['cnt'] = $this->article_model->get_articles_count_by_author($data['author']);
 		$hdata['title'] = $data['author'] . ' cikkei';
-		$this->show('articles/index', $hdata, $data);
+		$base_data['url'] = $this->generate_canonical_url(site_url(array('author', $name)), $data['from']);
+		$this->show('articles/index', $hdata, $data, $base_data);
 	}
 
 	//Metaadatok alapján történő cikkmegjelenítés.
@@ -109,14 +111,21 @@ class Articles extends Base {
 			
 			$data['cnt'] = $this->article_model->get_articles_by_meta_count($data['meta']['id']);
 		}
-		$this->show('articles/index', $hdata, $data);
+
+		$base_data['url'] = $this->generate_canonical_url(site_url(array('meta', $type_slug, $slug)), $data['from']);
+		$this->show('articles/index', $hdata, $data, $base_data);
 	}
        
 	//Egy kategória cikkeinek megjelenítése vagy statikus cikkmegjelenítés
 	public function category_list($slug, $from = 0)
 	{
+		if ($slug == 'minden') {
+			$slug = $from;
+			$from = 0;
+		}
 		$data['from'] = intval($from);
 		$data['limit'] = $GLOBALS['limit'];
+		$base_data['url'] = $this->generate_canonical_url(site_url(array($slug)), $data['from']);
 
 		$data['category'] = $this->article_model->get_categoryname_by_slug($slug);
 		if (count($data['category']) != 0)
@@ -133,7 +142,7 @@ class Articles extends Base {
 					
 			$data['cnt'] = $this->article_model->get_articles_count_by_category($slug);
 			$hdata['title'] = $data['category']['name'];
-			$this->show('articles/index', $hdata, $data);
+			$this->show('articles/index', $hdata, $data, $base_data);
 		}
 		else
 		{
@@ -151,11 +160,32 @@ class Articles extends Base {
 						
 				$data['cnt'] = $this->article_model->get_articles_count_by_subcategory($slug);
 				$hdata['title'] = $data['subcategory']['name'];
-				$this->show('articles/index', $hdata, $data);
+				$this->show('articles/index', $hdata, $data, $base_data);
 			}
 			else
 			{
-				$this->static_view($slug);
+				switch ($slug) {
+					case 'napi_evfordulok':
+						redirect('calendar', 'location', 301);
+						break;
+					case 'magunkrol':
+						redirect('about', 'location', 301);
+						break;
+					case 'kapcsolat':
+						redirect('contact', 'location', 301);
+						break;
+					case 'friss':
+					case 'kategoriak':
+					case 'ajanlott_szerzok':
+					case 'esemenynaptar':
+						$this->output->set_status_header('410');
+						ob_clean();
+						show_error($slug, 410);
+						break;
+					default:
+						$this->static_view($slug);
+						break;
+				}
 			}
 		}
 	}
@@ -190,7 +220,8 @@ class Articles extends Base {
 				}
 			}
 			$hdata['pub_time'] = substr(str_replace('. ', '-', $data['article']['pub_time']), 0, 10);
-			$this->show('articles/view', $hdata, $data);
+			$base_data['url'] = $data['article']['link'];
+			$this->show('articles/view', $hdata, $data, $base_data);
 		}
 	}
 	
@@ -246,7 +277,8 @@ class Articles extends Base {
 		else
 		{
 			$hdata['title'] = $data['page']['title'];
-			$this->show('articles/static_view', $hdata, $data);
+			$base_data['url'] = site_url(array($page));
+			$this->show('articles/static_view', $hdata, $data, $base_data);
 		}
 	}
 
@@ -271,5 +303,14 @@ class Articles extends Base {
 	private function escape_characters($body)
 	{
 		return str_replace(array('&'), array('&amp;'), $body);
+	}
+
+	// Kanonikus url generálás a megfelelő "from" értékkel
+	private function generate_canonical_url($base_url, $from) {
+		if ($from != 0) {
+			return $base_url . '/' . $from;
+		} else {
+			return $base_url;
+		}
 	}
 }
