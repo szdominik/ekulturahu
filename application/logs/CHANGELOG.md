@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Változások 2018.10.06.
+
+- legyenek a videók reszponzívak
+- újabb 'kapcsolódó tartalmak' térköz fixálás, nyilak átrendezése
+
 ## Változások 2018.09.29.
 
 - a menü mobilon teljes képernyő szélességű

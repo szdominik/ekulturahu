@@ -97,8 +97,8 @@ $DEFAULT_IMAGE_PATH = base_url('assets/icons/default.jpg'); ?>
       </a>
     </div>
   `;
-  const arrow_back_text = '<span class="hidden-in-mobile">Előző</span>';
-  const arrow_next_text = '<span class="hidden-in-mobile">Következő</span>';
+  const arrow_back_text = '<span>Előző</span>';
+  const arrow_next_text = '<span>Következő</span>';
   
   const meta_load = (meta_id, meta_name, type_id, meta_link) => {
     $.get(`<?php echo site_url(array('articles', 'get_other_articles_by_meta_id')); ?>/${meta_id}`, data => {
@@ -112,7 +112,7 @@ $DEFAULT_IMAGE_PATH = base_url('assets/icons/default.jpg'); ?>
         s += `<div class="btn-disabled"><button class="rotate next-icon m-r-5" />${arrow_back_text}</div>`;
       }
 
-      s += '<span>';
+      s += '<span class="other-articles-title">';
       const name_link = `<a href='${meta_link}'>${meta_name}</a>`;
       s += type_id === 1 ? `${name_link} további művei` : `${name_link} sorozat`;
       s += '</span>';

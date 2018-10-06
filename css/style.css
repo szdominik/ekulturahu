@@ -583,13 +583,12 @@ button.rotate {
   display: flex;
   height: 22px;
   padding-top: 5px;
-  padding-left: 26px;
   cursor: pointer;
   font-size: 15px;
   color: var(--brown-3);
 }
 
-.other-articles h3 span {
+.other-articles h3 .other-articles-title {
   margin: 0 auto;
 }
 
@@ -611,7 +610,11 @@ button.rotate {
   width: 270px;
   height: 125px;
   vertical-align: top;
-  margin: 0 10px 30px 10px;
+  margin: 0 10px 10px;
+}
+
+.other-articles-box ~ .other-articles-box {
+  margin-bottom: 30px;
 }
 
 .other-articles-box .img-container {
@@ -678,6 +681,10 @@ footer ul > li > a:focus {
 }
 
 @media only screen and (max-width: 768px) {
+  iframe {
+    width: 100%;
+  }
+
   .hidden-in-mobile {
     display: none;
   }
@@ -777,7 +784,28 @@ footer ul > li > a:focus {
 
   .other-articles-box {
     margin: 0;
-    margin-bottom: 30px;
+  }
+
+  .other-articles-box ~ .other-articles-box {
+    margin-bottom: 0;
+    margin-top: 30px;
+  }
+
+  .other-articles h3 {
+    flex-direction: column;
+    align-items: unset;
+  }
+
+  .other-articles h3 span {
+    margin: unset;
+  }
+  
+  .other-articles h3 div:nth-last-of-type(1) {
+    justify-content: flex-end;
+  }
+
+  .other-articles h3 .other-articles-title {
+    margin: 20px 0;
   }
 
   .btn-pager {
