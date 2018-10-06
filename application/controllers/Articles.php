@@ -181,6 +181,15 @@ class Articles extends Base {
 			$hdata['type'] = 'article';
 			$hdata['short_body'] = $data['article']['short_body'];
 			$hdata['image_path'] = $data['article']['image_path'];
+			$hdata['author'] = $data['article']['user_name'];
+			$hdata['metas'] = '';
+			for ($i = 0; $i < count($data['metas']); ++$i) {
+				$hdata['metas'] .= $data['metas'][$i]['meta_name'];
+				if ($i !== count($data['metas']) - 1) {
+					$hdata['metas'] .= ', ';
+				}
+			}
+			$hdata['pub_time'] = substr(str_replace('. ', '-', $data['article']['pub_time']), 0, 10);
 			$this->show('articles/view', $hdata, $data);
 		}
 	}

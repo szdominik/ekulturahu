@@ -5,21 +5,29 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="title" content="ekultura.hu">
-  <meta name="description" content="Online kulturális magazin - könyvek, filmek, zenék, színház.">
-  <meta name="keywords" content="ekultura, könyv, film, zene, koncert, színház, hallgatnivaló, olvasnivaló, látnivaló, beszámoló, interjú, ajánló, életrajz, hír">
-  <meta name="robots" content="index, follow">
   <?php if (isset($type) && $type === 'article'): ?>
+    <meta name="title" content="<?php echo $title; ?> - ekultura.hu">
+    <meta name="description" content="<?php echo $short_body; ?>">
+    <meta name="keywords" content="<?php echo $metas; ?>">
     <meta property="og:title" content="<?php echo $title; ?> - ekultura.hu" />
     <meta property="og:type" content="article" />
     <meta property="og:description" content="<?php echo $short_body; ?>" />
     <meta property="og:image" content="<?php echo base_url(array('uploads', $image_path)); ?>" />
-  <?php else: ?>
+    <meta property="article:author" content="<?php echo site_url(array('author', urlencode($author))); ?>" />
+    <meta property="article:publisher" content="https://www.facebook.com/ekultura.hu/" />
+    <meta property="article:published_time" content="<?php echo $pub_time; ?>" />
+    <?php else: ?>
+    <meta name="title" content="ekultura.hu">
+    <meta name="description" content="Online kulturális magazin - könyv, film, zene, színház.">
+    <meta name="keywords" content="ekultura.hu, ekultura, könyv, film, zene, koncert, színház, hallgatnivaló, olvasnivaló, látnivaló, beszámoló, interjú, ajánló, életrajz, hír">
     <meta property="og:title" content="Ekultura.hu" />
     <meta property="og:type" content="website" />
+    <meta property="og:description" content="Online kulturális magazin - könyv, film, zene, színház." />
     <meta property="og:image" content="<?php echo base_url('assets/icons/default.jpg'); ?>" />
   <?php endif; ?>
   <meta property="og:url" content="<?php echo current_url(); ?>" />
+  <meta property="og:locale" content="hu_HU" />
+  <meta property="og:site_name" content="Ekultura.hu" />
   <link rel="alternate" href="<?php echo site_url('rss');?>" title="ekultura.hu RSS feed" type="application/rss+xml" />
   <link type="text/css" href="<?php echo base_url('assets/bootstrap/css/bootstrap-cosmo.css');?>" rel="stylesheet">
   <link type="text/css" href="<?php echo base_url('css/style.css');?>" rel="stylesheet">

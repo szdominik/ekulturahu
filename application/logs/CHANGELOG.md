@@ -4,6 +4,7 @@
 
 - legyenek a videók reszponzívak
 - újabb 'kapcsolódó tartalmak' térköz fixálás, nyilak átrendezése
+- meta és meta:og tagek újragondolása, bővítése
 
 ## Változások 2018.09.29.
 
