@@ -77,6 +77,19 @@ class Articles extends Base {
 	//Metaadatok alapján történő cikkmegjelenítés.
 	public function meta($type_slug, $slug, $from = 0)
 	{
+		$legacy_map = array(
+			'szerzo-eloado-rendezo' => 'szerzo-rendezo',
+			'kiado' => 'kiado-forgalmazo',
+			'fordito-k' => 'fordito',
+			'szerkeszto-k' => 'szerkeszto',
+			'zene' => 'zeneszerzo',
+			'szereplok' => 'szereplo',
+		);
+		
+		if (array_key_exists($type_slug, $legacy_map)) {
+			$type_slug = $legacy_map[$type_slug];
+		}
+
 		$data['limit'] = $GLOBALS['limit'];
 		if(intval($from) % $GLOBALS['limit'] !== 0) //3.0 linkproblémájára megoldás
 			$data['from'] = 0;
@@ -86,8 +99,12 @@ class Articles extends Base {
 		$data['meta'] = $this->article_model->get_meta_by_slug($type_slug, $slug); //melyik meta alapján dolgozunk
 		if($data['meta'] === FALSE)
 		{
+			if ($type_slug === 'cikk-tipus') {
+				$this->output->set_status_header('410');
+			} else {
+				$this->output->set_status_header('404');
+			}
 			$hdata['title'] = 'Ismeretlen címke';
-			$this->output->set_status_header('404');
 			$data['articles'] = array();
 			$data['cnt'] = 0;
 			
