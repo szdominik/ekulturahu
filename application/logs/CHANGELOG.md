@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Változások 2018.10.14.
+
+- próba migráció (adatbázis + képek)
+- további migrációs szkriptek
+- további kompatibilitási 301-es / 410-es átirányítások
+
 ## Változások 2018.10.06.
 
 - legyenek a videók reszponzívak
@@ -86,8 +92,10 @@
 ## Változások 2018.04.29-30.
 
 - új design: header, footer, főoldal és listaoldal sitebuild & refactor
+- CodeIgniter upgrade 3.1.8-ra
 
 ## Változások 2018.04.28.
+
 - költözés GitHubra és Macre
 
 ## Változások 2017.09.11.

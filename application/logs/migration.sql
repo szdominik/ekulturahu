@@ -6,11 +6,11 @@ SELECT * FROM `metavalue` WHERE `name` LIKE  'szabad%';
 
 SQL szkriptek
 =============
-ekult_olvaso: fájlnév pipa, if not exists, tranzakció, mezőneveket, kiterjesztett
+ekult_olvaso: fájlnév pipa, nem struktúra, nem mezőneveket, tranzakció, kiterjesztett
 
 -- cikkek kiolvasása
 SELECT 
-post.id AS `id` , 
+`id`, 
 `title` ,  
 `title_unacc` AS  `slug`,
 `published`,
@@ -28,12 +28,11 @@ CONCAT(`hossz`, `oldalszam`) AS `terjedelem`,
 `forgatokonyviro`,
 `operator`,
 `producer`,
-image.filename AS `image_path`,
+CONCAT(`id`, '.jpg') AS  `image_path`,
 0 AS `image_horizontal`,
 `body`
 FROM  `post`
-LEFT JOIN `image` ON image.id = post.image_id
-ORDER BY `id`
+ORDER BY `id`;
 
 -- category rendbetévő
 UPDATE articles SET category_id = 1 WHERE category_id = 3;
@@ -86,7 +85,7 @@ DELETE FROM `meta_value_article` WHERE article_id = 0 OR metavalue_id = 0;
 
 -- felesleges cikk-típus metaadat törlése
 DELETE FROM `meta_value_article` WHERE meta_value_article.metavalue_id IN 
-(SELECT metavalue.id FROM metavalue WHERE type = 322)
+(SELECT metavalue.id FROM metavalue WHERE type = 322);
 
 DELETE FROM `metavalue` WHERE TYPE = 322;
 DELETE FROM `metavalue` WHERE TYPE = 0;
@@ -105,7 +104,19 @@ WHERE (`Email` LIKE '%gmail.%')
 OR (`Email` LIKE '%.hu%')
 OR (`Email` LIKE '%hotmail.%')
 OR (`Email` LIKE '%yahoo%')
-OR (`Email` = '')
+OR (`Email` = '');
+
+-- elég csak az "érdemi" felhasználókat?
+SELECT 
+ID AS id,
+IF(`Username` = 'null', CONCAT(`Username`, `ID`) , 
+IF(`Username` = '', CONCAT('null', `ID`), `Username`)) AS username,
+`Password` AS password,
+`Teljes_nev` AS name,
+`Email` AS email,
+`role` AS level
+FROM `ekult_users`
+WHERE `role` > 0;
 
 UPDATE users SET level = 5 WHERE level = 3;
 UPDATE users SET level = 3 WHERE level = 1;
@@ -114,5 +125,14 @@ UPDATE users SET level = 6 WHERE level = 4;
 UPDATE users SET level = 4 WHERE level = 2;
 UPDATE users SET level = 2 WHERE level = 6;
 
--- missing: quotes -- talán nem is kell
--- missing: calendar
+-- calendar
+SELECT
+`id`,
+`micsinalt` AS `type`,
+`ev` AS `year`,
+`ho` AS `month`,
+`nap` AS `day`,
+`kicsoda` AS `who`
+FROM `naptar`;
+
+-- missing: quotes -- nem is kell
