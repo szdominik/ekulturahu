@@ -109,7 +109,7 @@
 		$('.header .navbar-links').toggleClass('show-menu');
 		$('#content-mask').toggleClass('content-hidden');
 		$('.header').toggleClass('header-fixed');
-		['.search-container', '.body-content', 'footer.navbar'].forEach(selector => {
+		['.search-container', '.body-content', 'footer.navbar', 'footer'].forEach(selector => {
 			$(selector).toggleClass('content-fixed');
 		});
 		if (!inCloseState) {
