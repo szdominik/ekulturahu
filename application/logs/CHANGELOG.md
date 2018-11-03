@@ -3,6 +3,8 @@
 ## Változások 2018.11.03.
 
 - képek (listanézetek és cikkhez tartozó képek) újraméretezése
+- ALT+C/ALT+V gyorsbillentyűk, illetve dupla kattintás egy címke hozzáadásának megkönnyítésére egy cikknél
+- bugfix: a meta_type-ban a "Nincs kiválasztva" az első legyen, ne az utolsó
 
 ## Változások 2018.10.14.
 

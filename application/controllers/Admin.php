@@ -271,7 +271,7 @@ class Admin extends Base {
 	public function get_metatypes()
 	{
 		$metas = $this->admin_model->get_metatypes();
-		$metas[count($metas)] = array('name' => 'Nincs kiválasztva!', 'id' => 'ures');
+		array_unshift($metas, array('id' => '0', 'name' => 'Nincs kiválasztva!'));
 		ob_clean();
 		echo json_encode($metas);
 	}

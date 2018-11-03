@@ -312,7 +312,7 @@
 					<div id="metaCdd">
 						<select class="step1 form-control" name="meta_type">
 						</select>
-						<select class="step2 form-control" name="meta_data">
+						<select class="step2 form-control" name="meta_data" size="10">
 						</select>
 						<?php $data = array(
 					              'name'        => 'meta_value',
@@ -337,40 +337,40 @@
 
 <script type="text/javascript" src="<?php echo base_url('assets/cascading_dropdown/jquery.cascadingdropdown.js');?>"></script>
 <script type="text/javascript">
-	//Meteadat mentése eseménykezelője
-	$('#metaSubmit').click(function (e){
-		//AJAX POST kérés elindítása: a mentendő adatok elküldése
+	const metaSubmitHandler = (e) => {
+		// AJAX POST kérés elindítása: a mentendő adatok elküldése
 		$.post('<?php echo site_url(array('admin', 'meta_edit_with_article')); ?>', 
 		{
 			article_id: <?php echo $article['id']; ?>,
 			meta_type: $('.step1 option:selected').val(),
 			meta_data: $('.step2 option:selected').val(),
 			meta_value: $('[name="meta_value"]').val()
-		},function(result){ //ha sikerült menteni (200 OK)
-			$('.step1').val('ures').change();
-			$('.step2').val('').change();
+		}, (result) => { // ha sikerült menteni (200 OK)
 			$('[name="meta_value"]').val('');
 			
-			if(result != '') //ha a szerver írt ki errort, akkor jelenítsük meg
+			if(result != '') // ha a szerver írt ki errort, akkor jelenítsük meg
 			{
-					s = '<div class="alert alert-danger" role="alert">'
-					s += result;
-					s += '</div>';
-					$('#metaError').html(s);
+				s = '<div class="alert alert-danger" role="alert">'
+				s += result;
+				s += '</div>';
+				$('#metaError').html(s);
 			}
 			else
 			{
-					$('#metaError').html('');
+				$('#metaError').html('');
 			}
 	        meta_load();
 	    });
 		e.preventDefault();
-		$('#metaEditModal').modal('hide')
-	});
+		$('#metaEditModal').modal('hide');
+	};
+
+	// Metaadat mentése eseménykezelője
+	$('#metaSubmit').click(metaSubmitHandler);
+	$('.step2').dblclick(metaSubmitHandler);
 	
 	//a meták listájának újratöltése
-	function meta_load()
-	{
+	const meta_load = () => {
 		//AJAX GET kérés a meták listájára
 		$.get( '<?php echo site_url(array('admin', 'get_metas_by_article', $article['id'])); ?>', function(data) {
 			s = '<div class="table-responsive"><table class="table table-condensed">';
@@ -387,11 +387,10 @@
 			$('#metaList').html(s);
 			meta_delete();
 		}, "json");
-	}
+	};
 	
 	//meták törlésekor lefuttatandó esemény (a törlés ajaxon keresztül menjen)
-	function meta_delete()
-	{
+	meta_delete = () => {
 		$('.deleteMeta').click(function (e){
 			var delhref = $(e.currentTarget).data('delhref');
 			$.ajax({ //AJAX kérés
@@ -401,10 +400,18 @@
 				}
 			});
 		});
-	}
+	};
 	
-	$(document).ready(function () {
+	$(document).ready(() => {
 		meta_load(); //töltődjön be a meták listája is
+
+		document.addEventListener('keypress', (e) => {
+			if (e.keyCode === 263) { // alt + c
+				$('#metaEditModal').modal('show');
+			} else if (e.keyCode === 8222) { // alt + v
+				$('.step1').focus();
+			}
+		});
 		
 		$('#datetimeinput').datetimepicker({ //dátumválasztó betöltése
 			locale: 'hu',
@@ -416,10 +423,10 @@
 		    selectBoxes: [
 		        {
 		            selector: '.step1',
-					source: function(request, response) {
+					source: (request, response) => {
 						//metaadat típusok lekérése
-						$.getJSON('<?php echo site_url(array('admin', 'get_metatypes')); ?>', request, function(data) {
-					        response($.map(data, function(item, index) {
+						$.getJSON('<?php echo site_url(array('admin', 'get_metatypes')); ?>', request, (data) => {
+					        response($.map(data, (item, index) => {
 					            return {
 					                label: item.name,
 					                value: item.id
@@ -432,11 +439,11 @@
 		        {
 		            selector: '.step2',
 		            requires: ['.step1'],
-		            source: function(request, response) {
+		            source: (request, response) => {
 						val = $('.step1 option:selected').val();
 						//adott típushoz tartozó metaadatok lekérése
-						$.getJSON('<?php echo site_url(array('admin', 'get_metas_by_type')); ?>' + '/' + val, request, function(data) {
-					        response($.map(data, function(item, index) {
+						$.getJSON('<?php echo site_url(array('admin', 'get_metas_by_type')); ?>' + '/' + val, request, (data) => {
+					        response($.map(data, (item, index) => {
 					            return {
 					                label: item.name,
 					                value: item.id
