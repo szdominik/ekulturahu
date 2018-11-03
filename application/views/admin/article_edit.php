@@ -108,7 +108,7 @@
 			              'maxlength'   => '255',
 			              'size'        => $size,
 						  'class'		=> 'form-control',
-						  'placeholder' => 'Kedvezményes vásárlás'
+						  'placeholder' => 'Kedvezményes vásárlás (nem szükséges)'
 			            );
 				echo form_input($data); ?>
 		</div>
@@ -306,7 +306,13 @@
 				echo form_open('admin/meta_edit_with_article/', '', $hiddens); ?>
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" aria-labelledby="">Metaadatok szerkesztése</h4>
+					<h4 class="modal-title" aria-labelledby="">
+						Metaadatok szerkesztése
+						<button type="button" class="btn btn-sm label label-warning label-tooltip" data-toggle="tooltip" data-placement="bottom"
+							title="Megjegyzés: ez az ablak az ALT + C billentyűkombinációval is előhozható; az ALT + V + ArrowDown pedig segít a típus kiválasztásánál.">
+							i
+						</button>
+					</h4>
 				</div>
 				<div class="modal-body">
 					<div id="metaCdd">
@@ -324,7 +330,6 @@
 					            );
 						echo form_input($data); ?>
 					</div>
-					
 				</div>
 				<div class="modal-footer">
 					<button type="submit" value="save" name="save" id="metaSubmit" class="btn btn-primary">Mentés</button>
@@ -404,6 +409,7 @@
 	
 	$(document).ready(() => {
 		meta_load(); //töltődjön be a meták listája is
+		$('[data-toggle="tooltip"]').tooltip(); 
 
 		document.addEventListener('keypress', (e) => {
 			if (e.keyCode === 263) { // alt + c

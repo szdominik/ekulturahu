@@ -66,6 +66,13 @@ button.rotate {
   opacity: 0.5;
 }
 
+.label-tooltip {
+  font-size: 60%;
+  vertical-align: middle;
+  margin-left: 10px;
+  padding: 3px 7px;
+}
+
 .category-label {
   background-color: var(--brown-2);
   text-align: center;

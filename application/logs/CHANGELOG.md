@@ -5,6 +5,7 @@
 - képek (listanézetek és cikkhez tartozó képek) újraméretezése
 - ALT+C/ALT+V gyorsbillentyűk, illetve dupla kattintás egy címke hozzáadásának megkönnyítésére egy cikknél
 - bugfix: a meta_type-ban a "Nincs kiválasztva" az első legyen, ne az utolsó
+- magyarázó tooltip a címkéknek szóló hotkey-ekhez
 
 ## Változások 2018.10.14.
 

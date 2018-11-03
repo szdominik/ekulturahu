@@ -120,7 +120,7 @@
 			              'maxlength'   => '255',
 			              'size'        => $size,
 						  'class'		=> 'form-control',
-						  'placeholder' => 'Kedvezményes vásárlás'
+						  'placeholder' => 'Kedvezményes vásárlás (nem szükséges)'
 			            );
 				echo form_input($data); ?>
 		</div>
