@@ -1006,11 +1006,11 @@ class Admin extends Base {
 		{
 			$config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
-			$config['max_width']  = '2000';
-			$config['max_height']  = '2000';
+			$config['max_width']  = '1200';
+			$config['max_height']  = '1200';
 			$config['max_filename'] = '100';
 			$config['file_name'] = 'img_';
-			$config['max_size'] = '2000';
+			$config['max_size'] = '2048';
 			$config['allow_resize'] = TRUE;
 			$this->load->library('upload', $config);
 			if ( ! $this->upload->do_upload()) //ha nem sikerült a feltöltés.

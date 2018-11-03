@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Változások 2018.11.03.
+
+- képek (listanézetek és cikkhez tartozó képek) újraméretezése
+
 ## Változások 2018.10.14.
 
 - próba migráció (adatbázis + képek)
