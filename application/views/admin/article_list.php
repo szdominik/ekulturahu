@@ -81,7 +81,7 @@
 		<tbody>
 			<?php foreach ($articles as $ac): ?>
 				<tr>
-				    <td><?php echo $ac['title']; ?></td>
+				    <td><?php echo '<a href="' . site_url(array('admin', 'article_edit', $ac['id'])) . '">' . $ac['title'] . '</a>'; ?></td>
 					<td><?php echo $ac['user_link']; ?></td>
 					<td><?php echo $ac['pub_time']; ?></td>
 				    <td><a href="<?php echo site_url(array('admin', 'article_edit', $ac['id'])); ?>" class="btn btn-default">Szerkesztés</a></td>

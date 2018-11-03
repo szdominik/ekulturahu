@@ -7,6 +7,7 @@
 - bugfix: a meta_type-ban a "Nincs kiválasztva" az első legyen, ne az utolsó
 - magyarázó tooltip a címkéknek szóló hotkey-ekhez
 - bugfix: footer pozícionálása nyitott menünél
+- a cikkek szerkesztésénél legyen link a cikk címe is
 
 ## Változások 2018.10.14.
 
