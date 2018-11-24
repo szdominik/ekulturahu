@@ -7,11 +7,11 @@ html {
   --brown-5: #c0bab2;
   --grey: #949494;
   --grey-2: #ebebeb;
-  background-color: var(--brown-1);
+  background-color: #f8f4f3;
 }
 
 body {
-  background-color: var(--brown-1);
+  background-color: #f8f4f3;
 }
 
 .m-r-5 {
@@ -28,11 +28,11 @@ p {
 }
 
 a {
-  color: var(--brown-3);
+  color: #836d46;
 }
 
 a:hover, a:focus {
-  color: var(--brown-3);
+  color: #836d46;
   cursor: pointer;
 }
 
@@ -53,14 +53,14 @@ button.rotate {
 }
 
 .btn-default {
-  background-color: var(--brown-2);
-  border-color: var(--brown-2);
+  background-color: #ba9072;
+  border-color: #ba9072;
 }
 
 .btn-default:hover,
 .btn-default:focus {
-  background-color: var(--brown-4);
-  border-color: var(--brown-4);
+  background-color: #966645;
+  border-color: #966645;
 }
 
 .btn-disabled,
@@ -78,7 +78,7 @@ button.rotate {
 }
 
 .category-label {
-  background-color: var(--brown-2);
+  background-color: #ba9072;
   text-align: center;
   color: white;
   font-size: 16px;
@@ -98,7 +98,7 @@ button.rotate {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--brown);
+  background-color: #e3dcd4;
   height: 75px;
 }
 
@@ -125,7 +125,7 @@ button.rotate {
 }
 
 .form-control:focus {
-  border-color: var(--brown-2);
+  border-color: #ba9072;
 }
 
 .ui-autocomplete {
@@ -135,8 +135,8 @@ button.rotate {
   padding: 0;
   margin-top: 2px;
   list-style: none;
-  background-color: var(--brown);
-  border: 1px solid var(--brown);
+  background-color: #e3dcd4;
+  border: 1px solid #e3dcd4;
 }
 
 .ui-autocomplete a {
@@ -145,7 +145,7 @@ button.rotate {
 }
 
 .ui-autocomplete > li.ui-state-focus {
-  background-color: var(--brown-3);
+  background-color: #836d46;
 }
 
 .ui-autocomplete > li.ui-state-focus > a {
@@ -173,9 +173,9 @@ button.rotate {
 
 .header {
   margin-bottom: 0;
-  border-bottom: 1px solid var(--brown-5);
+  border-bottom: 1px solid #c0bab2;
   height: 120px;
-  background-color: var(--brown-1);
+  background-color: #f8f4f3;
   z-index: 98;
 }
 
@@ -223,7 +223,7 @@ button.rotate {
 .header .header-main #menu-text {
   font-size: 16px;
   text-transform: uppercase;
-  color: var(--brown-3);
+  color: #836d46;
   font-weight: bold;
   position: relative;
   top: -1px;
@@ -243,7 +243,7 @@ button.rotate {
   position: absolute;
   width: 100%;
   height: 4px;
-  background: var(--brown-3);
+  background: #836d46;
   border-radius: 9px;
   left: 0;
   transform: rotate(0deg);
@@ -321,11 +321,11 @@ button.rotate {
 
 .header .navbar-links a:hover {
   text-decoration: none;
-  background-color: var(--brown);
+  background-color: #e3dcd4;
 }
 
 .header .navbar-links p:hover {
-  background-color: var(--brown);
+  background-color: #e3dcd4;
 }
 
 .header .navbar-links .divider {
@@ -340,11 +340,11 @@ button.rotate {
 }
 
 .dropdown-menu > li > a {
-  color: var(--brown-3);
+  color: #836d46;
 }
 
 .dropdown-menu > li > a:hover {
-  color: var(--brown-3);
+  color: #836d46;
 }
 
 .article-list {
@@ -442,7 +442,7 @@ button.rotate {
   margin: 0 20px;
   padding: 5px 15px;
   background-color: transparent;
-  border: 2px solid var(--brown-3);
+  border: 2px solid #836d46;
   border-radius: 20px;
   text-transform: uppercase;
   font-weight: bold;
@@ -480,7 +480,7 @@ button.rotate {
   margin-top: 20px;
   margin-bottom: 0;
   font-size: 17px;
-  color: var(--grey);
+  color: #949494;
 }
 
 .article .meta-content {
@@ -547,22 +547,22 @@ button.rotate {
   margin-bottom: 10px;
   padding: 5px 10px;
   text-align: center;
-  color: var(--brown-2);
-  background-color: var(--brown-1);
-  border: 1px solid var(--brown-2);
+  color: #ba9072;
+  background-color: #f8f4f3;
+  border: 1px solid #ba9072;
   border-radius: 20px;
   width: 100%;
 }
 
 .article .btn-action:hover {
   color: white;
-  background-color: var(--brown-2);
+  background-color: #ba9072;
   border: 1px solid white;
   text-decoration: none;
 }
 
 .other-articles {
-  background-color: var(--grey-2);
+  background-color: #ebebeb;
   padding: 50px 55px 50px 55px;
 }
 
@@ -584,7 +584,7 @@ button.rotate {
 }
 
 .other-articles h3 button {
-  background-image: url('http://localhost/~dominik/assets/icons/next.svg');
+  background-image: url('http://ekultura.hu/assets/icons/next.svg');
   background-repeat: no-repeat;
   background-color: unset;
   border: none;
@@ -598,7 +598,7 @@ button.rotate {
   padding-top: 5px;
   cursor: pointer;
   font-size: 15px;
-  color: var(--brown-3);
+  color: #836d46;
 }
 
 .other-articles h3 .other-articles-title {
@@ -657,7 +657,7 @@ footer {
   position: relative;
   margin-bottom: 0;
   margin-top: -21px; /* 20px eltolodas &#65279; miatt */
-  background-color: var(--brown-2);
+  background-color: #ba9072;
   border: none;
   text-transform: uppercase;
   text-align: center;
@@ -684,7 +684,7 @@ footer ul > li > a {
 
 footer ul > li > a:hover,
 footer ul > li > a:focus {
-  background-color: var(--brown-4);
+  background-color: #966645;
   color: white;
   text-decoration: none;
 }

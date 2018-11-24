@@ -1,0 +1,9 @@
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?ekultura.hu(/)?.*$     [NC]
+RewriteCond %{HTTP_REFERER} !^http://(test\.)?ekultura.hu(/)?.*$     [NC]
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?rpg.hu(/)?.*$     [NC]
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?lfg.hu(/)?.*$     [NC]
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?ekultura.dev.xtremedia.hu(/)?.*$     [NC]
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?ekultura2018.dev2.xtremedia.hu(/)?.*$     [NC]
+RewriteRule .*\.(gif|jpg|jpeg|bmp)$ http://www.ekultura.hu/nohotlink.jpe [R,NC]
