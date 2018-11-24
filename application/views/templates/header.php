@@ -28,6 +28,7 @@
   <meta property="og:url" content="<?php echo current_url(); ?>" />
   <meta property="og:locale" content="hu_HU" />
   <meta property="og:site_name" content="Ekultura.hu" />
+  <meta property="fb:app_id" content="454047391791470" />
   <link rel="alternate" href="<?php echo site_url('rss');?>" title="ekultura.hu RSS feed" type="application/rss+xml" />
   <link type="text/css" href="<?php echo base_url('assets/bootstrap/css/bootstrap-cosmo.css');?>" rel="stylesheet">
   <link type="text/css" href="<?php echo base_url('css/style.css');?>" rel="stylesheet">

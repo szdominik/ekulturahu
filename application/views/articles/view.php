@@ -54,7 +54,7 @@ $DEFAULT_IMAGE_PATH = base_url('assets/icons/default.jpg'); ?>
     endif; ?>
     <div class="article-social">
       <iframe
-        src="https://www.facebook.com/plugins/like.php?href=<?php echo urlencode(current_url());?>&width=151&layout=box_count&action=like&size=small&show_faces=false&share=true&height=65&appId"
+        src="https://www.facebook.com/plugins/like.php?href=<?php echo urlencode(current_url());?>&width=151&layout=box_count&action=like&size=small&show_faces=false&share=true&height=65&appId=454047391791470"
         width="151" height="65"
         style="border:none;overflow:hidden" scrolling="no" frameborder="0"
         allowTransparency="true" allow="encrypted-media"></iframe>
