@@ -165,14 +165,17 @@ $DEFAULT_IMAGE_PATH = base_url('assets/icons/default.jpg'); ?>
     $(`#${meta_id}-pager`).html(heading);
   };
 
-  <?php if(count($metas) !== 0): ?>
+  <?php
+    $filtered_metas = array_filter($metas, function ($val) {
+        return $val['type_id'] == 1 || $val['type_id'] == 2;
+    });
+    if(count($filtered_metas) !== 0):
+  ?>
     $('#other-articles').html('<h2>Kapcsolódó tartalmak</h2>');
     $('#other-articles').addClass('other-articles');
-    <?php foreach($metas as $m):
-      if($m['type_id'] == 1 || $m['type_id'] == 2): ?>
-        meta_load(<?php echo $m['meta_id']; ?>, '<?php echo $m['meta_name']; ?>', <?php echo $m['type_id']; ?>, '<?php echo site_url(array('meta', $m['type_slug'], $m['slug'])); ?>');
-      <?php endif;
-    endforeach;
+    <?php foreach($filtered_metas as $m): ?>
+      meta_load(<?php echo $m['meta_id']; ?>, '<?php echo $m['meta_name']; ?>', <?php echo $m['type_id']; ?>, '<?php echo site_url(array('meta', $m['type_slug'], $m['slug'])); ?>');
+    <?php endforeach;
   endif; ?>
 </script>
 <?php endif; ?>
