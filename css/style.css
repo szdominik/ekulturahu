@@ -512,7 +512,7 @@ button.rotate {
   width: 270px;
 }
 
-.article .article-content .img-article-horizontal {
+.article .article-content img.img-article-horizontal {
   max-width: 100%;
   width: unset;
   display: block;
