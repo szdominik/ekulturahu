@@ -96,6 +96,36 @@
 	</table>
 </div>
 
+<nav>
+	<ul class="pager">
+		<?php if($from != 0): ?> <!--csak akkor aktív, ha nem 0-nál állunk (visszafele nem mehetünk) -->
+			<li class="previous">
+		<?php else: ?>
+			<li class="previous disabled">
+		<?php endif; ?>
+				<a href="<?php $prev = $from - $limit; 
+							if ($prev < 0): //negatív tartományba ne lapozzunk
+								echo site_url(array('admin', 'article_list', urlencode($title), $category, $subcategory, $published_cat, $user, $limit, '0')); 
+							else: 
+								echo site_url(array('admin', 'article_list', urlencode($title), $category, $subcategory, $published_cat, $user, $limit, $prev)); 
+							endif; ?>">
+					<span aria-hidden="true">&larr;</span> Előző oldal
+				</a>
+			</li>
+		
+		<?php if($from+$limit < $cnt): ?> <!--csak akkor lapozhatunk tovább, ha nem megyünk túl az összes lehetőségen -->
+			<li class="next">
+				<a href="<?php echo site_url(array('admin', 'article_list', urlencode($title), $category, $subcategory, $published_cat, $user, $limit, $from + $limit)); ?>">
+		<?php else: ?>
+			<li class="next disabled">
+				<a href="<?php echo site_url(array('admin', 'article_list', urlencode($title), $category, $subcategory, $published_cat, $user, $limit, $from)); ?>">
+		<?php endif; ?>
+					Következő oldal <span aria-hidden="true">&rarr;</span>
+				</a>
+			</li>
+	</ul>
+</nav>
+
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">

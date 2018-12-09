@@ -7,6 +7,7 @@
 - bugfix: rendes og tagek a listanézetekhez is
 - bugfix: a kapcsolódó tartalmak cím ne jelenjen meg, ha van meta, de nincs szerző vagy sorozat
 - bugfix: hiányzó favicon pótlása
+- bugfix: hiányzó lapozás a cikkek szerkesztése lista alján
 
 ## RELEASE 2018.11.24.
 
