@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## Változások 2018.12.09.
+
+- bugfix: feleslegesen ne próbáljon short_body-t generálni
+
+## RELEASE 2018.11.24.
+
+- new htaccess
+- production configs
+
 ## Változások 2018.11.03.
 
 - képek (listanézetek és cikkhez tartozó képek) újraméretezése

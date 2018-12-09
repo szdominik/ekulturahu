@@ -107,7 +107,9 @@ class Base extends CI_Controller {
 			$article['link'] = $this->generate_link($article);
 			$article['pub_time'] = $this->modify_date($article['pub_time']);
 			$article['user_link'] = $this->format_username($article);
-			$article['short_body'] = $this->generate_short_body($article['body']);
+			if (array_key_exists('body',$article)) {
+				$article['short_body'] = $this->generate_short_body($article['body']);
+			}
 		}
 		$articles_array = $this->add_metacategory_to_articles($articles_array);
 		return $articles_array;
