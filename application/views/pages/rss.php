@@ -4,7 +4,7 @@
   <channel>
   <title>ekultura.hu</title>
   <link>http://ekultura.hu/</link>
-  <description>ekultura.hu - online kulturális magazin</description>
+  <description>ekultura.hu – online kulturális magazin</description>
   <language>hu-HU</language>
   <?php foreach ($articles as $ac): ?>
   <item>

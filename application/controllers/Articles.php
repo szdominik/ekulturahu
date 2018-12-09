@@ -15,6 +15,7 @@ class Articles extends Base {
 	public function search($filter = '', $from = 0)
 	{
 		$hdata['title'] = 'Keresés';
+		$hdata['type'] = 'list';
 
 		$data['limit'] = $GLOBALS['limit'];
 		$data['from'] = intval($from);
@@ -70,6 +71,7 @@ class Articles extends Base {
 				
 		$data['cnt'] = $this->article_model->get_articles_count_by_author($data['author']);
 		$hdata['title'] = $data['author'] . ' cikkei';
+		$hdata['type'] = 'list';
 		$base_data['url'] = $this->generate_canonical_url(site_url(array('author', $name)), $data['from']);
 		$this->show('articles/index', $hdata, $data, $base_data);
 	}
@@ -117,6 +119,7 @@ class Articles extends Base {
 		else
 		{
 			$hdata['title'] = $data['meta']['name'];
+			$hdata['type'] = 'list';
 			
 			$data['articles'] = $this->customize_articles(
 				$this->article_model->get_articles_by_meta($data['meta']['id'], $data['limit'], $data['from'])
@@ -159,6 +162,7 @@ class Articles extends Base {
 					
 			$data['cnt'] = $this->article_model->get_articles_count_by_category($slug);
 			$hdata['title'] = $data['category']['name'];
+			$hdata['type'] = 'list';
 			$this->show('articles/index', $hdata, $data, $base_data);
 		}
 		else
@@ -177,6 +181,7 @@ class Articles extends Base {
 						
 				$data['cnt'] = $this->article_model->get_articles_count_by_subcategory($slug);
 				$hdata['title'] = $data['subcategory']['name'];
+				$hdata['type'] = 'list';
 				$this->show('articles/index', $hdata, $data, $base_data);
 			}
 			else
@@ -294,6 +299,7 @@ class Articles extends Base {
 		else
 		{
 			$hdata['title'] = $data['page']['title'];
+			$hdata['type'] = 'list';
 			$base_data['url'] = site_url(array($page));
 			$this->show('articles/static_view', $hdata, $data, $base_data);
 		}

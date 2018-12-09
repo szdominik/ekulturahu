@@ -4,6 +4,7 @@
 
 - bugfix: feleslegesen ne próbáljon short_body-t generálni
 - bugfix: cikk fekvő főképére a megfelelő css szabályok érvényesüljenek
+- bugfix: rendes og tagek a listanézetekhez is
 
 ## RELEASE 2018.11.24.
 
