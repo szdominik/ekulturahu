@@ -68,12 +68,12 @@
       <img src="<?php echo base_url('assets/icons/ekultura_logo.svg');?>" alt="ekultura.hu">
     </a>
     <div class="menu-buttons">
-      <div id="nav-icon">
+      <button id="nav-icon">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
       <span id="menu-text">Menü</span>
     </div>
   </div>

@@ -237,6 +237,9 @@ button.rotate {
   transform: rotate(0deg);
   transition: .5s ease-in-out;
   cursor: pointer;
+  border: none;
+  background-color: unset;
+  padding: 0;
 }
 
 #nav-icon span {

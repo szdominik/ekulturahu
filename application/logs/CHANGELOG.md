@@ -9,6 +9,7 @@
 - bugfix: hiányzó favicon pótlása
 - bugfix: hiányzó lapozás a cikkek szerkesztése lista alján
 - "Vissza a cikkek listájához" gomb a cikkek szerkesztéséhez
+- bugfix: legyen button a menügombból
 
 ## RELEASE 2018.11.24.
 
