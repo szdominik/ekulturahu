@@ -6,6 +6,7 @@
 - bugfix: cikk fekvő főképére a megfelelő css szabályok érvényesüljenek
 - bugfix: rendes og tagek a listanézetekhez is
 - bugfix: a kapcsolódó tartalmak cím ne jelenjen meg, ha van meta, de nincs szerző vagy sorozat
+- bugfix: hiányzó favicon pótlása
 
 ## RELEASE 2018.11.24.
 
