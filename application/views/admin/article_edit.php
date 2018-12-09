@@ -263,7 +263,7 @@
 	</div>
 	
 	<div class="form-group">
-		<div class="col-md-offset-2 col-md-6">
+		<div class="col-md-offset-2 col-md-5">
 			<button type="submit" value="save" name="save" class="btn btn-default">
 				Mentés
 			</button>
@@ -274,6 +274,11 @@
 			} ?>
 			<a class="btn btn-primary" target="_blank" href="<?php echo $article['link']; ?>" role="button">
 				Előnézet
+			</a>
+		</div>
+		<div class="col-md-1">
+			<a class="btn btn-primary" href="/admin/article_list" role="button">
+				Vissza a cikkek listájához
 			</a>
 		</div>
 	</div>
