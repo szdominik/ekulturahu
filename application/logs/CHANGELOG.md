@@ -7,6 +7,7 @@
 - bugfix: az error oldal ne szálljon el
 - bugfix: keresés javítása, fogadjon el írásjeleket és többszörös szóközt is
 - bugfix: felesleges "height: auto" törlése a cikközbeni képekről
+- bugfix: felesleges outline törlése a hamburger buttonről
 
 ## Változások 2018.12.09.
 

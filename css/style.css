@@ -240,6 +240,7 @@ button.rotate {
   border: none;
   background-color: unset;
   padding: 0;
+  outline: 0;
 }
 
 #nav-icon span {
