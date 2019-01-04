@@ -28,8 +28,8 @@ class Articles extends Base {
 				$this->article_model->get_searched_data($data['search'], $data['limit'], $data['from'], $data['cnt'])
 			);
 
-			$base_data['url'] = $this->generate_canonical_url(site_url(array('search', $filter)), $data['from']);
-			$this->show('articles/index', $hdata, $data, $base_data);
+			$hdata['canonical_url'] = $this->generate_canonical_url(site_url(array('search', $filter)), $data['from']);
+			$this->show('articles/index', $hdata, $data);
 		}
 		else
 		{
@@ -78,8 +78,8 @@ class Articles extends Base {
 		$data['cnt'] = $this->article_model->get_articles_count_by_author($data['author']);
 		$hdata['title'] = $data['author'] . ' cikkei';
 		$hdata['type'] = 'list';
-		$base_data['url'] = $this->generate_canonical_url(site_url(array('author', $name)), $data['from']);
-		$this->show('articles/index', $hdata, $data, $base_data);
+		$hdata['canonical_url'] = $this->generate_canonical_url(site_url(array('author', $name)), $data['from']);
+		$this->show('articles/index', $hdata, $data);
 	}
 
 	//Metaadatok alapján történő cikkmegjelenítés.
@@ -138,8 +138,8 @@ class Articles extends Base {
 			$data['cnt'] = $this->article_model->get_articles_by_meta_count($data['meta']['id']);
 		}
 
-		$base_data['url'] = $this->generate_canonical_url(site_url(array('meta', $type_slug, $slug)), $data['from']);
-		$this->show('articles/index', $hdata, $data, $base_data);
+		$hdata['canonical_url'] = $this->generate_canonical_url(site_url(array('meta', $type_slug, $slug)), $data['from']);
+		$this->show('articles/index', $hdata, $data);
 	}
        
 	//Egy kategória cikkeinek megjelenítése vagy statikus cikkmegjelenítés
@@ -151,7 +151,7 @@ class Articles extends Base {
 		}
 		$data['from'] = intval($from);
 		$data['limit'] = $GLOBALS['limit'];
-		$base_data['url'] = $this->generate_canonical_url(site_url(array($slug)), $data['from']);
+		$hdata['canonical_url'] = $this->generate_canonical_url(site_url(array($slug)), $data['from']);
 
 		$data['category'] = $this->article_model->get_categoryname_by_slug($slug);
 		if (count($data['category']) != 0)
@@ -169,7 +169,7 @@ class Articles extends Base {
 			$data['cnt'] = $this->article_model->get_articles_count_by_category($slug);
 			$hdata['title'] = $data['category']['name'];
 			$hdata['type'] = 'list';
-			$this->show('articles/index', $hdata, $data, $base_data);
+			$this->show('articles/index', $hdata, $data);
 		}
 		else
 		{
@@ -188,7 +188,7 @@ class Articles extends Base {
 				$data['cnt'] = $this->article_model->get_articles_count_by_subcategory($slug);
 				$hdata['title'] = $data['subcategory']['name'];
 				$hdata['type'] = 'list';
-				$this->show('articles/index', $hdata, $data, $base_data);
+				$this->show('articles/index', $hdata, $data);
 			}
 			else
 			{
@@ -248,8 +248,8 @@ class Articles extends Base {
 				}
 			}
 			$hdata['pub_time'] = substr(str_replace('. ', '-', $data['article']['pub_time']), 0, 10);
-			$base_data['url'] = $data['article']['link'];
-			$this->show('articles/view', $hdata, $data, $base_data);
+			$hdata['canonical_url'] = $data['article']['link'];
+			$this->show('articles/view', $hdata, $data);
 		}
 	}
 	
@@ -306,8 +306,8 @@ class Articles extends Base {
 		{
 			$hdata['title'] = $data['page']['title'];
 			$hdata['type'] = 'list';
-			$base_data['url'] = site_url(array($page));
-			$this->show('articles/static_view', $hdata, $data, $base_data);
+			$hdata['canonical_url'] = site_url(array($page));
+			$this->show('articles/static_view', $hdata, $data);
 		}
 	}
 

@@ -68,7 +68,7 @@ class Base extends CI_Controller {
 	}
 
 	//Ugrás a megfelelő oldalra.
-	protected function show($location = 'home', $hdata = array('title' => "Főoldal"), $data = array(), $base_data = array())
+	protected function show($location = 'home', $hdata = array('title' => "Főoldal"), $data = array())
 	{
 		if($location == 'home') //alapértelmezett érték
 		{
@@ -76,8 +76,8 @@ class Base extends CI_Controller {
 		}
 		else
 		{
-			if (!empty($base_data) && $base_data['url'] !== current_url()) {
-				redirect($base_data['url'], 'location', 301);
+			if (!empty($hdata) && !empty($hdata['canonical_url']) && $hdata['canonical_url'] !== current_url()) {
+				redirect($hdata['canonical_url'], 'location', 301);
 			}
 			ob_clean();
 			//$this->statistics_insert();
