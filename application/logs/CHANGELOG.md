@@ -5,6 +5,7 @@
 - a "mutat.php?id=" kezdetű linkek frissítése
 - google analytics ne számolja a fejlesztés alatti kattintások és az adminoldal kattintásait
 - bugfix: az error oldal ne szálljon el
+- bugfix: keresés javítása, fogadjon el írásjeleket és többszörös szóközt is
 
 ## Változások 2018.12.09.
 

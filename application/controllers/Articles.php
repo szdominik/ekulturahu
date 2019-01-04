@@ -33,7 +33,7 @@ class Articles extends Base {
 		}
 		else
 		{
-			$data['search'] = $this->input->post('search');
+			$data['search'] = $this->remove_non_searchable_chars($this->input->post('search'));
 			if($data['search'] === '')
 			{
 				$this->show('home');
@@ -52,6 +52,12 @@ class Articles extends Base {
 		$articles = $this->customize_articles($this->article_model->get_searched_data_short($filter, 10));
 		ob_clean();
 		echo json_encode($articles);
+	}
+
+	// keresést nehezítő karakterek (írásjelek, felesleges szóközök) törlése
+	private function remove_non_searchable_chars($query)
+	{
+		return preg_replace('/\s\s+/', ' ', preg_replace('/[^\w\s]/', '', $query));
 	}
 	
 	//Cikkmegjelenítés cikkszerző alapján.

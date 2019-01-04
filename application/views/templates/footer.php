@@ -94,9 +94,8 @@
     delay: 1000,
     minLength: 3,
     source: (req, res) => {
-      $.getJSON(`<?php echo site_url(array('articles', 'get_articles_by_search_short')); ?>/${$('#search-field').val()}`, data => {
-        res(data);
-      })
+			const searchValue = $('#search-field').val().replace(/[^\w\s]/g, '').replace(/\s\s+/g, ' ');
+			$.getJSON(`<?php echo site_url(array('articles', 'get_articles_by_search_short')); ?>/${searchValue}`, res);
     },
   }).autocomplete('instance')._renderItem = function(ul, item) {
     return $(`<li class="${item.subcat_slug}">`)
