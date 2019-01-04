@@ -78,13 +78,15 @@
 	</div>
 </div>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-9634175-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-9634175-1');
-</script>
+<?php if (!strpos(current_url(), 'admin/') && !strpos(current_url(), 'localhost')): ?>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-9634175-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-9634175-1');
+	</script>
+<?php endif; ?>
 
 <script>
 	document.getElementById('date').innerHTML = new Date().getFullYear();

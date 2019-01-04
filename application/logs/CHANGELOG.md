@@ -3,6 +3,7 @@
 ## Változások 2019.01.04.
 
 - a "mutat.php?id=" kezdetű linkek frissítése
+- google analytics ne számolja a fejlesztés alatti kattintások és az adminoldal kattintásait
 
 ## Változások 2018.12.09.
 
