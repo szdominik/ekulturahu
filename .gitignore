@@ -2,3 +2,4 @@
 assets
 uploads
 user_guide
+/application/logs/log-*.php
