@@ -8,6 +8,7 @@
 - bugfix: keresés javítása, fogadjon el írásjeleket és többszörös szóközt is
 - bugfix: felesleges "height: auto" törlése a cikközbeni képekről
 - bugfix: felesleges outline törlése a hamburger buttonről
+- a meták törlésekor jelenjen meg, hogy hány darab van belőle használatban
 
 ## Változások 2018.12.09.
 

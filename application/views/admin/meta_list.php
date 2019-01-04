@@ -88,7 +88,7 @@
 				    <td><?php echo $meta['name'] ?></td>
 					<td><?php echo $meta['type_name'] ?></td>
 				    <td><button type="button" class="editMeta btn btn-default" data-toggle="modal" data-metaid="<?php echo $meta['id']; ?>" data-target="#editModal">Szerkesztés</button></td>
-					<td><button type="button" class="deleteMeta btn btn-danger" data-toggle="modal" data-delhref="<?php echo site_url(array('admin', 'meta_delete', $meta['id'])); ?>" data-target="#deleteModal">Törlés</button></td>
+					<td><button type="button" class="deleteMeta btn btn-danger" data-toggle="modal" data-metaid="<?php echo $meta['id']; ?>" data-target="#deleteModal">Törlés</button></td>
 				</tr>
 			<?php endforeach ?>
 		</tbody>
@@ -179,8 +179,9 @@
 				<h4 class="modal-title" aria-labelledby="">Címke törlése</h4>
 			</div>
 			<div class="modal-body">
-				Biztos, hogy törli a kiválasztott címkét?<br>
-				Figyelem! A törléssel minden cikkhez való kapcsolódódást is törli!
+				Biztos, hogy törli a kiválasztott címkét?<br />
+				Figyelem! A törléssel minden cikkhez való kapcsolódódást is törli!<br />
+				<span id='metaCountForDelete'></span> cikket érint ez a törlés.
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Mégse</button>
@@ -192,16 +193,20 @@
 
 <script type="text/javascript">
 	//metaadat törléséhez szükséges eseménykezelő (a megfelelő link a data-attribútumból történik)
-	$('.deleteMeta').click(function (e){
-		var delhref = $(e.currentTarget).data('delhref');
-		$('a[name="todelete"]').attr("href", delhref);
+	$('.deleteMeta').click((e) => {
+		const baseUrl = "<?php echo site_url(array('admin', 'meta_delete')); ?>";
+		const metaid = $(e.currentTarget).data('metaid');
+		$('a[name="todelete"]').attr("href", `${baseUrl}/${metaid}`);
+		$.get('<?php echo site_url(array('admin', 'count_meta_by_id')); ?>' + '/' + metaid, (data) => {
+			$('#metaCountForDelete').text(data);
+		});
 	});
 	
 	//metaadat szerkesztéséhez szükséges eseménykezelő
-	$('.editMeta').click(function (e){
+	$('.editMeta').click((e) => {
 		metaid = $(e.currentTarget).data('metaid');
 		//AJAX GET kérés a metaadatok adatainak betöltéséhez
-		$.get( '<?php echo site_url(array('admin', 'meta_get')); ?>' + '/' + metaid, function(data) {
+		$.get('<?php echo site_url(array('admin', 'meta_get')); ?>' + '/' + metaid, (data) => {
 			$('[name="metatype"]').val(data.type);
 			$('input[name="metaname"]').val(data.name);
 			$('input[name="metaid"]').val(data.id);

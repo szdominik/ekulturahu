@@ -582,6 +582,14 @@ class Admin extends Base {
 		ob_clean();
 		echo json_encode($data);
 	}
+
+	// AJAX GET: metaadat számosságának lekérése
+	public function count_meta_by_id($id)
+	{
+		$data = $this->admin_model->count_meta_by_id($id);
+		ob_clean();
+		echo json_encode($data);
+	}
 	
 	//Kategóriák listája.
 	public function category_list($succ = FALSE)

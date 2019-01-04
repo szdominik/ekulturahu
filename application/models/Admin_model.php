@@ -746,7 +746,7 @@ class Admin_model extends Base_Model {
 		return $query->row_array();
 	}
 	
-	//egy metaadat  lekérése id alapján
+	//egy metaadat lekérése id alapján
 	public function get_meta_by_id($id)
 	{
 		$this->db->select('*')->from('metavalue')->where('id', $id);
@@ -756,6 +756,13 @@ class Admin_model extends Base_Model {
 			return FALSE;
 		}
 		return $query->row_array();
+	}
+
+	//egy metaadat számosságának lekérése id alapján
+	public function count_meta_by_id($id)
+	{
+		$this->db->select('*')->from('meta_value_article')->where('metavalue_id', $id);
+		return $this->db->count_all_results();
 	}
 	
 	//egy metaadat lekérése útvonal és típus alapján
