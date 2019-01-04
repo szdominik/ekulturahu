@@ -94,7 +94,7 @@
     delay: 1000,
     minLength: 3,
     source: (req, res) => {
-			const searchValue = $('#search-field').val().replace(/[^\w\s]/g, '').replace(/\s\s+/g, ' ');
+			const searchValue = $('#search-field').val().replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s]/g, '').replace(/\s\s+/g, ' ');
 			$.getJSON(`<?php echo site_url(array('articles', 'get_articles_by_search_short')); ?>/${searchValue}`, res);
     },
   }).autocomplete('instance')._renderItem = function(ul, item) {
