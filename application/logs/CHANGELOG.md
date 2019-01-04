@@ -10,6 +10,7 @@
 - bugfix: felesleges outline törlése a hamburger buttonről
 - a meták törlésekor jelenjen meg, hogy hány darab van belőle használatban
 - canonical (gyűjtő) oldal megadása a googlenek
+- robots.txt frissítése
 
 ## Változások 2018.12.09.
 
