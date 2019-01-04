@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Változások 2019.01.04.
+
+- a "mutat.php?id=" kezdetű linkek frissítése
+
 ## Változások 2018.12.09.
 
 - bugfix: feleslegesen ne próbáljon short_body-t generálni

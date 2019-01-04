@@ -180,7 +180,7 @@ class Base_model extends CI_Model {
 			foreach($cikk->result_array() as $a)
 			{
 				if(strpos($a['body'], 'mutat.php?') !== FALSE) {
-					$ab = str_replace('mutat.php?cid=', 'qqq/', $a['body']);
+					$ab = str_replace('mutat.php?cid=', 'qqq/', $a['body']); // or mutat.php?id=
 					$arr = str_split($ab);
 					$newarr = '';
 					$volt = FALSE;
