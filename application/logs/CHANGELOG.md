@@ -4,6 +4,7 @@
 
 - a "mutat.php?id=" kezdetű linkek frissítése
 - google analytics ne számolja a fejlesztés alatti kattintások és az adminoldal kattintásait
+- bugfix: az error oldal ne szálljon el
 
 ## Változások 2018.12.09.
 

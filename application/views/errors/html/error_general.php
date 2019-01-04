@@ -36,8 +36,8 @@
 </head>
 <body>
   <div class="header">
-    <a href="<?php echo site_url(); ?>">
-      <img src="<?php echo base_url('assets/icons/ekultura_logo.svg');?>" alt="ekultura.hu">
+    <a href="http://ekultura.hu">
+      <img src="http://ekultura.hu/assets/icons/ekultura_logo.svg" alt="ekultura.hu">
     </a>
   </div>
   <h1>A keresett oldal sajnos nem található.</h1>
