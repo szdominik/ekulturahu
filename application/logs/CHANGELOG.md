@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Változások 2019.01.06.
+
+- önálló controller/model/route az alkalmanként lefuttatandó feladatoknak
+
 ## Változások 2019.01.04.
 
 - a "mutat.php?id=" kezdetű linkek frissítése

@@ -51,7 +51,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 //$route['404_override'] = 'base/home'; //ez vajon hogy működik?
 $route['default_controller'] = 'base/home';
-//$route['test'] = 'pages/test';
 $route['rss'] = 'articles/rss';
 $route['search/(.+)']['get'] = 'articles/search/$1';
 $route['search']['post'] = 'articles/search';
@@ -60,6 +59,7 @@ $route['author/(.+)'] = 'articles/author_search/$1';
 $route['calendar'] = 'pages/calendar';
 $route['users/(.+)'] = 'users/$1';
 $route['admin/(.+)'] = 'admin/$1';
+$route['tasks/(.+)'] = 'tasks/$1';
 $route['(:num)/(:num)/(:num)/(.+)']['get'] = 'articles/view/$4';
 //$route['(:num)/(:num)/(:num)/(.+)']['post'] = 'articles/article_comment/$4';
 $route['articles/get_(.+)/(.+)'] = 'articles/get_$1/$2';

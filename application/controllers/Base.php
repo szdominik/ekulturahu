@@ -127,7 +127,7 @@ class Base extends CI_Controller {
 
 	//A cikk slug és pub_time mezője alapján link generálása
 	//pl. 'feher_isten' (string) + 2015-06-02 21:04:30 (date) -> '2015/06/02/feher_isten' (string)
-	// Ha ezt módosítod, van a Base_modelben is egy ilyen!
+	// Ha ezt módosítod, van a Tasks_modelben is egy ilyen!
 	protected function generate_link($article)
 	{
 		$link = site_url() . substr($article['pub_time'], 0, 4) . 
