@@ -36,6 +36,10 @@
 	<button type="submit" value="filter" name="save" class="btn btn-default">Szűrés</button>
 
 </form>
+
+<div class="admin-new-button">
+	<a href="<?php echo site_url(array('admin', 'article_new')); ?>" class="btn btn-primary">Új cikk</a>
+</div>
 	
 <nav>
 	<ul class="pager">

@@ -90,7 +90,6 @@
 			<thead>
 				<tr>
 					<th>Név</th>
-					<!--<th>Cikkek száma</th>-->
 					<th>Szerkesztés</th>
 					<th>Törlés</th>
 				</tr>
@@ -99,12 +98,9 @@
 				<?php foreach ($metatypes as $m): ?>
 					<tr>
 					    <td><?php echo $m['name']; ?></td>
-						<!--<td><?php echo $m['cnt']; ?></td>-->
 					    <td><button type="button" data-toggle="modal" data-target="#editModal" data-id="<?php echo $m['id']; ?>" data-type="3" data-name="<?php echo $m['name']; ?>" class="editCat btn btn-default">Szerkesztés</button></td>
 						<td>
-						<?php //if ($m['cnt'] == 0) : ?>
 						<button type="button" class="deleteCat btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-delhref="<?php echo site_url(array('admin', 'category_delete', $m['id'], '3')); ?>">Törlés</button>
-						<?php //endif; ?>
 						</td>
 					</tr>
 				<?php endforeach ?>

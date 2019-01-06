@@ -5,6 +5,7 @@
 - önálló controller/model/route az alkalmanként lefuttatandó feladatoknak
 - önálló adminfelület az alkalmanként lefuttatandó feladatoknak
 - sitemap.xml generálás task
+- új cikk gomb a cikkek listájához
 
 ## Változások 2019.01.04.
 

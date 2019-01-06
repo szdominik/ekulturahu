@@ -70,6 +70,10 @@ button.rotate {
   opacity: 0.5;
 }
 
+.admin-new-button {
+  margin-top: 10px;
+}
+
 .label-tooltip {
   font-size: 60%;
   vertical-align: middle;
