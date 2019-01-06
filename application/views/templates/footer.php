@@ -91,7 +91,7 @@
 <script>
 	document.getElementById('date').innerHTML = new Date().getFullYear();
   $('#search-field').autocomplete({
-    delay: 1000,
+    delay: 500,
     minLength: 3,
     source: (req, res) => {
 			const searchValue = $('#search-field').val().replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s]/g, '').replace(/\s\s+/g, ' ');
