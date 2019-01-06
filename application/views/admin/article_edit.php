@@ -460,6 +460,7 @@
 					                value: item.id
 					            }
 					        }));
+							$('.step2')[0].scrollTop = 0;
 					    });
 					}
 				}

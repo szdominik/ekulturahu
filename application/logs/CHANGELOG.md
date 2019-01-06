@@ -6,6 +6,7 @@
 - önálló adminfelület az alkalmanként lefuttatandó feladatoknak
 - sitemap.xml generálás task
 - új cikk gomb a cikkek listájához
+- új meta hozzáadásánál, a típus váltása után ugorjon a lista elejére, ne maradjon az előző görgetési pozícióban
 
 ## Változások 2019.01.04.
 
