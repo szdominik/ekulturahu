@@ -7,12 +7,14 @@
 <script type="text/javascript">
 	$(document).ready(function () {
 		tinymce.init({
-			selector:'textarea',
+			selector: 'textarea',
+			content_css : '/css/style_tinymce.css',
 			height: 700,
 			language: 'hu_HU',
 			language_url : '<?php echo base_url('assets/tinymce/langs/hu_HU.js');?>',
 			relative_urls: false,
-			entity_encoding: "raw",
+			browser_spellcheck: true,
+			entity_encoding: 'raw',
 			toolbar: [
 				'undo redo | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | link unlink',
 				 'paste pastetext pasteword removeformat | code preview | image jbimages',
@@ -22,7 +24,7 @@
 				'searchreplace visualblocks code textcolor colorpicker',
 				'media table contextmenu paste jbimages wordcount'
 			],
-			imagetools_toolbar: 'alignleft aligncenter alignright alignjustify | imageoptions'
+			imagetools_toolbar: 'alignleft aligncenter alignright alignjustify | imageoptions',
 		});
 	});
 </script>
