@@ -1,3 +1,4 @@
+Sitemap: http://ekultura.hu/sitemap.xml
 User-agent: *
 Disallow: /admin
 Disallow: /tasks

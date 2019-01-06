@@ -33,5 +33,10 @@ class Tasks extends Base {
 	public function refactor_article_body_formatting()
 	{
         $this->run_if_authorized('refactor_article_body_formatting');
+    }
+    
+    public function generate_sitemap_xml()
+	{
+        $this->run_if_authorized('generate_sitemap_xml');
 	}
 }

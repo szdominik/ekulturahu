@@ -138,4 +138,41 @@ class Tasks_model extends Base_Model {
 		}
 		echo 'DONE: ' . $count . ' article updated.';
 	}
+
+	public function generate_sitemap_xml() {
+		$from = 0;
+
+		$content = '<?xml version="1.0" encoding="UTF-8"?>';
+		$content .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+
+		$static_articles = $this->get_statics();
+		foreach ($static_articles as $st) {
+			$content .= '<url>';
+			$content .= '<loc>' . site_url($st['path']) . '</loc>';
+			$content .= '</url>';
+		}
+
+		while($from < $GLOBALS['article_num']) {
+			$this->db->select('slug, pub_time');
+			$this->db->where('articles.published', 1);
+			$this->db->where('articles.pub_time <=', $this->datetimeNow());
+			$this->db->limit($GLOBALS['article_limit'], $from);
+			$cikk = $this->db->get('articles');
+
+			foreach($cikk->result_array() as $a)
+			{
+				$content .= '<url>';
+				$content .= '<loc>' . site_url($this->generate_link($a)) . '</loc>';
+				$content .= '</url>';
+			}
+
+			$from += $GLOBALS['article_limit'];
+		}
+		$content .= '</urlset>';
+
+		$xml_file = fopen('sitemap.xml', 'w') or die("Unable to open file!");
+		fwrite($xml_file, $content);
+		fclose($xml_file);
+		echo 'DONE: <a href="/sitemap.xml">sitemap.xml</a>';
+	}
 }
