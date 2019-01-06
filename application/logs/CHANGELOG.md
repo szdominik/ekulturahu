@@ -3,6 +3,8 @@
 ## Változások 2019.01.06.
 
 - önálló controller/model/route az alkalmanként lefuttatandó feladatoknak
+- önálló adminfelület az alkalmanként lefuttatandó feladatoknak
+- sitemap.xml generálás task
 
 ## Változások 2019.01.04.
 

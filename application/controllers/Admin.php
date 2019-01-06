@@ -850,6 +850,14 @@ class Admin extends Base {
 		ob_clean();
 		echo json_encode($comment);
 	}
+
+	//Kategória-alkategória összekapcsolás
+	public function task_list()
+	{
+		$hdata['title'] = 'Végrehajtandó feladatok';
+		
+		$this->show('admin/task_list', $hdata);
+	}
 	
 	//Események listája.
 	//Működés felfüggesztve 2017.07.21.

@@ -97,6 +97,7 @@
                 <?php if($this->session->userdata('level') == 5): ?>
                   <li><a href="<?php echo site_url(array('admin', 'user_list')); ?>">Felhasználók kezelése</a></li>
                   <li><a href="<?php echo site_url(array('admin', 'category_list')); ?>">Kategóriák kezelése</a></li>
+                  <li><a href="<?php echo site_url(array('admin', 'task_list')); ?>">Végrehajtható feladatok</a></li>
                 <?php endif; ?>
               <li class="divider"></li>
               <?php endif; ?>
