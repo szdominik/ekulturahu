@@ -8,6 +8,7 @@
 - új cikk gomb a cikkek listájához
 - új meta hozzáadásánál, a típus váltása után ugorjon a lista elejére, ne maradjon az előző görgetési pozícióban
 - legyen a tinymce szövegszerkesztőnek saját css stílusa
+- képfeltöltés újragondolása: a max. méret már 4MB, viszont 1200 feletti szélesség vagy magasság esetében újraméretezzük a képet
 
 ## Változások 2019.01.04.
 

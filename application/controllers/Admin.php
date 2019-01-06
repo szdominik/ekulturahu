@@ -1018,21 +1018,46 @@ class Admin extends Base {
 	//Form validation callback: fájlfeltöltés.
 	function image_upload()
 	{
-		if (isset($_FILES['userfile']) && $_FILES['userfile']['name'] != '') //van adat, ami fel akarunk tölteni
+		if (isset($_FILES['userfile']) && $_FILES['userfile']['name'] != '') //van adat, amit fel akarunk tölteni
 		{
 			$config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
-			$config['max_width']  = '1200';
-			$config['max_height']  = '1200';
 			$config['max_filename'] = '100';
 			$config['file_name'] = 'img_';
-			$config['max_size'] = '2048';
-			$config['allow_resize'] = TRUE;
+			$config['file_ext_tolower'] = TRUE;
+			$config['overwrite'] = FALSE;
+			$config['max_size'] = '4096';
 			$this->load->library('upload', $config);
 			if ( ! $this->upload->do_upload()) //ha nem sikerült a feltöltés.
 			{
 				$this->form_validation->set_message('image_upload', $this->upload->display_errors());
 				return FALSE;
+			}
+			else
+			{
+				$data = $this->upload->data();
+
+				$this->load->library('image_lib');
+				$config['source_image'] = $data['full_path'];
+				$config['maintain_ratio'] = TRUE;
+				$config['quality'] = '100%';
+
+				if ($data['image_width'] > 1200) {
+					$config['width'] = 1200;
+					$this->image_lib->initialize($config);
+					if (!$this->image_lib->resize()) {
+						$this->form_validation->set_message('image_upload', $this->image_lib->display_errors());
+						return FALSE;
+					}
+				}
+				if ($data['image_height'] > 1200) {
+					$config['height'] = 1200;
+					$this->image_lib->initialize($config);
+					if (!$this->image_lib->resize()) {
+						$this->form_validation->set_message('image_upload', $this->image_lib->display_errors());
+						return FALSE;
+					}
+				}
 			}
 		}
 		return TRUE;
