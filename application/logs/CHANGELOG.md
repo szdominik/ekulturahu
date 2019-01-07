@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Változások 2019.01.07.
+
+- bugfix: ne csak 100-ig inkrementálja a fájlnevet képfeltöltésnél
+
 ## Változások 2019.01.06.
 
 - önálló controller/model/route az alkalmanként lefuttatandó feladatoknak

@@ -1023,6 +1023,7 @@ class Admin extends Base {
 			$config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 			$config['max_filename'] = '100';
+			$config['max_filename_increment'] = '100000';
 			$config['file_name'] = 'img_';
 			$config['file_ext_tolower'] = TRUE;
 			$config['overwrite'] = FALSE;
