@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Változások 2019.01.13.
+
+- bugfix: a "szerzok" legyen alias metatype
+
 ## Változások 2019.01.07.
 
 - bugfix: ne csak 100-ig inkrementálja a fájlnevet képfeltöltésnél

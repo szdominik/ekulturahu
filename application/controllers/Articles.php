@@ -87,6 +87,7 @@ class Articles extends Base {
 	{
 		$legacy_map = array(
 			'szerzo-eloado-rendezo' => 'szerzo-rendezo',
+			'szerzok' => 'szerzo-rendezo',
 			'kiado' => 'kiado-forgalmazo',
 			'fordito-k' => 'fordito',
 			'szerkeszto-k' => 'szerkeszto',
