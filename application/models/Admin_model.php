@@ -19,10 +19,23 @@ class Admin_model extends Base_Model {
 
 	private function refactor_body($data)
 	{
-		if (strpos($data, '&lt;iframe') !== FALSE) {
-			return str_replace(array('&lt;', '&gt;'), array('<', '>'), $data);
+		$new_data = $data;
+		$removable = array(
+			' class="western"',
+			' align="justify"',
+			' align="JUSTIFY"',
+			' style="text-align: justify;"',
+			' style="text-align: justify"',
+			'font-size: small;',
+			'font-size: medium;'
+		);
+		if (strpos($new_data, '&lt;iframe') !== FALSE) {
+			$new_data = str_replace(array('&lt;', '&gt;'), array('<', '>'), $new_data);
 		}
-		return $data;
+		foreach ($removable as $pattern) {
+			$new_data = str_replace($pattern, '', $new_data);
+		}
+		return $new_data;
 	}
 
 	private function refactor_pubtime($data)
