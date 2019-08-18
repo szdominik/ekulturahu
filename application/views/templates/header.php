@@ -57,9 +57,6 @@
       <a href="https://twitter.com/ekultura_hu" target="_blank">
         <img src="<?php echo base_url('assets/icons/twitter.svg');?>" alt="twitter">
       </a>
-      <a href="https://plus.google.com/101205891015756708008/" target="_blank">
-        <img src="<?php echo base_url('assets/icons/googleplus.svg');?>" alt="google+">
-      </a>
       <a href="http://www.youtube.com/user/ekultura" target="_blank">
         <img src="<?php echo base_url('assets/icons/youtube.svg');?>" alt="youtube">
       </a>
