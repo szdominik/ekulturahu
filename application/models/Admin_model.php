@@ -114,20 +114,20 @@ class Admin_model extends Base_Model {
 		$image_path = $query1->row_array()['image_path'];
 		if($image_path != NULL)
 		{
-			//törlés a szerverről
-			/*$this->db->select('path')->from('image')->where('id', $im_id);
-			$query2 = $this->db->get();
-			$path = $query2->row_array()['path'];*/
+			// törlés a szerverről
+			// $this->db->select('path')->from('image')->where('id', $im_id);
+			// $query2 = $this->db->get();
+			// $path = $query2->row_array()['path'];
 			unlink('uploads/'.$image_path);
 			
-			//törlés az adatbázisból
-			//$this->db->delete('image', array('id' => $im_id));
+			// törlés az adatbázisból
+			// $this->db->delete('image', array('id' => $im_id));
 		}
-		//hozzátartozó hozzászólások törlése
-		$this->db->delete('comments', array('article_id' => $id));
-		//hozzátartozó metaadatok törlése
+		// hozzátartozó hozzászólások törlése
+		// $this->db->delete('comments', array('article_id' => $id));
+		// hozzátartozó metaadatok törlése
 		$this->db->delete('meta_value_article', array('article_id' => $id));
-		//végül a cikk törlése
+		// végül a cikk törlése
 		$this->db->delete('articles', array('id' => $id)); 
 		$this->db->trans_complete();
 	}

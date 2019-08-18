@@ -9,6 +9,7 @@
 - bugfix: cikk szerkesztési nézetben a gyorsbillentyűk ne csak OSX-en működjenek - átállás alt-ról shift-re
 - a fekvő képek kevésbé torzítottan jelenjenek meg a cikklisták "dobozaiban"
 - minden cikkmentésnél formázzuk a tartalmat: sorkizártak, betűtípus-változtatások törlése
+- bugfix: cikktörlésnél ne keresse a comments táblát
 
 ## Változások 2019.01.13.
 
