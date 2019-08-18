@@ -85,7 +85,7 @@
 		<tbody>
 			<?php foreach ($metas as $meta): ?>
 				<tr>
-				    <td><?php echo $meta['name'] ?></td>
+				    <td><a href="<?php echo site_url(array('meta', $meta['type_slug'], $meta['slug']))?>"><?php echo $meta['name'] ?></a></td>
 					<td><?php echo $meta['type_name'] ?></td>
 				    <td><button type="button" class="editMeta btn btn-default" data-toggle="modal" data-metaid="<?php echo $meta['id']; ?>" data-target="#editModal">Szerkesztés</button></td>
 					<td><button type="button" class="deleteMeta btn btn-danger" data-toggle="modal" data-metaid="<?php echo $meta['id']; ?>" data-target="#deleteModal">Törlés</button></td>

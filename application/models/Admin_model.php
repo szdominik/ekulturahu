@@ -509,7 +509,9 @@ class Admin_model extends Base_Model {
 	//metaadatok lekérése (lapozó-adatokkal, szűréssel típusra, névre)
 	public function get_metas($limit = 50, $from = 0, $filter = 0, $meta_name = '0')
 	{
-		$this->db->select('metavalue.*, metatype.name AS type_name')->from('metavalue')->join('metatype', 'metatype.id = metavalue.type');
+		$this->db->select('metavalue.*, metatype.name AS type_name, metatype.slug AS type_slug');
+		$this->db->from('metavalue');
+		$this->db->join('metatype', 'metatype.id = metavalue.type');
 		if($filter != 0)
 		{
 			$this->db->where('metavalue.type', $filter);

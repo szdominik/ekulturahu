@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Változások 2019.08.18.
+
+- bugfix: google+ logó törlése a fejlécből
+- címkelista admin oldal linkesítve sorolja fel a címkéket
+
 ## Változások 2019.01.13.
 
 - bugfix: a "szerzok" legyen alias metatype
