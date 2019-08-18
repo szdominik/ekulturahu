@@ -57,7 +57,7 @@ class Articles extends Base {
 	// keresést nehezítő karakterek (írásjelek, felesleges szóközök) törlése
 	private function remove_non_searchable_chars($query)
 	{
-		return preg_replace('/\s\s+/', ' ', preg_replace('/[^\A-Za-zÀ-ÖØ-öø-ÿ\s]/', '', $query));
+		return preg_replace('/\s\s+/', ' ', preg_replace('/[^\A-Za-zÀ-ÖØ-öø-ÿőűŐŰ\s]/', '', $query));
 	}
 	
 	//Cikkmegjelenítés cikkszerző alapján.

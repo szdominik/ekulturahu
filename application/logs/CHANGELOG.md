@@ -4,6 +4,7 @@
 
 - bugfix: google+ logó törlése a fejlécből
 - címkelista admin oldal linkesítve sorolja fel a címkéket
+- bugfix: kódolási probléma az ő/ű karakterekkel a keresőmezőben
 
 ## Változások 2019.01.13.
 
