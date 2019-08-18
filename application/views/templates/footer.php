@@ -89,36 +89,41 @@
 <?php endif; ?>
 
 <script>
-	document.getElementById('date').innerHTML = new Date().getFullYear();
-  $('#search-field').autocomplete({
-    delay: 500,
-    minLength: 3,
-    source: (req, res) => {
-			const searchValue = $('#search-field').val().replace(/[^A-Za-zÀ-ÖØ-öø-ÿőűŐŰ\s]/g, '').replace(/\s\s+/g, ' ');
-			$.getJSON(`<?php echo site_url(array('articles', 'get_articles_by_search_short')); ?>/${searchValue}`, res);
-    },
-  }).autocomplete('instance')._renderItem = function(ul, item) {
-    return $(`<li class="${item.subcat_slug}">`)
-      .append(`<a href="${item.link}">${item.title}</a>`)
-      .appendTo(ul);
-  };
+    document.getElementById('date').innerHTML = new Date().getFullYear();
+    $('#search-field').autocomplete({
+        delay: 500,
+        minLength: 3,
+        select: (e, ui) => {
+            if (e.key === 'Enter') {
+                window.location.href = ui.item.link;
+            }
+        },
+        source: (req, res) => {
+            const searchValue = $('#search-field').val().replace(/[^A-Za-zÀ-ÖØ-öø-ÿőűŐŰ\s]/g, '').replace(/\s\s+/g, ' ');
+            $.getJSON(`<?php echo site_url(array('articles', 'get_articles_by_search_short')); ?>/${searchValue}`, res);
+        },
+    }).autocomplete('instance')._renderItem = function(ul, item) {
+        return $(`<li class="${item.subcat_slug}">`)
+            .append(`<a href="${item.link}">${item.title}</a>`)
+            .appendTo(ul);
+    };
 
-	$('.menu-buttons').click(() => {
-		$('#nav-icon').toggleClass('open');
-		const inCloseState = $('#menu-text').html() === 'Bezár';
+    $('.menu-buttons').click(() => {
+        $('#nav-icon').toggleClass('open');
+        const inCloseState = $('#menu-text').html() === 'Bezár';
     $('#menu-text').html(inCloseState ? 'Menü' : 'Bezár');
-		$('.header .navbar-links').toggleClass('show-menu');
-		$('#content-mask').toggleClass('content-hidden');
-		$('.header').toggleClass('header-fixed');
-		['.search-container', '.body-content', 'footer.navbar', 'footer'].forEach(selector => {
-			$(selector).toggleClass('content-fixed');
-		});
-		if (!inCloseState) {
-			$('#content-mask').one('click', () => {
-				$('.menu-buttons').click();
-			});
-		}
-	});
+        $('.header .navbar-links').toggleClass('show-menu');
+        $('#content-mask').toggleClass('content-hidden');
+        $('.header').toggleClass('header-fixed');
+        ['.search-container', '.body-content', 'footer.navbar', 'footer'].forEach(selector => {
+            $(selector).toggleClass('content-fixed');
+        });
+        if (!inCloseState) {
+            $('#content-mask').one('click', () => {
+                $('.menu-buttons').click();
+            });
+        }
+    });
 </script>
 </body>
 </html>
