@@ -76,6 +76,9 @@ class Base extends CI_Controller {
 		}
 		else
 		{
+			if (isset($_SERVER['HTTP_HOST']) && substr($_SERVER['HTTP_HOST'], 0, 3) === 'www') {
+				redirect(current_url(), 'location', 301);
+			}
 			if (!empty($hdata) && !empty($hdata['canonical_url']) && $hdata['canonical_url'] !== current_url()) {
 				redirect($hdata['canonical_url'], 'location', 301);
 			}

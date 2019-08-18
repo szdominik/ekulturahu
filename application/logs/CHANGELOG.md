@@ -1,6 +1,7 @@
 # CHANGELOG
 
 ## Változások 2019.08.18.
+## RELEASE v4.0.1
 
 - bugfix: google+ logó törlése a fejlécből
 - címkelista admin oldal linkesítve sorolja fel a címkéket
@@ -10,6 +11,7 @@
 - a fekvő képek kevésbé torzítottan jelenjenek meg a cikklisták "dobozaiban"
 - minden cikkmentésnél formázzuk a tartalmat: sorkizártak, betűtípus-változtatások törlése
 - bugfix: cikktörlésnél ne keresse a comments táblát
+- bugfix: a www-vel kezdődő urlekben cors policy miatt nem működnek az ajax hívások: inkább redirecteljünk www-ről
 
 ## Változások 2019.01.13.
 
@@ -53,7 +55,7 @@
 - "Vissza a cikkek listájához" gomb a cikkek szerkesztéséhez
 - bugfix: legyen button a menügombból
 
-## RELEASE 2018.11.24.
+## RELEASE v4.0.0 - 2018.11.24.
 
 - new htaccess
 - production configs
