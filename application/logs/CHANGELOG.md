@@ -7,6 +7,7 @@
 - bugfix: kódolási probléma az ő/ű karakterekkel a keresőmezőben
 - a keresési listában enter lenyomásával is kiválaszthatunk egy elemet
 - bugfix: cikk szerkesztési nézetben a gyorsbillentyűk ne csak OSX-en működjenek - átállás alt-ról shift-re
+- a fekvő képek kevésbé torzítottan jelenjenek meg a cikklisták "dobozaiban"
 
 ## Változások 2019.01.13.
 

@@ -3,7 +3,7 @@
       if($ac['login'] == 0 || $logged_in): ?>
         <div class="article-box">
           <div class="img-container">
-            <a href="<?php echo $ac['link']; ?>">
+            <a href="<?php echo $ac['link']; ?>"<?php echo $ac['image_horizontal'] == 1 ? ' class="box-img-horizontal"' : ''; ?>>
               <img src="<?php echo base_url(array('uploads', $ac['image_path'])); ?>" onerror="this.src = '<?php echo base_url('assets/icons/default.jpg'); ?>';" class="article-img" alt="<?php echo $ac['title']; ?>">
             </a>
             <a class="category-label <?php echo $ac['subcat_slug'];?>" href="<?php echo site_url($ac['subcat_slug']);?>"><?php echo $ac['subcat_name'];?></a>

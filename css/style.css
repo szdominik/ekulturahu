@@ -421,6 +421,15 @@ button.rotate {
   transform: scale(1.05);
 }
 
+.article-box .box-img-horizontal .article-img {
+  max-width: 700px;
+  transform: translateX(-150px);
+}
+
+.article-box .box-img-horizontal .article-img:hover {
+  transform: translateX(-150px) scale(1.05);
+}
+
 .article-box .img-container {
   position: relative;
   width: 270px;
