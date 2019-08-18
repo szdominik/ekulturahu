@@ -417,9 +417,9 @@
 		$('[data-toggle="tooltip"]').tooltip(); 
 
 		document.addEventListener('keypress', (e) => {
-			if (e.keyCode === 263) { // alt + c
+			if (e.shiftKey && e.code === 'KeyC') { // shift + c
 				$('#metaEditModal').modal('show');
-			} else if (e.keyCode === 8222) { // alt + v
+			} else if (e.shiftKey && e.code === 'KeyV') { // shift + v
 				$('.step1').focus();
 			}
 		});
