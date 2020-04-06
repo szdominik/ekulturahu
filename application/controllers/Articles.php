@@ -306,6 +306,7 @@ class Articles extends Base {
 		else
 		{
 			$hdata['title'] = $data['page']['title'];
+			$hdata['image_path'] = $data['page']['image'];
 			$hdata['type'] = 'list';
 			$hdata['canonical_url'] = site_url(array($page));
 			$this->show('articles/static_view', $hdata, $data);

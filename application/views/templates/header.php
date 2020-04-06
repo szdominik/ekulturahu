@@ -28,7 +28,11 @@
     <meta name="keywords" content="ekultura.hu, ekultura, könyv, film, zene, koncert, színház, hallgatnivaló, olvasnivaló, látnivaló, beszámoló, interjú, ajánló, életrajz, hír">
     <meta property="og:type" content="website" />
     <meta property="og:description" content="Online kulturális magazin – könyv, film, zene, színház." />
-    <meta property="og:image" content="<?php echo base_url('assets/icons/default.jpg'); ?>" />
+    <?php if (isset($type) && $type == 'list' && isset($image_path)): ?>
+      <meta property="og:image" content="<?php echo base_url(array('assets', 'icons', 'static', $image_path)); ?>" />
+      <?php else: ?>
+        <meta property="og:image" content="<?php echo base_url('assets/icons/default.jpg'); ?>" />
+      <?php endif; ?>
   <?php endif; ?>
   <meta property="og:url" content="<?php echo current_url(); ?>" />
   <meta property="og:locale" content="hu_HU" />
