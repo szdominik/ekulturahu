@@ -23,7 +23,7 @@ ob_start();
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://ekultura.hu/';
+$config['base_url'] = 'https://ekultura.hu/';
 
 /*
 |--------------------------------------------------------------------------

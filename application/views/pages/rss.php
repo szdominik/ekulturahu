@@ -3,7 +3,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
   <title>ekultura.hu</title>
-  <link>http://ekultura.hu/</link>
+  <link>https://ekultura.hu/</link>
   <description>ekultura.hu – online kulturális magazin</description>
   <language>hu-HU</language>
   <?php foreach ($articles as $ac): ?>
